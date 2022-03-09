@@ -22,7 +22,7 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
         <h2>Management</h2>
         <div className="sidebar__link">
           <i className="fa fa-user"></i>
-          <a href="#">Poinatage</a>
+          <a href="#">Pointage</a>
         </div>
         <div className="sidebar__link">
           <i className="fa fa-building-o"></i>

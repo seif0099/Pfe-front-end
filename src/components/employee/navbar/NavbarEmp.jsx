@@ -9,10 +9,9 @@ const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
         <i className="fa fa-bars"></i>
       </div>
       <div className="navbar_left">
-        <a href="#">subs</a>
-        <a href="#">management</a>
+        
         <a className="active_link" href="#">
-          Admin
+          Employee
         </a>
       </div>
       <div className="navbar_right">

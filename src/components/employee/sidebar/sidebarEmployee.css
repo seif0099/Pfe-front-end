@@ -4,6 +4,7 @@
   padding: 20px;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  width: 208px;
 }
 .sidebar__title {
   display: flex;
