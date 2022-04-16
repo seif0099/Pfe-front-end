@@ -6,6 +6,7 @@ import Home from "../components/home/Home"
 import About from './../components/home/About';
 import SuppHours from './../components/employee/heure-supp/SuppHours';
 import Rapport from './../components/employee/rapport/Rapport';
+import Profile from "../components/employee/profile/Profile";
 
 export const publicRoutes = [
     {   
@@ -47,6 +48,10 @@ export const privateRoutes = [
     {   exact:true,
         component:Rapport,
         path:'/Rapport'
+    },
+    {   exact:true,
+        component:Profile,
+        path:'/Profile'
     },
 
 ]
