@@ -1,8 +1,23 @@
-import React from "react";
+import React,{useState} from "react";
 import "./sidebarEmployee.css";
 import avatar from "../../../assets/avatar.png";
+import { Link } from "react-router-dom";
+import { Router } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+import Pointage from './../pointage/Pointage';
+import SuppHours from './../heure-supp/SuppHours';
+import ReqLeave from './../leave/ReqLeave';
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
+  let user = JSON.parse(localStorage.getItem('user-info'));
+ const history = useHistory('');
+  const [activeComp,setActiveComp] = useState(""); 
+  function logOut(){
+localStorage.clear();
+history.push('/home');
+  }
   return (
+    
     <div className={sideBarOpen ? "sidebar-responsive" : ""} id="sidebar">
       <div className="sidebar__title">
         <div className="sidebar__img">
@@ -20,38 +35,64 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
           <a href="#">Dashboard</a>
         </div>
         <h2>Management</h2>
-        <div className="sidebar__link">
+      <BrowserRouter>
+       <Link to="/Pointage">
+        <div className="sidebar__link" onClick={()=>setActiveComp("pointage")}>
           <i className="fa fa-user"></i>
           <a href="#">Pointage</a>
+
         </div>
-        <div className="sidebar__link">
+        {activeComp==="pointage" && <Pointage/>}
+
+        </Link>
+        </BrowserRouter>
+       <BrowserRouter>
+       <Link to="/Rapport">
+        <div className="sidebar__link"  onClick={()=>setActiveComp("rapport")}>
           <i className="fa fa-building-o"></i>
           <a href="#">Rapport</a>
         </div>
-        <div className="sidebar__link">
+        </Link>
+        </BrowserRouter>
+        <BrowserRouter>
+        <Link to="/SuppHours">
+        <div className="sidebar__link" onClick={()=>setActiveComp("suppHours")}>
           <i className="fa fa-wrench"></i>
           <a href="#">Heure supplimentaire</a>
-        </div>
 
+        </div>
+        {activeComp==="suppHours" && <SuppHours/>}
+
+        </Link>
+</BrowserRouter>
         <div className="sidebar__link">
           <i className="fa fa-handshake-o"></i>
           <a href="#">Contracts</a>
         </div>
+
         <h2> Congé</h2>
-        <div className="sidebar__link">
+        <BrowserRouter>
+        <Link to="/ReqLeave">
+        <div className="sidebar__link"  onClick={()=>setActiveComp("ReqLeave")}>
           <i className="fa fa-question"></i>
           <a href="#">Demande</a>
         </div>
-
+        {activeComp==="ReqLeave" && <ReqLeave/>}
+       </Link>
+</BrowserRouter>
         <h2>Missions</h2>
+        <BrowserRouter>
+        <Link to="/">
         <div className="sidebar__link">
           <i className="fa fa-money"></i>
           <a href="#">Rapport de mission</a>
         </div>
-
+        {activeComp==="ReqLeave" && <ReqLeave/>}
+</Link>
+</BrowserRouter>
         <div className="sidebar__logout">
           <i className="fa fa-power-off"></i>
-          <a href="#">Log out</a>
+          <a href="#"  onClick={logOut}>Log out</a>
         </div>
       </div>
     </div>

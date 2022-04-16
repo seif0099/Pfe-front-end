@@ -1,6 +1,7 @@
 import React from 'react'
 import web from "../../assets/cpg.png"
 import { NavLink } from "react-router-dom";
+import "./index.css"
 
 function About() {
   return (
@@ -12,7 +13,7 @@ function About() {
           <div className="row">
             <div className="col-10 mx-auto">
               <div className="row">
-                <div className="col-md-6 my-5 pt-5 pt-lg-0 order-2 order-lg-1 d-flex justify-content-center flex-column ">
+                <div className="body ">
                   <h1>
                     Welcome to CPG <strong className="brand-name"></strong>
                   </h1>

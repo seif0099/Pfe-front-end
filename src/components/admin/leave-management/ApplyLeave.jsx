@@ -5,27 +5,29 @@ import "./applyleave.css";
 function ApplyLeave() {
   return (
     <div>
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+      <div className="wrapper">
+			<div className="inner">
+				<form action="submit">
+					<h3>Confirmation de congé</h3>
+			
+				
+			
+        <div class="form-wrapper">
+							<label for="">Status *</label>
+							<select name="" id="" class="form-control">
+								<option value="1">En attente</option>
+								<option value="2">Refusé</option>
+								<option value="3">Accepté</option>
+							</select>
+					</div>
+					<button data-text="Confirmer" type="submit">
+						<span>confirmer</span>
+					</button>
+				</form>
+			</div>
+		</div>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </div>
+  </div>
   );
 }
 export default ApplyLeave;

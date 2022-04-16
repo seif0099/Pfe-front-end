@@ -15,7 +15,7 @@ function Home() {
           <div className="row">
             <div className="col-10 mx-auto">
               <div className="row">
-                <div className="col-md-6 my-5 pt-5 pt-lg-0 order-2 order-lg-1 d-flex justify-content-center flex-column ">
+                <div className="body ">
                   <h1>
                     Welcome to CPG <strong className="brand-name"></strong>
                   </h1>
@@ -27,9 +27,7 @@ function Home() {
                     grands groupes: La préparation du terrain, extraction,
                     production et la commercialisation des phosphates.
                   </h2>
-                  <h2 className="">
-                    "Work harder on yourself than you do on your job"
-                  </h2>
+              
                 </div>
                 <div className="mt-3">
                   <NavLink to="/about" className="btn-get-started">
