@@ -3,8 +3,20 @@ import avatar from "../../../assets/avatar.png";
 import React from "react";
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
+import { useEffect,useState } from 'react';
 
 const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
+  const [userInfo, setUserInfo] = useState({});
+  const [nom, setNom] = useState('');
+  const [prenom, setPrenom] = useState('');
+
+  useEffect(() => {
+	  if(JSON.parse(localStorage.getItem("user-info"))){
+		const { user } = JSON.parse(localStorage.getItem("user-info"));
+		setUserInfo(user);
+	  }
+
+  }, []);
   return (
     <nav className="navbar">
       <div className="nav_icon" onClick={() => openSideBar()}>
@@ -13,7 +25,7 @@ const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
       <div className="navbar_left">
         
         <a className="active_link" href="#">
-          Employee
+          Bienvenu {userInfo?.nom} {userInfo?.prenom}
         </a>
       </div>
       <div className="navbar_right">
@@ -23,11 +35,9 @@ const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
         <a href="#">
           <i className="fa fa-clock-o"></i>
         </a>
-        <BrowserRouter>
+        <BrowserRouter forceRefresh={true}>
         <Link to="/Profile">
-        <a href="#">
           <img width={30} src={avatar} alt="avatar" />
-        </a>
         </Link>
         </BrowserRouter>
       </div>

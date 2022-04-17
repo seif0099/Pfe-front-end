@@ -21,16 +21,6 @@ export const publicRoutes = [
         path:'/Signup',
         shouldNotDisplayPublicRoute: true
     },
-    {   exact:true,
-        component:Home,
-        path:'/Home',
-        shouldNotDisplayPublicRoute: true
-    },
-    {   exact:true,
-        component:About,
-        path:'/About',
-        shouldNotDisplayPublicRoute: true
-    },
   
 ]
 
@@ -43,7 +33,14 @@ export const privateRoutes = [
         component:Pointage,
         path:'/Pointage'
     },
-
+    {   exact:true,
+        component:Home,
+        path:'/Home'
+    },
+    {   exact:true,
+        component:About,
+        path:'/About'
+    },
     {   exact:true,
         component:SuppHours,
         path:'/SuppHours'

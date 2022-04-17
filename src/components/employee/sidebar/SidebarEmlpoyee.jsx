@@ -35,7 +35,7 @@ history.push('/home');
           <a href="#">Dashboard</a>
         </div>
         <h2>Management</h2>
-      <BrowserRouter>
+      <BrowserRouter forceRefresh={true}>
        <Link to="/Pointage">
         <div className="sidebar__link" onClick={()=>setActiveComp("pointage")}>
           <i className="fa fa-user"></i>
@@ -46,7 +46,7 @@ history.push('/home');
 
         </Link>
         </BrowserRouter>
-       <BrowserRouter>
+       <BrowserRouter forceRefresh={true}>
        <Link to="/Rapport">
         <div className="sidebar__link"  onClick={()=>setActiveComp("rapport")}>
           <i className="fa fa-building-o"></i>
@@ -54,7 +54,7 @@ history.push('/home');
         </div>
         </Link>
         </BrowserRouter>
-        <BrowserRouter>
+        <BrowserRouter forceRefresh={true}>
         <Link to="/SuppHours">
         <div className="sidebar__link" onClick={()=>setActiveComp("suppHours")}>
           <i className="fa fa-wrench"></i>
@@ -71,7 +71,7 @@ history.push('/home');
         </div>
 
         <h2> Congé</h2>
-        <BrowserRouter>
+        <BrowserRouter forceRefresh={true}>
         <Link to="/ReqLeave">
         <div className="sidebar__link"  onClick={()=>setActiveComp("ReqLeave")}>
           <i className="fa fa-question"></i>
@@ -81,7 +81,7 @@ history.push('/home');
        </Link>
 </BrowserRouter>
         <h2>Missions</h2>
-        <BrowserRouter>
+        <BrowserRouter forceRefresh={true}>
         <Link to="/">
         <div className="sidebar__link">
           <i className="fa fa-money"></i>
