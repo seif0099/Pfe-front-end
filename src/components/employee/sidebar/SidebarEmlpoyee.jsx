@@ -30,7 +30,7 @@ history.push('/home');
         ></i>
       </div>
       <div className="sidebar__menu">
-        <div className="sidebar__link active_menu_link">
+        <div className="sidebar__link active_menu_link" id="dash">
           <i className="fa fa-home"></i>
           <a href="#">Dashboard</a>
         </div>
@@ -90,10 +90,7 @@ history.push('/home');
         {activeComp==="ReqLeave" && <ReqLeave/>}
 </Link>
 </BrowserRouter>
-        <div className="sidebar__logout">
-          <i className="fa fa-power-off"></i>
-          <a href="#"  onClick={logOut}>Log out</a>
-        </div>
+        
       </div>
     </div>
   );
