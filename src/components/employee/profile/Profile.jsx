@@ -19,6 +19,7 @@ function Profile() {
     // Handling the name change
     const handleName = (e) => {
       setNom(e.target.value);
+      setSubmitted(false);
     };
     const handleUsername = (e) => {
         setUsername(e.target.value);
@@ -116,50 +117,91 @@ function Profile() {
         let results = await result.json();
       }
   return (
-   
- 
-  
-    <div className="form">
-      <div>
-        <h1>User Registration</h1>
+<div className="wrapper">
+      <div className="inner">
+        <form>
+          <h3>Update Profile</h3>
+          <div className="form-row">
+            <div className="form-wrapper">
+              <label htmlFor="">Nom *</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Nom"
+                value={userInfo?.nom}
+				
+              />
+            </div>
+            <div className="form-wrapper">
+              <label htmlFor="">Prénom *</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Prénom"
+                value={userInfo?.prenom}
+				
+              />
+            </div>
+            <br/>
+          </div>
+
+          <div className="form-row last">
+            <div className="form-wrapper">
+              <label htmlFor="">Username</label>
+              <input
+                type="text"
+                className="form-control"
+                value={userInfo?.username}
+              />
+              <i className="zmdi zmdi-chevron-down"></i>
+            </div>
+            <div className="form-wrapper">
+              <label htmlFor="">Classe *</label>
+              <input
+                type="text"
+                className="form-control"
+                value={userInfo?.classe}
+              />
+
+              <i className="zmdi zmdi-chevron-down"></i>
+            </div>
+         
+          <div className="form-wrapper">
+            <label for="">Matricule *</label>
+            <input 
+              name=""
+              id=""
+              className="form-control"
+              value={userInfo?.matricule}
+           
+            />
+            </div>
+               <div className="form-wrapper">
+            <label for="">Email *</label>
+            <input 
+              type="email"
+              
+              className="form-control"
+              value={userInfo?.email}
+           
+            />
+            </div>
+                <div className="form-wrapper">
+            <label for="">password *</label>
+            <input 
+              type="password"
+              
+              className="form-control"
+              value={userInfo?.password}
+           
+            />
+            </div>
+          </div>
+          <button data-text="Confirmer" onClick={updateProfile}>
+            <span>confirmer</span>
+          </button>
+        </form>
       </div>
- 
-      {/* Calling to the methods */}
-      <div className="messages">
-        {errorMessage()}
-        {successMessage()}
-      </div>
- 
-      <form>
-        {/* Labels and inputs for form data */}
-        <label className="label">Username</label>
-        <input onChange={handleUsername} className="inputt"
-          value={userInfo?.Username}  type="text"  />
-        <label className="label">Nom</label>
-        <input onChange={handleName} className="inputt"
-          value={userInfo?.nom} type="text" />
-            <label className="label">Prénom</label>
-        <input onChange={handlePrenom} className="inputt"
-          value={userInfo?.prenom} type="text" />
- 
-        <label className="label">Email</label>
-        <input onChange={handleEmail} className="inputt"
-          value={userInfo?.email} type="email" />
- 
-        <label className="label">Password</label>
-        <input onChange={handlePassword} className="inputt"
-          value={userInfo?.password} type="password" />
- 
- <label className="label">Classe</label>
-        <input onChange={handleClasse} className="inputt"
-          value={userInfo?.classe} type="text" />
-           <label className="label">Matricule</label>
-        <input onChange={handleMatricule} className="inputt"
-          value={userInfo?.matricule} type="password" />
-        <button onClick={handleSubmit} className="btn" type="submit">
-          Submit
-        </button>
-      </form>
     </div>
   )
 }

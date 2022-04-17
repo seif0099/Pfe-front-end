@@ -31,13 +31,18 @@ function MainContainer() {
     <>
  
       
-      <NavbarEmp sideBarOpen={sideBarOpen} openSideBar={openSideBar} />
       <Router>
         <Switch>
           {privateRoutes.map((Route) => (
+
             <PrivateRoutes path={Route.path} exact={Route.exact}>
+                                <NavbarEmp sideBarOpen={sideBarOpen} openSideBar={openSideBar} />
+
               <Route.component />
+              <SidebarEmployee sideBarOpen={sideBarOpen} closeSideBar={closeSideBar} />
+
             </PrivateRoutes>
+
           ))}
           {publicRoutes.map((Route) => (
             <PublicRoutes path={Route.path} exact={Route.exact} >
@@ -48,7 +53,6 @@ function MainContainer() {
       </Router>
       
           
-          <SidebarEmployee sideBarOpen={sideBarOpen} closeSideBar={closeSideBar} />
          
     </>
   );
