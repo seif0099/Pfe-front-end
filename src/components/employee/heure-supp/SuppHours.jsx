@@ -62,7 +62,7 @@ function SuppHours() {
                 type="text"
                 className="form-control"
                 placeholder="Prénom"
-                value={userInfo?.prenom}
+                value={userInfo.prenom}
 				disabled
 				/>
 						</div>
@@ -86,7 +86,7 @@ function SuppHours() {
 						</div>
           
 				</div>
-        <div class="form-wrapper">
+        <div className="form-wrapper">
 							<label for="">Travail À faire *</label>
                             <input type="text" className="form-control" placeholder=""
 							  onChange={(e) => setTypeOfWork(e.target.value)}/>

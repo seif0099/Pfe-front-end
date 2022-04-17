@@ -36,7 +36,7 @@ function MainContainer() {
           {privateRoutes.map((Route) => (
 
             <PrivateRoutes path={Route.path} exact={Route.exact}>
-                                <NavbarEmp sideBarOpen={sideBarOpen} openSideBar={openSideBar} />
+              <NavbarEmp sideBarOpen={sideBarOpen} openSideBar={openSideBar} />
 
               <Route.component />
               <SidebarEmployee sideBarOpen={sideBarOpen} closeSideBar={closeSideBar} />
