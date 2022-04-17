@@ -45,22 +45,66 @@ function Pointage() {
       }
   return (
   
-    <div class="center">
-    <h1>Pointage</h1>
-    <form>
-      <div class="inputbox">
-        <input type="text" required="required"/>
-        <span>Email</span>
+   <div className="limiter" >
+       <div className="wrapper">
+      <div className="inner" >
+        <form>
+          <h3>pointage</h3>
+          <div className="form-row">
+            <div className="form-wrapper">
+              <label htmlFor="">Nom *</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Nom"
+                value={userInfo?.nom}
+				disabled
+              />
+            </div>
+            <div className="form-wrapper">
+              <label htmlFor="">Prénom *</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Prénom"
+                value={userInfo?.prenom}
+				disabled
+              />
+            </div>
+          </div>
+
+          <div className="form-row last">
+            <div className="form-wrapper">
+              <label htmlFor="">Date d'entrée*</label>
+              <input
+                type="time"
+                className="form-control"
+                onChange={(e) => setFromDate(e.target.value)}
+              />
+              <i className="zmdi zmdi-chevron-down"></i>
+            </div>
+            <div className="form-wrapper">
+              <label htmlFor="">À *</label>
+              <input
+                type="time"
+                className="form-control"
+                onChange={(e) => setToDate(e.target.value)}
+              />
+
+              <i className="zmdi zmdi-chevron-down"></i>
+            </div>
+          </div>
+          <div className="form-wrapper">
+         
+          </div>
+          <button data-text="Confirmer" onClick={makePresence}>
+            <span>confirmer</span>
+          </button>
+        </form>
       </div>
-      <div class="inputbox">
-        <input type="text" required="required"/>
-        <span>Password</span>
-      </div>
-      <div class="inputbox">
-        <input type="button" value="submit"/>
-      </div>
-    </form>
-  </div>
+    </div>
+
+</div>
 
   )
 }
