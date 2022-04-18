@@ -1,0 +1,46 @@
+.container {
+    background-color: white;
+    width: 1000px;
+    height: 700px;
+    margin: 0 auto ;
+    margin-top: 100px;
+    margin-left: 274px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+table {
+    width: 100%;
+    table-layout: fixed;
+    margin-top: 100px;
+}
+th {
+    font-size: 18px;
+    text-align: center;
+    width: 80px;
+}
+td {
+    font-size: 18px;
+    text-align: center;
+}
+button {
+    margin-top: 20px;
+    float: right;   
+}
+.monthPicker {
+    height : 150px;
+    width: 150px;
+    margin: 0 auto;
+    float: right;
+    margin-top: 50px;
+    margin-right: 60px;
+}
+.dates {
+    float: left;   
+    margin-top: 250px;
+}
+.dates p {
+    color:black;
+    font-size: 18px;
+}
+th p {
+    color:#51788F;
+}
