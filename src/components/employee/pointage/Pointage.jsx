@@ -11,33 +11,30 @@ function Pointage() {
   const dateObj = new Date();
   const [dates, setDate] = useState(dateObj);
   const [pointages, setPointages] = useState();
-
   useEffect(() => {
+    const fetcha = async () => {
 	  if(JSON.parse(localStorage.getItem("user-info"))){
 		const { user } = JSON.parse(localStorage.getItem("user-info"));
 		setUserInfo(user);
 	  }
-
-  }, []);
-  async function makePresence(e) {
-    e.preventDefault();
-
-    let item = {
-      pDate: dates, 
-      userid: userInfo?._id,
-    };
-    let result = await fetch("http://localhost:9000/getpointage", {
-      method: "POST",
+    let URL = "http://localhost:9000/getpointage?userId="+JSON.parse(localStorage.getItem("user-info")).user._id+"&pDate="+dates.toDateString()
+    console.log(URL)
+    let result = await fetch(URL, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(item),
     });
     console.log(result)
     let results = await result.json();
-  }
+    }
+    fetcha();
+  }, []);
+    
+  
 
+  
   return (
   
    <div className='container'>
