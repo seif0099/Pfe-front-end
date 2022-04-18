@@ -17,38 +17,7 @@ function Profile() {
     const [error, setError] = useState(false);
    
     // Handling the name change
-    const handleName = (e) => {
-      setNom(e.target.value);
-      setSubmitted(false);
-    };
-    const handleUsername = (e) => {
-        setUsername(e.target.value);
-        setSubmitted(false);
-      };
-   
-    // Handling the email change
-    const handleEmail = (e) => {
-      setEmail(e.target.value);
-      setSubmitted(false);
-    };
-   
-    // Handling the password change
-    const handlePassword = (e) => {
-      setPassword(e.target.value);
-      setSubmitted(false);
-    };
-    const handleClasse = (e) => {
-        setClasse(e.target.value);
-        setSubmitted(false);
-      };
-      const handleMatricule = (e) => {
-        setMatricule(e.target.value);
-        setSubmitted(false);
-      };
-      const handlePrenom = (e) => {
-        setPrenom(e.target.value);
-        setSubmitted(false);
-      };
+  
     // Handling the form submission
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -106,7 +75,7 @@ function Profile() {
           password,
           userid: userInfo?._id,
         };
-        let result = await fetch("http://localhost:9000/UpdateUser", {
+        let result = await fetch("http://localhost:9000/userupdated", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -127,20 +96,20 @@ function Profile() {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Nom"
-                value={userInfo?.nom}
-				
-              />
+                placeholder={userInfo?.nom}
+                
+                onChange={(e) => setNom(e.target.value)}              />
             </div>
             <div className="form-wrapper">
               <label htmlFor="">Prénom *</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Prénom"
-                value={userInfo?.prenom}
-				
-              />
+                placeholder={userInfo?.prenom}
+              
+                onChange={(e) => setPrenom(e.target.value)}              />
+
+              
             </div>
             <br/>
           </div>
@@ -151,7 +120,8 @@ function Profile() {
               <input
                 type="text"
                 className="form-control"
-                value={userInfo?.username}
+                placeholder={userInfo?.username}
+                onChange={(e) => setUsername(e.target.value)}   
               />
               <i className="zmdi zmdi-chevron-down"></i>
             </div>
@@ -160,8 +130,9 @@ function Profile() {
               <input
                 type="text"
                 className="form-control"
-                value={userInfo?.classe}
-              />
+                placeholder={userInfo?.classe}
+                onChange={(e) => setClasse(e.target.value)}   
+             />
 
               <i className="zmdi zmdi-chevron-down"></i>
             </div>
@@ -172,7 +143,8 @@ function Profile() {
               name=""
               id=""
               className="form-control"
-              value={userInfo?.matricule}
+              placeholder={userInfo?.matricule}
+              onChange={(e) => setMatricule(e.target.value)}   
            
             />
             </div>
@@ -182,8 +154,8 @@ function Profile() {
               type="email"
               
               className="form-control"
-              value={userInfo?.email}
-           
+              placeholder={userInfo?.email}
+              onChange={(e) => setEmail(e.target.value)}   
             />
             </div>
                 <div className="form-wrapper">
@@ -192,8 +164,8 @@ function Profile() {
               type="password"
               
               className="form-control"
-              value={userInfo?.password}
-           
+              placeholder={userInfo?.password}
+              onChange={(e) => setPassword(e.target.value)}   
             />
             </div>
           </div>

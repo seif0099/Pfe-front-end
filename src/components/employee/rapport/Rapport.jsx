@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 function Rapport() {
 	const [userInfo, setUserInfo] = useState({});
-  const [date, setDate] = useState("");
+  const [dateAcc, setDateAcc] = useState("");
   const [place, setPlace] = useState("");
-
+  const [condition, setCondition] = useState("");
   useEffect(() => {
 	  if(JSON.parse(localStorage.getItem("user-info"))){
 		const { user } = JSON.parse(localStorage.getItem("user-info"));
@@ -14,18 +14,18 @@ function Rapport() {
 	  }
 
   }, []);
-  async function createLeave(e) {
+  async function reqRapport(e) {
     e.preventDefault();
 
     let item = {
-      date,
+      dateAcc,
       place,
-      
+      condition,
       nom: userInfo?.nom,
       prenom: userInfo?.prenom,
       userid: userInfo?._id,
     };
-    let result = await fetch("http://localhost:9000/requestleave", {
+    let result = await fetch("http://localhost:9000/requestRapport", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ function Rapport() {
           <div className="wrapper">
 			<div className="inner">
 				<form action="submit">
-					<h3>Rapport</h3>
+					<h3>Rapport Accident</h3>
 					<div className="form-row">
 						<div className="form-wrapper">
 							<label htmlFor="">Nom  *</label>
@@ -60,7 +60,7 @@ function Rapport() {
 					<div className="form-row last">
 						<div className="form-wrapper">
 							<label htmlFor="">Date de l'accident *</label>
-				   	<input type="date" className="form-control"  onChange={(e) => setDate(e.target.value)} />
+				   	<input type="date" className="form-control"  onChange={(e) => setDateAcc(e.target.value)} />
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
 						<div className="form-wrapper">
@@ -70,8 +70,13 @@ function Rapport() {
 						</div>
           
 				</div>
+				<div className="form-wrapper">
+							<label htmlFor="">Condition de l'accident *</label>
+                            <input type="text" className="form-control" placeholder="Condition de l'accident"  onChange={(e) => setCondition(e.target.value)}/>
+							<i className="zmdi zmdi-chevron-down"></i>
+						</div>
      
-					<button data-text="Confirmer" type="submit">
+					<button data-text="Confirmer" type="submit" onClick={reqRapport}>
 						<span>confirmer</span>
 					</button>
 				</form>

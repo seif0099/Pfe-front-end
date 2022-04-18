@@ -1,16 +1,17 @@
 import React from 'react'
-import { NavLink } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import web from "../../assets/cpg.png"
 import "./index.css"
-
+import NavBarLogin from './NavBarLogin';
 
 function Home() {
   return (
-    <div>
-        
-
-        <>
+    
+    <div><NavBarLogin/>
       <section id="header" className="d-flex align-items-center">
+         
+
         <div className="container-fluid nav_bg">
           <div className="row">
             <div className="col-10 mx-auto">
@@ -30,9 +31,11 @@ function Home() {
               
                 </div>
                 <div className="mt-3">
-                  <NavLink to="/about" className="btn-get-started">
+                  <BrowserRouter>
+                  <Link to="/about" className="btn-get-started">
                     Commencer
-                  </NavLink>
+                  </Link>
+                  </BrowserRouter>
                 </div>
                 <div className="col-lg-6 order-1 order-lg-2 header-img">
                   <img
@@ -41,13 +44,13 @@ function Home() {
                     alt="home img"
                   />
                 </div>
+
               </div>
             </div>
           </div>
         </div>
       </section>
-    </>
-    </div>
+      </div>
   )
 }
 
