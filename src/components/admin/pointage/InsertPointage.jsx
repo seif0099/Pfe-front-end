@@ -9,6 +9,8 @@ function InsertPointage() {
   const [toDate, setToDate] = useState("");
   const [userInfo, setUserInfo] = useState({});
   var [res,setRes]=useState([{}]);
+  const [userid,setUserid]=useState("");
+  const[DatePointage,setDatePointage]=useState("");
 
   useEffect(() => {
     const fetcha = async () => {
@@ -30,12 +32,31 @@ function InsertPointage() {
     }
     fetcha();
   }, []);
-  function insertion (){
-}
-function looping (){
+ async function insertion (){
+     
+	  let item = {
+		
+		DatePointage:DatePointage,
+		userid: userInfo?._id,
+	  };
+	  let result = await fetch("http://localhost:9000/adminPointage", {
+		method: "POST",
+		headers: {
+		  "Content-Type": "application/json",
+		  Accept: "application/json",
+		},
+		body: JSON.stringify(item),
+	  });
+	  let results = await result.json();
+	  localStorage.setItem("user-info",JSON.stringify(results))
 
-   
+	}
+    function handleUserid(e){
+setUserid(e.target.value)
+console.log(e.target.value);
     }
+
+
 
   return (
     <div className="wrapper">
@@ -45,9 +66,9 @@ function looping (){
 					<div className="form-row">
 						<div className="form-wrapper">
 							
-                            <select className='form-control'>
+                            <select className='form-control' onChange={handleUserid}>
                               <option selected value="0">Choisir l'employée</option>
-                              {res.map(({ nom, prenom,userid }, index) => <option value={userid} > {nom} {prenom} </option>)}
+                              {res.map(({ nom, prenom,_id }, index) => <option value={_id} > {nom} {prenom} </option>)}
                             </select>
                            
 						</div>
@@ -55,9 +76,9 @@ function looping (){
 					</div>
 				
 					<div className="form-row last">
-						<div className="form-wrapper">
+						<div className="form-wrapper" >
 							<label htmlFor="">Date de pointage</label>
-				   	<input type="date" className="form-control"   />
+				   	<input type="date" className="form-control"  onChange={(e) => setDatePointage(e.target.value)} />
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
 					
