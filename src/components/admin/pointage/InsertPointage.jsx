@@ -10,7 +10,7 @@ function InsertPointage() {
   const [userInfo, setUserInfo] = useState({});
   var [res,setRes]=useState([{}]);
   const [userid,setUserid]=useState("");
-  const[DatePointage,setDatePointage]=useState("");
+  const[pDate,setpDate]=useState("");
 
   useEffect(() => {
     const fetcha = async () => {
@@ -33,13 +33,15 @@ function InsertPointage() {
     fetcha();
   }, []);
  async function insertion (){
-     
+		console.log("ahla")
 	  let item = {
 		
-		DatePointage:DatePointage,
-		userid: userInfo?._id,
+		pDate:pDate,
+		userid: userid,
 	  };
-	  let result = await fetch("http://localhost:9000/adminPointage", {
+	  console.log(item)
+	  const URL = "http://localhost:9000/adminPointage"
+	  let result = await fetch(URL, {
 		method: "POST",
 		headers: {
 		  "Content-Type": "application/json",
@@ -48,7 +50,6 @@ function InsertPointage() {
 		body: JSON.stringify(item),
 	  });
 	  let results = await result.json();
-	  localStorage.setItem("user-info",JSON.stringify(results))
 
 	}
     function handleUserid(e){
@@ -61,7 +62,7 @@ console.log(e.target.value);
   return (
     <div className="wrapper">
 			<div className="inner">
-				<form action="submit">
+				<form onSubmit={insertion}>
 					<h3>Pointage des employees</h3>
 					<div className="form-row">
 						<div className="form-wrapper">
@@ -78,7 +79,7 @@ console.log(e.target.value);
 					<div className="form-row last">
 						<div className="form-wrapper" >
 							<label htmlFor="">Date de pointage</label>
-				   	<input type="date" className="form-control"  onChange={(e) => setDatePointage(e.target.value)} />
+				   	<input type="date" className="form-control"  onChange={(e) => setpDate(e.target.value)} />
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
 					
@@ -87,7 +88,7 @@ console.log(e.target.value);
 				</div>
 				
      
-					<button data-text="Confirmer la présence" type="submit" onClick={insertion} className='form-control'>
+					<button data-text="Confirmer la présence" type="submit" className='form-control'>
 						<span>Confirmer la présence</span>
 					</button>
                  
