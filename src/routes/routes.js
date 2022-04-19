@@ -7,6 +7,7 @@ import About from './../components/home/About';
 import SuppHours from './../components/employee/heure-supp/SuppHours';
 import Rapport from './../components/employee/rapport/Rapport';
 import Profile from "../components/employee/profile/Profile";
+import InsertPointage from "../components/admin/pointage/InsertPointage";
 
 export const publicRoutes = [
     {   
@@ -56,5 +57,8 @@ export const privateRoutes = [
         component:Profile,
         path:'/Profile'
     },
-
+    {   exact:true,
+        component:InsertPointage,
+        path:'/InsPointage'
+    },
 ]
