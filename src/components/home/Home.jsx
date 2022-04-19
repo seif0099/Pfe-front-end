@@ -3,24 +3,41 @@ import { BrowserRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import web from "../../assets/cpg.png"
 import "./index.css"
-import NavBarLogin from './NavBarLogin';
 
 function Home() {
   return (
-    
-    <div><NavBarLogin/>
-      <section id="header" className="d-flex align-items-center">
-         
-
-        <div className="container-fluid nav_bg">
-          <div className="row">
-            <div className="col-10 mx-auto">
-              <div className="row">
-                <div className="body ">
+    <div className='hcontainer'>
+      <nav>
+        <a className="links" href="#">Accueil</a>
+        <a className="links" href="#">A propos</a>
+        <div className="dropdown-menu">
+        <a className="menu-btn">Se connecter </a>
+        <div className="menu-content">
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/login" className="btn-get-started">
+        <a className="links-hidden" href="#">Employée</a>
+        </Link>
+        </BrowserRouter>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/admin" className="btn-get-started">
+        <a className="links-hidden" href="#">Admin</a>
+        </Link>
+        </BrowserRouter>
+        
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/signup" className="btn-get-started">
+        <a className="links-hidden" href="#">Signup</a>
+        </Link>
+        </BrowserRouter>
+        </div>
+        </div>
+      </nav>
+      <div className='hinner'>
+          <div className='leftPanel'>
                   <h1>
                     Welcome to CPG <strong className="brand-name"></strong>
                   </h1>
-                  <h2 className="my-4">
+                  <h2 className>
                     CPG est une entreprise tunisienne d'exploitation des
                     phosphates basée à Gafsa. La CPG figure parmi les plus
                     importants producteurs de phosphates, occupant la cinquième
@@ -28,28 +45,24 @@ function Home() {
                     grands groupes: La préparation du terrain, extraction,
                     production et la commercialisation des phosphates.
                   </h2>
-              
-                </div>
-                <div className="mt-3">
                   <BrowserRouter>
                   <Link to="/about" className="btn-get-started">
-                    Commencer
+                    <button >Commencer</button>
                   </Link>
                   </BrowserRouter>
-                </div>
-                <div className="col-lg-6 order-1 order-lg-2 header-img">
+          </div>
+
+          <div className='rightPanel'>
+               <div>
                   <img
                     src={web}
                     className="img-fluid animated"
                     alt="home img"
                   />
                 </div>
-
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
+      </div>
+                
       </div>
   )
 }
