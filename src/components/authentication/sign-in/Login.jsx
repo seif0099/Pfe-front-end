@@ -35,7 +35,7 @@ function Login() {
   }
 
   if (isLoginSuccess) {
-    return <Redirect to="ReqLeave" />;
+    return <Redirect to="Pointage" />;
   }
   return (
     <div className="wrapper">
