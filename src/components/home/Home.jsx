@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import web from "../../assets/cpg.png"
-import "./index.css"
+import "./home.css"
 
 function Home() {
   return (

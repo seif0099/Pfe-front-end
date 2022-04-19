@@ -36,12 +36,14 @@ function Pointage() {
 
   
   return (
-  
-   <div className='container'>
-<div className="row py-5">
-
-    <div className="col-lg-10 mx-auto">
-          <div className="table-responsive">
+    <div className="limiter">
+    <div className="wrapper">
+   <div className="inner">
+     <form>
+       <h3>pointage</h3>
+       <div className="form-row">
+         <div className="form-wrapper">
+         <div className="table-responsive">
             <table className="table table-striped table-bordered" id="example" >
               <thead>
                 <tr>
@@ -63,23 +65,28 @@ function Pointage() {
           </div>
           <div className='monthPicker'>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Box m={2}>
-        <DatePicker
-          inputFormat="yyyy-MM"
-          views={['year', 'month']}
-          label="Mois / Année"
-          minDate={new Date('2012-03-01')}
-          maxDate={new Date('2023-06-01')}
-          value={dates}
-          onChange={setDate}
-          renderInput={(params) => <TextField {...params} helperText={null} />}
-        />
-      </Box>
-    </LocalizationProvider>
-        </div>
-        </div>
-  </div>
-  </div>
+            <Box m={2}>
+              <DatePicker
+                inputFormat="yyyy-MM"
+                views={['year', 'month']}
+                label="Mois / Année"
+                minDate={new Date('2012-03-01')}
+                maxDate={new Date('2023-06-01')}
+                value={dates}
+                onChange={setDate}
+                renderInput={(params) => <TextField {...params} helperText={null} />}
+              />
+            </Box>
+          </LocalizationProvider>
+          </div>
+          </div>
+       </div>
+
+     </form>
+     </div>
+   </div>
+ </div>
+
   )
 }
 

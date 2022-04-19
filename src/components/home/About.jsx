@@ -1,7 +1,7 @@
 import React from 'react'
 import web from "../../assets/cpg.png"
 import { NavLink } from "react-router-dom";
-import "./index.css"
+import "./home.css"
 
 function About() {
   return (

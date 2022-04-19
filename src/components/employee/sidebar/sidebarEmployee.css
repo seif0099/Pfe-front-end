@@ -1,11 +1,9 @@
 #sidebar {
   background: #FAFAFA;
   grid-area: sidebar;
-  padding: 20px;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   width: 300px;
-  padding-top: 50px;
 }
 
 .sidebar__title {

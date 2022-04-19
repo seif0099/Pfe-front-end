@@ -1,46 +1,28 @@
-.container {
-    background-color: white;
-    width: 1000px;
-    height: 700px;
-    margin: 0 auto ;
-    margin-top: 100px;
-    margin-left: 274px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.limiter {
+    background-color: #0000ff;
+
 }
-table {
-    width: 100%;
-    table-layout: fixed;
-    margin-top: 100px;
-}
-th {
-    font-size: 18px;
-    text-align: center;
-    width: 80px;
-}
-td {
-    font-size: 18px;
-    text-align: center;
-}
-button {
-    margin-top: 20px;
-    float: right;   
-}
-.monthPicker {
-    height : 150px;
-    width: 150px;
+.wrapper {
+    background-color: black;
     margin: 0 auto;
-    float: right;
-    margin-top: 50px;
-    margin-right: 60px;
+    margin-right: 650px !important;
+
 }
-.dates {
-    float: left;   
-    margin-top: 250px;
+.form-wrapper {
+    width: 100% !important;
+
 }
-.dates p {
-    color:black;
-    font-size: 18px;
+.inner {
+    width: 1000px !important;
+    height: 650px !important;
+    margin: 0 auto;
+    
 }
-th p {
-    color:#51788F;
+.table-responsive    {
+    width: 100%;
+
+}
+form {
+    width: 100%;
+    height: 100%;
 }
