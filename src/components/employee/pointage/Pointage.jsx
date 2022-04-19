@@ -45,9 +45,9 @@ function Pointage() {
             <table className="table table-striped table-bordered" id="example" >
               <thead>
                 <tr>
-                  <th><p>{dates.getMonth()}/
-    {dates.getFullYear()}</p>
-</th>
+                  <th>
+                    <p>{dates.getMonth()}/{dates.getFullYear()}</p>
+                  </th>
                   <th>Lundi</th>
                   <th>Mardi</th>
                   <th>Mercredi</th>

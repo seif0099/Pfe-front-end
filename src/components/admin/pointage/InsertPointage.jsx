@@ -1,4 +1,6 @@
 import React,{useState,useEffect} from 'react'
+import "./InsertPointage.css"
+
 function InsertPointage() {
     const [nom, setNom] = useState("");
   const [isLoginSuccess, setIsLoginSuccess] = useState(false);
@@ -24,9 +26,7 @@ function InsertPointage() {
       },
     });
     let results = await result.json();
-    console.log(results)
-    res=results 
-console.log(res);
+    setRes(results);
     }
     fetcha();
   }, []);
@@ -45,8 +45,9 @@ function looping (){
 					<div className="form-row">
 						<div className="form-wrapper">
 							
-                            <select >
-                            {res.map(({ nom, prenom,userid }, index) => <option value={userid} >{nom } {prenom}</option>)}
+                            <select className='form-control'>
+                              <option selected value="0">Choisir l'employée</option>
+                              {res.map(({ nom, prenom,userid }, index) => <option value={userid} > {nom} {prenom} </option>)}
                             </select>
                            
 						</div>
@@ -55,7 +56,7 @@ function looping (){
 				
 					<div className="form-row last">
 						<div className="form-wrapper">
-							<label htmlFor="">Temps de debut *</label>
+							<label htmlFor="">Date de pointage</label>
 				   	<input type="date" className="form-control"   />
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
@@ -65,13 +66,10 @@ function looping (){
 				</div>
 				
      
-					<button data-text="Confirmer" type="submit" onClick={insertion} >
-						<span>confirmer la présence</span>
+					<button data-text="Confirmer la présence" type="submit" onClick={insertion} className='form-control'>
+						<span>Confirmer la présence</span>
 					</button>
                  
-                    <button data-text="Confirmer" type="submit" >
-						<span>confirmer l'absence</span>
-					</button>
 				</form>
 			</div>
 		</div>
