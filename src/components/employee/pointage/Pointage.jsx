@@ -8,17 +8,18 @@ import DatePicker from '@mui/lab/DatePicker';
 import Box from '@mui/material/Box';
 function Pointage() {
   const [userInfo, setUserInfo] = useState({});
-  const dateObj = new Date();
-  const [dates, setDate] = useState(dateObj);
+  var dateObj = new Date();
+  var [dates, setDate] = useState(dateObj);
   const [pointages, setPointages] = useState();
+  console.log(dates.getMonth());
   useEffect(() => {
+    
     const fetcha = async () => {
 	  if(JSON.parse(localStorage.getItem("user-info"))){
 		const { user } = JSON.parse(localStorage.getItem("user-info"));
 		setUserInfo(user);
 	  }
     let URL = "http://localhost:9000/getpointage?userId="+JSON.parse(localStorage.getItem("user-info")).user._id+"&pDate="+dates.toDateString()
-    console.log(URL)
     let result = await fetch(URL, {
       method: "GET",
       headers: {
@@ -26,7 +27,6 @@ function Pointage() {
         Accept: "application/json",
       },
     });
-    console.log(result)
     let results = await result.json();
     }
     fetcha();
@@ -70,8 +70,6 @@ function Pointage() {
                 inputFormat="yyyy-MM"
                 views={['year', 'month']}
                 label="Mois / Année"
-                minDate={new Date('2012-03-01')}
-                maxDate={new Date('2023-06-01')}
                 value={dates}
                 onChange={setDate}
                 renderInput={(params) => <TextField {...params} helperText={null} />}
