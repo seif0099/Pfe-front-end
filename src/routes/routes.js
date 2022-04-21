@@ -8,6 +8,8 @@ import SuppHours from './../components/employee/heure-supp/SuppHours';
 import Rapport from './../components/employee/rapport/Rapport';
 import Profile from "../components/employee/profile/Profile";
 import InsertPointage from "../components/admin/pointage/InsertPointage";
+import AdminSignin from "../components/authentication/admin/Admin-signin";
+import Promotion from "../components/admin/promotion/Promotion";
 
 export const publicRoutes = [
     {   
@@ -33,6 +35,11 @@ export const publicRoutes = [
         shouldNotDisplayPublicRoute: true
     },
   
+    {   exact:true,
+        component:AdminSignin,
+        path:'/admin-signin',
+        shouldNotDisplayPublicRoute: true
+    },
 ]
 
 export const privateRoutes = [
@@ -59,6 +66,10 @@ export const privateRoutes = [
     },
     {   exact:true,
         component:InsertPointage,
-        path:'/InsPointage'
+        path:'/admin'
+    },
+    {   exact:true,
+        component:Promotion,
+        path:'/admin/promotion'
     },
 ]

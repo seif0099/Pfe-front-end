@@ -19,7 +19,7 @@ function Home() {
         </Link>
         </BrowserRouter>
         <BrowserRouter forceRefresh={true}>
-        <Link to="/admin" className="btn-get-started">
+        <Link to="/admin-signin" className="btn-get-started">
         <a className="links-hidden" href="#">Admin</a>
         </Link>
         </BrowserRouter>
