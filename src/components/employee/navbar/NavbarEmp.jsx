@@ -4,7 +4,8 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
 import { useEffect,useState } from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'  
+import { Redirect } from "react-router-dom";
 const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
   const [userInfo, setUserInfo] = useState({});
   const [nom, setNom] = useState('');
@@ -17,6 +18,11 @@ const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
 	  }
 
   }, []);
+  function logout(){
+    localStorage.removeItem("user-info")
+    window.location.href = "/"
+  }
+  
   return (
     <nav className="navbar">
       <div className="nav_icon" onClick={() => openSideBar()}>
@@ -40,7 +46,11 @@ const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
           <img width={30} src={avatar} alt="avatar" />
         </Link>
         </BrowserRouter>
+        <a onClick={logout}>
+        <i className="fa fa-power-off logout"></i>
+        </a>
       </div>
+      
     </nav>
   );
 };
