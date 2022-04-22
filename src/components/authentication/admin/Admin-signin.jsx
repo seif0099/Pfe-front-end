@@ -24,7 +24,7 @@ function AdminSignin() {
       });
       let results = await result.json();
       if (results?.success) {
-        localStorage.setItem("user-info", JSON.stringify(results));
+        localStorage.setItem("admin-info", JSON.stringify(results));
         setIsLoginSuccess(true);
       } else {
         alert("Login error" + results?.message);

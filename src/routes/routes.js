@@ -65,6 +65,9 @@ export const privateRoutes = [
         component:Profile,
         path:'/Profile'
     },
+    
+]
+export const adminRoutes = [
     {   exact:true,
         component:InsertPointage,
         path:'/admin'
@@ -74,7 +77,11 @@ export const privateRoutes = [
         path:'/admin/promotion'
     },
     {   exact:true,
-        component:Sanction,
-        path:'/admin/sanction'
+        component:ApplyLeave,
+        path:'/admin/requests'
+    },
+    {   exact:true,
+        component:ApplySuppHours,
+        path:'/admin/supphours'
     },
 ]

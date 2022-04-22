@@ -93,3 +93,17 @@
     display: inline;
   }
 }
+
+.bell {
+  color: white !important;
+  background-color: red;
+  font-size:13px !important; 
+  border-radius:20px !important;
+  min-width:10px !important;
+  min-height:10px !important;
+  line-height:10px !important;
+  padding:5px !important;
+  float: right !important;
+  font-weight: bold ;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
