@@ -10,6 +10,7 @@ import Profile from "../components/employee/profile/Profile";
 import InsertPointage from "../components/admin/pointage/InsertPointage";
 import AdminSignin from "../components/authentication/admin/Admin-signin";
 import Promotion from "../components/admin/promotion/Promotion";
+import Sanction from "../components/admin/sanction/Sanction";
 
 export const publicRoutes = [
     {   
@@ -71,5 +72,9 @@ export const privateRoutes = [
     {   exact:true,
         component:Promotion,
         path:'/admin/promotion'
+    },
+    {   exact:true,
+        component:Sanction,
+        path:'/admin/sanction'
     },
 ]

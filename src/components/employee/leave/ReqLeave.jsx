@@ -93,9 +93,9 @@ function ReqLeave() {
               className="form-control"
               onChange={(e) => setReasonForLeave(e.target.value)}
             >
-              <option value="1">Maladie</option>
-              <option value="2">Sans solde</option>
-              <option value="3">Maternité</option>
+              <option value="Maladie">Maladie</option>
+              <option value="Sans solde">Sans solde</option>
+              <option value="Maternité">Maternité</option>
             </select>
           </div>
           <button data-text="Confirmer" onClick={createLeave}>
