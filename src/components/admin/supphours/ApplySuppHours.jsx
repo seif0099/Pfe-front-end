@@ -1,13 +1,12 @@
 import React from "react";
-import "./applyleave.css";
+import "./applysupphours.css";
 import { useEffect,useState } from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function ApplyLeave() {
+function ApplySuppHours() {
 	var [requests, setRequests] = useState([])
 	async function acceptRequest(id){
 		console.log(id)
-		let URL = "http://localhost:9000/adminRequestsAccept?id="+id
+		let URL = "http://localhost:9000/adminSuppHoursAccept?id="+id
 		let result = await fetch(URL, {
 			method: "PUT",
 			headers: {
@@ -18,7 +17,7 @@ function ApplyLeave() {
 		window.location.reload();
 	}
 	async function refuseRequest(id){
-		let URL = "http://localhost:9000/adminRequestsRefuse?id="+id
+		let URL = "http://localhost:9000/adminSuppHoursRefuse?id="+id
 		let result = await fetch(URL, {
 			method: "PUT",
 			headers: {
@@ -29,7 +28,7 @@ function ApplyLeave() {
 		window.location.reload();
 	}
 	async function getRequests(){
-		let URL = "http://localhost:9000/adminRequests"
+		let URL = "http://localhost:9000/adminSuppHours"
     	let result = await fetch(URL, {
 			method: "GET",
 			headers: {
@@ -49,7 +48,7 @@ function ApplyLeave() {
       <div className="wrapper">
 			<div className="inner">
 				<form action="submit">
-					<h3>Confirmation de congé</h3>
+					<h3>Confirmation d'heures supplémentaires</h3>
 			
 				
 			
@@ -61,7 +60,7 @@ function ApplyLeave() {
                   <th>Employée</th>
 				  <th>Date début</th>
 				  <th>Date fin</th>
-				  <th>Raison</th>
+				  <th>Type du travail</th>
 				  <th>Opérations</th>
                 </tr>
               </thead>
@@ -75,7 +74,7 @@ function ApplyLeave() {
 						  <td>{row.nom} {row.prenom}</td>
 						  <td>{row.fromDate}</td>
 						  <td>{row.toDate}</td>
-						  <td>{row.reasonForLeave}</td>
+						  <td>{row.typeOfWork}</td>
 						  <td className="ops">
 						  <i className="fa fa-check accept" onClick={() => acceptRequest(row._id)}></i>
 						  <i className="fa fa-trash trashbin" onClick={() => refuseRequest(row._id)}></i>
@@ -95,4 +94,4 @@ function ApplyLeave() {
   </div>
   );
 }
-export default ApplyLeave;
+export default ApplySuppHours;

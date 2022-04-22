@@ -11,6 +11,7 @@ import InsertPointage from "../components/admin/pointage/InsertPointage";
 import AdminSignin from "../components/authentication/admin/Admin-signin";
 import Promotion from "../components/admin/promotion/Promotion";
 import ApplyLeave from "../components/admin/leave-management/ApplyLeave";
+import ApplySuppHours from "../components/admin/supphours/ApplySuppHours";
 
 export const publicRoutes = [
     {   
@@ -79,5 +80,9 @@ export const adminRoutes = [
     {   exact:true,
         component:ApplyLeave,
         path:'/admin/requests'
+    },
+    {   exact:true,
+        component:ApplySuppHours,
+        path:'/admin/supphours'
     },
 ]
