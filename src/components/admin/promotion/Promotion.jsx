@@ -44,9 +44,9 @@ function Promotion() {
 		userid: userid,
 	  };
 	  console.log(item)
-	  const URL = "http://localhost:9000/updateprom"
+	  const URL = "http://localhost:9000/createprom"
 	  let result = await fetch(URL, {
-		method: "PUT",
+		method: "POST",
 		headers: {
 		  "Content-Type": "application/json",
 		  Accept: "application/json",
@@ -57,8 +57,8 @@ function Promotion() {
 
 	}
     function handleUserid(e){
-setUserid(e.target.value)
-console.log(e.target.value);
+		setOldPoste(res.find(x => x._id === e.target.value).postEmp)
+		console.log(oldPoste)
     }
 
 
@@ -83,7 +83,7 @@ console.log(e.target.value);
 					<div className="form-row last">
 						<div className="form-wrapper" >
 							<label htmlFor="">Poste Ancien</label>
-				   	<input type="text" className="form-control" value={userInfo?.postEmp} disabled/>
+				   	<input type="text" className="form-control" value={oldPoste} disabled/>
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
 					
@@ -98,13 +98,7 @@ console.log(e.target.value);
 						</div>
 				</div>
 				
-				<div className="form-row last">
-						<div className="form-wrapper" >
-							<label htmlFor="">A partir de </label>
-				   				<input type="date" className="form-control"  onChange={(e) => setDatePromo(e.target.value)} />
-							<i className="zmdi zmdi-chevron-down"></i>
-						</div>
-				</div>
+				
      
 					<button data-text="Confirmer la présence" type="submit" className='form-control'>
 						<span>Confirmer la présence</span>
