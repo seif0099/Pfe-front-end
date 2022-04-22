@@ -1,6 +1,8 @@
 import React from "react";
 import "./sidebar.css";
 import avatar from "../../../assets/avatar.png";
+import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 const Sidebar = ({ sideBarOpen, closeSideBar }) => {
   return (
     <div className={sideBarOpen ? "sidebar-responsive" : ""} id="sidebar">
@@ -41,35 +43,20 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
           <a href="#">Contracts</a>
         </div>
         <h2> Leave</h2>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/admin/requests">
         <div className="sidebar__link">
           <i className="fa fa-question"></i>
           <a href="#">requests</a>
         </div>
-        <div className="sidebar__link">
-          <i className="fa fa-sign-out"></i>
-          <a href="#">Leave Policy</a>
-        </div>
-        <div className="sidebar__link">
-          <i className="fa fa-calendar"></i>
-          <a href="#">Special Days</a>
-        </div>
-        <div className="sidebar__link">
-          <i className="fa fa-files-o"></i>
-          <a href="#">Apply for leave</a>
-        </div>
+        </Link>
+        </BrowserRouter>
+        
         <h2>Missions</h2>
         <div className="sidebar__link">
           <i className="fa fa-money"></i>
-          <a href="#">Assign mission</a>
-        </div>
-        <div className="sidebar__link">
-          <i className="fa fa-briefcase"></i>
-          <a href="#">Cancel mission</a>
-        </div>
-        <div className="sidebar__logout">
-          <i className="fa fa-power-off"></i>
-          <a href="#">Log out</a>
-        </div>
+          <a href="#">Assigner des missions</a>
+       </div>
       </div>
     </div>
   );

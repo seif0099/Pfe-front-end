@@ -10,6 +10,7 @@ import Profile from "../components/employee/profile/Profile";
 import InsertPointage from "../components/admin/pointage/InsertPointage";
 import AdminSignin from "../components/authentication/admin/Admin-signin";
 import Promotion from "../components/admin/promotion/Promotion";
+import ApplyLeave from "../components/admin/leave-management/ApplyLeave";
 
 export const publicRoutes = [
     {   
@@ -64,6 +65,9 @@ export const privateRoutes = [
         component:Profile,
         path:'/Profile'
     },
+    
+]
+export const adminRoutes = [
     {   exact:true,
         component:InsertPointage,
         path:'/admin'
@@ -71,5 +75,9 @@ export const privateRoutes = [
     {   exact:true,
         component:Promotion,
         path:'/admin/promotion'
+    },
+    {   exact:true,
+        component:ApplyLeave,
+        path:'/admin/requests'
     },
 ]

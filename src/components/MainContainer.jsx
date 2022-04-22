@@ -6,7 +6,7 @@ import Sidebar from "./admin/sidebar/Sidebar";
 import MainEmployee from "./employee/main/MainEmlpoyee";
 import NavbarEmp from "./employee/navbar/NavbarEmp";
 import SidebarEmployee from "./employee/sidebar/SidebarEmlpoyee";
-import { privateRoutes, publicRoutes } from "./../routes/routes";
+import { adminRoutes, privateRoutes, publicRoutes } from "./../routes/routes";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import PrivateRoutes from "./../routes/privateRoutes";
 import PublicRoutes from "../routes/publicRoute";
@@ -16,6 +16,7 @@ import Pointage from "./employee/pointage/Pointage";
 import Home from './home/Home';
 import About from "./home/About";
 import { BrowserRouter } from "react-router-dom";
+import AdminRoutes from "../routes/adminRoutes";
 
 function MainContainer() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -48,6 +49,13 @@ function MainContainer() {
             <PublicRoutes path={Route.path} exact={Route.exact} >
               <Route.component />
             </PublicRoutes>
+          ))}
+          {adminRoutes.map((Route) => (
+            <AdminRoutes path={Route.path} exact={Route.exact} >
+              <Navbar></Navbar>
+              <Sidebar></Sidebar>
+            <Route.component />
+          </AdminRoutes>
           ))}
         </Switch>
       </Router>

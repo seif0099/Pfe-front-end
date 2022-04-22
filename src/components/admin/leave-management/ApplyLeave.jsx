@@ -1,8 +1,49 @@
 import React from "react";
-import { Button, Form } from "react-bootstrap";
 import "./applyleave.css";
+import { useEffect,useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function ApplyLeave() {
+	var [requests, setRequests] = useState([])
+	async function acceptRequest(id){
+		console.log(id)
+		let URL = "http://localhost:9000/adminRequestsAccept?id="+id
+		let result = await fetch(URL, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+		});
+		console.log(result)
+	}
+	async function refuseRequest(id){
+		let URL = "http://localhost:9000/adminRequestsRefuse?id="+id
+		let result = await fetch(URL, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+		});
+		console.log(result)
+	}
+	async function getRequests(){
+		let URL = "http://localhost:9000/adminRequests"
+    	let result = await fetch(URL, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+		});
+		let results = await result.json();
+		setRequests(results)
+		requests = results
+	}
+	useEffect(() => {
+		getRequests();
+	}, []);
   return (
     <div>
       <div className="wrapper">
@@ -12,17 +53,41 @@ function ApplyLeave() {
 			
 				
 			
-        <div class="form-wrapper">
-							<label for="">Status *</label>
-							<select name="" id="" class="form-control">
-								<option value="1">En attente</option>
-								<option value="2">Refusé</option>
-								<option value="3">Accepté</option>
-							</select>
+        			<div class="form-wrapper">
+					<div className="table-responsive">
+					<table className="table table-striped table-bordered" id="example" >
+              <thead>
+                <tr>
+                  <th>Employée</th>
+				  <th>Date début</th>
+				  <th>Date fin</th>
+				  <th>Raison</th>
+				  <th>Opérations</th>
+                </tr>
+              </thead>
+              <tbody>
+			  {console.log(requests)}
+			  {requests.map(row => 
+			  
+					  <tr>
+						  				  
+
+						  <td>{row.nom} {row.prenom}</td>
+						  <td>{row.fromDate}</td>
+						  <td>{row.toDate}</td>
+						  <td>{row.reasonForLeave}</td>
+						  <td className="ops">
+						  <i className="fa fa-check accept" onClick={() => acceptRequest(row._id)}></i>
+						  <i className="fa fa-trash trashbin" onClick={() => refuseRequest(row._id)}></i>
+						  </td>
+					  </tr>
+				  )
+				  }
+              
+              </tbody>
+            </table>
+						</div>
 					</div>
-					<button data-text="Confirmer" type="submit">
-						<span>confirmer</span>
-					</button>
 				</form>
 			</div>
 		</div>
