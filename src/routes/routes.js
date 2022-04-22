@@ -11,6 +11,8 @@ import InsertPointage from "../components/admin/pointage/InsertPointage";
 import AdminSignin from "../components/authentication/admin/Admin-signin";
 import Promotion from "../components/admin/promotion/Promotion";
 import Sanction from "../components/admin/sanction/Sanction";
+import ApplySuppHours from "../components/admin/supphours/ApplySuppHours";
+import ApplyLeave from "../components/admin/leave-management/ApplyLeave";
 
 export const publicRoutes = [
     {   
