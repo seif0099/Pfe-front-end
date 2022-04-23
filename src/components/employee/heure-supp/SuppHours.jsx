@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useFormik } from "formik";
 
 import "./supphours.css"
 function SuppHours() {
 	const [userInfo, setUserInfo] = useState({});
-	const [fromDate, setFromDate] = useState("");
-	const [toDate, setToDate] = useState("");
-	const [typeOfWork, setTypeOfWork] = useState("");
-	const[nom,setNom]=useState("");
-	const[prenom,setPrenom]=useState("");
   
 	useEffect(() => {
 		if(JSON.parse(localStorage.getItem("user-info"))){
@@ -16,36 +12,58 @@ function SuppHours() {
 		}
   
 	}, []);
-	 async function createSuppHours(e) {
-	  e.preventDefault();
+	 async function createSuppHours(data) {
   
-	  let item = {
-		fromDate,
-		toDate,
-		typeOfWork,
-		nom: userInfo?.nom,
-		prenom: userInfo?.prenom,
-		userid: userInfo?._id,
-	  };
+	  data.userid = userInfo._id
+	  console.log(data)
 	  let result = await fetch("http://localhost:9000/requestSuppHours", {
 		method: "POST",
 		headers: {
 		  "Content-Type": "application/json",
 		  Accept: "application/json",
 		},
-		body: JSON.stringify(item),
+		body: JSON.stringify(data),
 	  });
 	  let results = await result.json();
-	  localStorage.setItem("user-info",JSON.stringify(results))
 
 	}
+	function validate(values) {
+		const errors = {};
+		if (!values.travail) {
+		  errors.travail = "Required";
+		}
+		if(!values.fromDate){
+			errors.fromDate = "Required";
+		}
+		if(!values.toDate){
+			errors.toDate = "Required";
+		}
+		return errors;
+	  }
 	
+	  const {
+		handleSubmit,
+		handleChange,
+		touched,
+		errors,
+	  } = useFormik({
+		initialValues: {
+			travail: "",
+			fromDate: "",
+			toDate: ""
+		},
+		validate,
+		onSubmit: (values) => {
+			createSuppHours(values)
+		  console.log(JSON.stringify(values));
+		},
+	  });
   return (
     <div>
         
         <div className="wrapper">
 			<div className="inner">
-				<form action="submit">
+				<form>
 					<h3>Demande des heures supplémentaires</h3>
 					<div className="form-row">
 						<div className="form-wrapper">
@@ -71,28 +89,38 @@ function SuppHours() {
 					<div className="form-row last">
 						<div className="form-wrapper">
 							<label htmlFor="">À partir de  *</label>
-				   	<input type="date" className="form-control" 
-					                   onChange={(e) => setFromDate(e.target.value)}
+				   	<input type="date" className="form-control" name="fromDate"
+					                   onChange={handleChange}
 									   />
 							<i className="zmdi zmdi-chevron-down"></i>
+							{touched.fromDate && errors.fromDate
+        						? <div>{errors.fromDate}</div>
+        						: null}
 						</div>
 						<div className="form-wrapper">
 							<label htmlFor="">À *</label>
               <input type="date" className="form-control"
-			                  onChange={(e) => setToDate(e.target.value)}
+			                  name="toDate"
+							  onChange={handleChange}
 							  />
 
 							<i className="zmdi zmdi-chevron-down"></i>
+							{touched.toDate && errors.toDate
+        						? <div>{errors.toDate}</div>
+        						: null}
 						</div>
           
 				</div>
         <div className="form-wrapper">
 							<label for="">Travail À faire *</label>
-                            <input type="text" className="form-control" placeholder=""
-							  onChange={(e) => setTypeOfWork(e.target.value)}/>
+                            <input name="travail" type="text" className="form-control" placeholder=""
+							   onChange={handleChange}/>
+							   {touched.travail && errors.travail
+        						? <div>{errors.travail}</div>
+        						: null}
 
 					</div>
-					<button data-text="Confirmer"  onClick={createSuppHours}> 
+					<button data-text="Confirmer" type="button"  onClick={handleSubmit}> 
 						<span>confirmer</span>
 					</button>
 				</form>
