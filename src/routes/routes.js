@@ -13,6 +13,7 @@ import Promotion from "../components/admin/promotion/Promotion";
 import Sanction from "../components/admin/sanction/Sanction";
 import ApplySuppHours from "../components/admin/supphours/ApplySuppHours";
 import ApplyLeave from "../components/admin/leave-management/ApplyLeave";
+import Mission from "../components/admin/mission/Mission";
 
 export const publicRoutes = [
     {   
@@ -85,5 +86,13 @@ export const adminRoutes = [
     {   exact:true,
         component:ApplySuppHours,
         path:'/admin/supphours'
+    },
+    {   exact:true,
+        component:Sanction,
+        path:'/admin/sanction'
+    },
+    {   exact:true,
+        component:Mission,
+        path:'/admin/mission'
     },
 ]

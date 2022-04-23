@@ -1,16 +1,16 @@
 import React,{useState,useEffect} from 'react'
-import "./promotion.css"
+import "./mission.css"
 
-function Promotion() {
+function Mission() {
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [userInfo, setUserInfo] = useState({});
   var [res,setRes]=useState([{}]);
   const [userid,setUserid]=useState("");
-  const[oldPoste,setOldPoste]=useState("");
-  const[newPoste,setNewPoste]=useState("");
 
   useEffect(() => {
     const fetcha = async () => {
     let URL = "http://localhost:9000/users"
-    console.log(URL)
     let result = await fetch(URL, {
       method: "GET",
       headers: {
@@ -24,15 +24,14 @@ function Promotion() {
     fetcha();
   }, []);
  async function insertion (){
-	
+		console.log("ahla")
 	  let item = {
 		
-		oldPoste:oldPoste,
-		newPoste:newPoste,
+		pDate:pDate,
 		userid: userid,
 	  };
 	  console.log(item)
-	  const URL = "http://localhost:9000/createprom"
+	  const URL = "http://localhost:9000/adminPointage"
 	  let result = await fetch(URL, {
 		method: "POST",
 		headers: {
@@ -41,12 +40,13 @@ function Promotion() {
 		},
 		body: JSON.stringify(item),
 	  });
+      
 	  let results = await result.json();
 
 	}
     function handleUserid(e){
-		setUserid(e.target.value)
-		setOldPoste(res.find(x => x._id === e.target.value).postEmp)
+setUserid(e.target.value)
+console.log(e.target.value);
     }
 
 
@@ -54,8 +54,8 @@ function Promotion() {
   return (
     <div className="wrapper">
 			<div className="inner">
-				<form>
-					<h3>Promotion</h3>
+				<form onSubmit={insertion}>
+					<h3>Ordre de mission</h3>
 					<div className="form-row">
 						<div className="form-wrapper">
 							
@@ -70,25 +70,42 @@ function Promotion() {
 				
 					<div className="form-row last">
 						<div className="form-wrapper" >
-							<label htmlFor="">Poste Ancien</label>
-				   	<input type="text" className="form-control" value={oldPoste} disabled/>
+							<label htmlFor="">Date de départ</label>
+				   	<input type="date" className="form-control"  onChange={(e) => setpDate(e.target.value)} />
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
 					
 						
           
 				</div>
-				<div className="form-row last">
+				
+
+                <div className="form-row last">
 						<div className="form-wrapper" >
-							<label htmlFor=""> Nouveau Poste </label>
-				   				<input type="text" className="form-control"  onChange={(e) => setNewPoste(e.target.value)} />
+							<label htmlFor="">Date de retour</label>
+				   	<input type="date" className="form-control"  onChange={(e) => setpDate(e.target.value)} />
+							<i className="zmdi zmdi-chevron-down"></i>
+						</div>
+					
+						
+          
+				</div>
+                <div className="form-row last">
+						<div className="form-wrapper" >
+							<label htmlFor="">Destination</label>
+				   	<input type="text" className="form-control"  onChange={(e) => setpDate(e.target.value)} />
+							<i className="zmdi zmdi-chevron-down"></i>
+						</div>
+					</div>
+                        <div className="form-row last">
+						<div className="form-wrapper" >
+							<label htmlFor="">Objectif</label>
+				   	<input type="text" className="form-control"  onChange={(e) => setpDate(e.target.value)} />
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
 				</div>
-				
-				
      
-					<button data-text="Confirmer la présence" type="button" onClick={insertion} className='form-control'>
+					<button data-text="Confirmer la présence" type="submit" className='form-control'>
 						<span>Confirmer la présence</span>
 					</button>
                  
@@ -99,4 +116,4 @@ function Promotion() {
   )
 }
 
-export default Promotion
+export default Mission

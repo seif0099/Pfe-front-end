@@ -71,10 +71,14 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
           <i className="fa fa-wrench"></i>
           <a href="#">employee</a>
         </div>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/admin/sanction">
         <div className="sidebar__link">
           <i className="fa fa-archive"></i>
           <a href="#">Sanction</a>
         </div>
+        </Link>
+        </BrowserRouter>
         <BrowserRouter forceRefresh={true}>
         <Link to="/admin/supphours">
         <div className="sidebar__link">
@@ -97,10 +101,14 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
         </BrowserRouter>
         
         <h2>Missions</h2>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/admin/mission">
         <div className="sidebar__link">
           <i className="fa fa-money"></i>
           <a href="#">Assigner des missions</a>
        </div>
+       </Link>
+       </BrowserRouter>
       </div>
     </div>
   );
