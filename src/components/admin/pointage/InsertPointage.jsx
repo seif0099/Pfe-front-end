@@ -33,7 +33,6 @@ function InsertPointage() {
     fetcha();
   }, []);
  async function insertion (){
-		console.log("ahla")
 	  let item = {
 		
 		pDate:pDate,

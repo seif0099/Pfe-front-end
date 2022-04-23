@@ -109,6 +109,16 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
        </div>
        </Link>
        </BrowserRouter>
+
+       <h2>Mutation</h2>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/admin/mutation">
+        <div className="sidebar__link">
+          <i className="fa fa-money"></i>
+          <a href="#">Assigner des mutations</a>
+       </div>
+       </Link>
+       </BrowserRouter>
       </div>
     </div>
   );

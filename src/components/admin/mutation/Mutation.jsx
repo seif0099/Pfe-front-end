@@ -1,16 +1,12 @@
 import React,{useState,useEffect} from 'react'
-import "./mission.css"
 
-function Mission() {
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
-  const [userInfo, setUserInfo] = useState({});
+function Mutation() {
+  
   var [res,setRes]=useState([{}]);
   const [userid,setUserid]=useState("");
-  const[destination,setDest]=useState("");
-  const[dateDepart,setDateDep]=useState("");
-  const[dateRetour,setDateRet]=useState("");
-const[objectif,setObjectif]=useState("");
+  const[from,setFrom]=useState("");
+  const[to,setTo]=useState("");
+  const[raison,setRaison]=useState("");
 
 
   useEffect(() => {
@@ -31,14 +27,13 @@ const[objectif,setObjectif]=useState("");
  async function insertion (){
 	  let item = {
 		
-		objetctMission:objectif,
-		dateRetour:dateRetour,
-		dateDepart:dateDepart,
-		destination:destination,
+		from:from,
+		to:to,
+		reasonForMutation:raison,
 		userid: userid,
 	  };
 	  console.log(item)
-	  const URL = "http://localhost:9000/createmission"
+	  const URL = "http://localhost:9000/adminMutation"
 	  let result = await fetch(URL, {
 		method: "POST",
 		headers: {
@@ -77,8 +72,8 @@ console.log(e.target.value);
 				
 					<div className="form-row last">
 						<div className="form-wrapper" >
-							<label htmlFor="">Date de départ</label>
-				   	<input type="date" className="form-control"  onChange={(e) => setDateDep(e.target.value)} />
+							<label htmlFor="">Ancien Departement</label>
+				   	<input type="text" className="form-control"  onChange={(e) => setFrom(e.target.value)} />
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
 					
@@ -89,8 +84,8 @@ console.log(e.target.value);
 
                 <div className="form-row last">
 						<div className="form-wrapper" >
-							<label htmlFor="">Date de retour</label>
-				   	<input type="date" className="form-control"  onChange={(e) => setDateRet(e.target.value)} />
+							<label htmlFor="">Nouveau Departement</label>
+				   	<input type="text" className="form-control"  onChange={(e) => setTo(e.target.value)} />
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
 					
@@ -99,21 +94,15 @@ console.log(e.target.value);
 				</div>
                 <div className="form-row last">
 						<div className="form-wrapper" >
-							<label htmlFor="">Destination</label>
-				   	<input type="text" className="form-control"  onChange={(e) => setDest(e.target.value)} />
+							<label htmlFor="">Raison de mutation</label>
+				   	<input type="text" className="form-control"  onChange={(e) => setRaison(e.target.value)} />
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
 					</div>
-                        <div className="form-row last">
-						<div className="form-wrapper" >
-							<label htmlFor="">Objectif</label>
-				   	<input type="text" className="form-control"  onChange={(e) => setObjectif(e.target.value)} />
-							<i className="zmdi zmdi-chevron-down"></i>
-						</div>
-				</div>
+                
      
 					<button data-text="Confirmer la présence" type="button" onClick={insertion} className='form-control'>
-						<span>Confirmer la présence</span>
+						<span>Confirmer </span>
 					</button>
                  
 				</form>
@@ -123,4 +112,4 @@ console.log(e.target.value);
   )
 }
 
-export default Mission
+export default Mutation
