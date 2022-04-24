@@ -2,8 +2,15 @@ import { Row } from "antd";
 import React,{ useState, useEffect } from "react";
 import "./leaveManagement.css"
 import ReqLeave from './ReqLeave';
+import { useFormik } from 'formik';
+import { useModal } from 'react-hooks-use-modal';
 
 function LeaveManagement() {
+  const [Modal, open, close, isOpen] = useModal('root', {
+    preventScroll: true,
+    closeOnOverlayClick: false
+  });
+
   var [requests, setRequests] = useState([])
   async function updateRequest(id){
     let URL = "http://localhost:9000/leaveupdated?id="+id
@@ -13,7 +20,10 @@ function LeaveManagement() {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    });
+      
+    },
+    open()
+    );
     window.location.reload();
   }
   async function deleteRequest(id){
@@ -85,7 +95,10 @@ function LeaveManagement() {
                 <td>{row.reasonForLeave}</td>
                 <td>{row.status}</td>
                 {row.status === "pending" ? <td className="ops">
+                <Modal>
+
                 <i className="fa fa-edit edit" onClick={() => updateRequest(row._id)}></i>
+                </Modal>
                 <i className="fa fa-trash trashbin" onClick={() => deleteRequest(row._id)}></i>
                 </td> : <td></td>}
                 
