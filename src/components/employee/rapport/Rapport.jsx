@@ -38,7 +38,7 @@ function Rapport() {
   return (
    
           <div className="wrapper">
-			<div className="inner">
+			<div className="inner inner2">
 				<form action="submit">
 					<h3>Rapport Accident</h3>
 					<div className="form-row">
@@ -76,8 +76,8 @@ function Rapport() {
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
      
-					<button data-text="Confirmer" type="submit" onClick={reqRapport}>
-						<span>confirmer</span>
+					<button data-text="Confirmer" type="submit" className='form-control button1' onClick={reqRapport}>
+						confirmer
 					</button>
 				</form>
 			</div>

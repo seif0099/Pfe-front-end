@@ -37,8 +37,8 @@ function ReqLeave() {
   }
 
   return (
-    <div className="wrapper">
-      <div className="inner">
+    <div className="wrapper w11">
+      <div className="inner inner2">
         <form>
           <h3>Demande congé</h3>
           <div className="form-row">
@@ -98,8 +98,8 @@ function ReqLeave() {
               <option value="Maternité">Maternité</option>
             </select>
           </div>
-          <button data-text="Confirmer" onClick={createLeave}>
-            <span>confirmer</span>
+          <button data-text="Confirmer" className="form-control button1" onClick={createLeave}>
+            confirmer
           </button>
         </form>
       </div>

@@ -4,7 +4,8 @@ import { useFormik } from "formik";
 import "./supphours.css"
 function SuppHours() {
 	const [userInfo, setUserInfo] = useState({});
-  
+	const [errorResponse, setError] = useState("");
+	const [successResponse, setSuccess] = useState("");
 	useEffect(() => {
 		if(JSON.parse(localStorage.getItem("user-info"))){
 		  const { user } = JSON.parse(localStorage.getItem("user-info"));
@@ -24,19 +25,25 @@ function SuppHours() {
 		},
 		body: JSON.stringify(data),
 	  });
-	  let results = await result.json();
-
+	  if(result.status == 200){
+	  	setSuccess("Demande envoyé avec succés")
+		setError(null)
+	  }
+	  else{
+		setSuccess(null)
+		setError(result)
+	  }
 	}
 	function validate(values) {
 		const errors = {};
-		if (!values.travail) {
-		  errors.travail = "Required";
+		if (!values.typeOfWork) {
+		  errors.typeOfWork = "* Le champ travail est obligatoire";
 		}
 		if(!values.fromDate){
-			errors.fromDate = "Required";
+			errors.fromDate = "* Le champ date début est obligatoire";
 		}
 		if(!values.toDate){
-			errors.toDate = "Required";
+			errors.toDate = "* Le champ date fin est obligatoire";
 		}
 		return errors;
 	  }
@@ -48,7 +55,7 @@ function SuppHours() {
 		errors,
 	  } = useFormik({
 		initialValues: {
-			travail: "",
+			typeOfWork: "",
 			fromDate: "",
 			toDate: ""
 		},
@@ -62,7 +69,7 @@ function SuppHours() {
     <div>
         
         <div className="wrapper">
-			<div className="inner">
+			<div className="inner inner2">
 				<form>
 					<h3>Demande des heures supplémentaires</h3>
 					<div className="form-row">
@@ -94,7 +101,7 @@ function SuppHours() {
 									   />
 							<i className="zmdi zmdi-chevron-down"></i>
 							{touched.fromDate && errors.fromDate
-        						? <div>{errors.fromDate}</div>
+        						? <p className="errors">{errors.fromDate}</p>
         						: null}
 						</div>
 						<div className="form-wrapper">
@@ -106,23 +113,29 @@ function SuppHours() {
 
 							<i className="zmdi zmdi-chevron-down"></i>
 							{touched.toDate && errors.toDate
-        						? <div>{errors.toDate}</div>
+        						? <p className="errors">{errors.toDate}</p>
         						: null}
 						</div>
           
 				</div>
         <div className="form-wrapper">
 							<label for="">Travail À faire *</label>
-                            <input name="travail" type="text" className="form-control" placeholder=""
+                            <input name="typeOfWork" type="text" className="form-control" placeholder=""
 							   onChange={handleChange}/>
-							   {touched.travail && errors.travail
-        						? <div>{errors.travail}</div>
+							   {touched.typeOfWork && errors.typeOfWork
+        						? <p className="errors">{errors.typeOfWork}</p>
         						: null}
 
 					</div>
-					<button data-text="Confirmer" type="button"  onClick={handleSubmit}> 
-						<span>confirmer</span>
+					<button data-text="Confirmer" type="button" className="form-control button1" onClick={handleSubmit}> 
+						confirmer
 					</button>
+					{successResponse
+        						? <h1 className="serverSuccess">{successResponse}</h1>
+        						: null}
+					{errorResponse
+        						? <p className="errors">{errorResponse}</p>
+        						: null}
 				</form>
 			</div>
 		</div>

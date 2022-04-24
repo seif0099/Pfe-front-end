@@ -70,7 +70,7 @@ function Pointage() {
   return (
     <div className="limiter">
     <div className="wrapper">
-   <div className="inner">
+   <div className="inner inner1">
      <form>
        <h3>pointage</h3>
        <div className="form-row">
