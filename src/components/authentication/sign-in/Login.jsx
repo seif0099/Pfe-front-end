@@ -27,12 +27,20 @@ function Login() {
 
   function validate(values) {
 		const errors = {};
+
 		if (!values.email) {
-		  errors.typeOfWork = "* Le champ email est obligatoire";
+		  errors.email = "* Le champ email est obligatoire";
 		}
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+ 
+      errors.email = "le format de l'email est invalide"
+ 
+    }
 		if(!values.password){
-			errors.fromDate = "* Le champ mot de passe est obligatoire";
+			errors.password = "* Le champ mot de passe est obligatoire";
 		}
+    
+    setError("")
 		return errors;
 	  }
 	
@@ -59,6 +67,9 @@ function Login() {
                   <label for="email">Email</label>
                   <input type="email" name="email" onChange={handleChange}/>
                 </div>
+                {touched.email && errors.email
+        						? <p className="errors">{errors.email}</p>
+        						: null}
                 <div className="field">
                   <div>
                     <label for="password">Mot de passe</label>
@@ -66,7 +77,9 @@ function Login() {
                   </div>
                   <input type="password" name="password" onChange={handleChange}/>
                 </div>
-                
+                {touched.password && errors.password
+        						? <p className="errors">{errors.password}</p>
+        						: null}
                 <div className="field">
                   <input type="button" name="submit" value="Continue" onClick={handleSubmit}/>
                 </div>
