@@ -20,7 +20,7 @@ const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
   }, []);
   function logout(){
     localStorage.removeItem("user-info")
-    window.location.href = "/"
+    window.location.href = "/login"
   }
   
   return (
