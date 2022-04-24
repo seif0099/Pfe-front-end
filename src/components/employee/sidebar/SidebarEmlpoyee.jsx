@@ -79,7 +79,16 @@ history.push('/home');
         </div>
         {activeComp==="ReqLeave" && <ReqLeave/>}
        </Link>
-</BrowserRouter>
+      </BrowserRouter>
+      <BrowserRouter forceRefresh={true}>
+        <Link to="/LeaveManagement">
+        <div className="sidebar__link"  onClick={()=>setActiveComp("ReqLeave")}>
+          <i className="fa fa-question"></i>
+          <a href="#">Consulter les demandes</a>
+        </div>
+        {activeComp==="ReqLeave" && <ReqLeave/>}
+       </Link>
+      </BrowserRouter>
         <h2>Missions</h2>
         <BrowserRouter forceRefresh={true}>
         <Link to="/">

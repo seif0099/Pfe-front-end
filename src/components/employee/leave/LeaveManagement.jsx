@@ -5,7 +5,6 @@ import ReqLeave from './ReqLeave';
 function LeaveManagement() {
   var [requests, setRequests] = useState([])
   async function updateRequest(id){
-    console.log(id)
     let URL = "http://localhost:9000/leaveupdated?id="+id
     let result = await fetch(URL, {
       method: "PUT",
@@ -28,7 +27,8 @@ function LeaveManagement() {
     window.location.reload();
   }
   async function getRequests(){
-    let URL = "http://localhost:9000/getrequest"
+    let id = JSON.parse(localStorage.getItem("user-info")).user._id
+    let URL = "http://localhost:9000/getrequest?id="+id
       let result = await fetch(URL, {
       method: "GET",
       headers: {
@@ -41,6 +41,7 @@ function LeaveManagement() {
     console.log(requests)
   }
   useEffect(() => {
+    
     getRequests();
   }, []);
   return (
