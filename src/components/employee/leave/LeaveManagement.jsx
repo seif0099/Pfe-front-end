@@ -50,7 +50,7 @@ function LeaveManagement() {
     
       <div>
         <div className="wrapper">
-        <div className="inner">
+        <div className="inner inner1">
           <form action="submit">
             <h3>Demande de congé</h3>
         
