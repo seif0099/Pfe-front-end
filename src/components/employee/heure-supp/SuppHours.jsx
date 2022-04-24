@@ -16,7 +16,6 @@ function SuppHours() {
 	 async function createSuppHours(data) {
   
 	  data.userid = userInfo._id
-	  console.log(data)
 	  let result = await fetch("http://localhost:9000/requestSuppHours", {
 		method: "POST",
 		headers: {
@@ -62,7 +61,6 @@ function SuppHours() {
 		validate,
 		onSubmit: (values) => {
 			createSuppHours(values)
-		  console.log(JSON.stringify(values));
 		},
 	  });
   return (

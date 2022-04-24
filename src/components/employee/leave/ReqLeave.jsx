@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./leaveManagement.css";
-import History from "../../authentication/sign-up/History";
+import { useFormik } from "formik";
+
 function ReqLeave() {
   const [userInfo, setUserInfo] = useState({});
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
-  const [reasonForLeave, setReasonForLeave] = useState("");
+	const [errorResponse, setError] = useState("");
+	const [successResponse, setSuccess] = useState("");
 
   useEffect(() => {
 	  if(JSON.parse(localStorage.getItem("user-info"))){
@@ -14,28 +14,56 @@ function ReqLeave() {
 	  }
 
   }, []);
-  async function createLeave(e) {
-    e.preventDefault();
+  async function createLeave(data) {
 
-    let item = {
-      fromDate,
-      toDate,
-      reasonForLeave,
-      nom: userInfo?.nom,
-      prenom: userInfo?.prenom,
-      userid: userInfo?._id,
-    };
+    data.userid = userInfo?._id
     let result = await fetch("http://localhost:9000/requestleave", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(item),
+      body: JSON.stringify(data),
     });
-    let results = await result.json();
+    if(result.status == 200){
+	  	setSuccess("Demande envoyé avec succés")
+		setError(null)
+	  }
+	  else{
+		setSuccess(null)
+		setError(result)
+	  }
   }
-
+  function validate(values) {
+		const errors = {};
+		if (!values.reasonForLeave) {
+		  errors.reasonForLeave = "* Le champ type de congé est obligatoire";
+		}
+		if(!values.fromDate){
+			errors.fromDate = "* Le champ date début est obligatoire";
+		}
+		if(!values.toDate){
+			errors.toDate = "* Le champ date fin est obligatoire";
+		}
+		return errors;
+	  }
+	
+	  const {
+		handleSubmit,
+		handleChange,
+		touched,
+		errors,
+	  } = useFormik({
+		initialValues: {
+			reasonForLeave: "",
+			fromDate: "",
+			toDate: ""
+		},
+		validate,
+		onSubmit: (values) => {
+			createLeave(values)
+		},
+	  }); 
   return (
     <div className="wrapper w11">
       <div className="inner inner2">
@@ -70,37 +98,54 @@ function ReqLeave() {
               <input
                 type="date"
                 className="form-control"
-                onChange={(e) => setFromDate(e.target.value)}
+                name="fromDate"
+                onChange={handleChange}
               />
               <i className="zmdi zmdi-chevron-down"></i>
+              {touched.fromDate && errors.fromDate
+        						? <p className="errors">{errors.fromDate}</p>
+        						: null}
             </div>
             <div className="form-wrapper">
               <label htmlFor="">À *</label>
               <input
                 type="date"
                 className="form-control"
-                onChange={(e) => setToDate(e.target.value)}
+                name="toDate"
+                onChange={handleChange}
               />
 
               <i className="zmdi zmdi-chevron-down"></i>
+              {touched.toDate && errors.toDate
+        						? <p className="errors">{errors.toDate}</p>
+        						: null}
             </div>
           </div>
           <div className="form-wrapper">
             <label for="">Type de congé *</label>
             <select
-              name=""
-              id=""
               className="form-control"
-              onChange={(e) => setReasonForLeave(e.target.value)}
+              name="reasonForLeave"
+              onChange={handleChange}
             >
+              <option selected value="">Choisir le type de congé</option>
               <option value="Maladie">Maladie</option>
               <option value="Sans solde">Sans solde</option>
               <option value="Maternité">Maternité</option>
             </select>
+            {touched.reasonForLeave && errors.reasonForLeave
+        						? <p className="errors">{errors.reasonForLeave}</p>
+        						: null}
           </div>
-          <button data-text="Confirmer" className="form-control button1" onClick={createLeave}>
+          <button data-text="Confirmer" className="form-control button1" type="button" onClick={handleSubmit}>
             confirmer
           </button>
+          {successResponse
+        						? <h1 className="serverSuccess">{successResponse}</h1>
+        						: null}
+					{errorResponse
+        						? <p className="errors">{errorResponse}</p>
+        						: null}
         </form>
       </div>
     </div>
