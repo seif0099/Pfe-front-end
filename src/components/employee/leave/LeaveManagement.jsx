@@ -44,6 +44,10 @@ function LeaveManagement() {
     
     getRequests();
   }, []);
+  function parseDate(date){
+    let dateObj = new Date(date)
+    return dateObj.toLocaleDateString()
+  }
   return (
 
    
@@ -61,10 +65,10 @@ function LeaveManagement() {
             <table className="table table-striped table-bordered" id="example" >
                 <thead>
                   <tr>
-                    <th>Employée</th>
             <th>Date début</th>
             <th>Date fin</th>
             <th>Raison</th>
+            <th>Status</th>
             <th>Opérations</th>
                   </tr>
                 </thead>
@@ -75,10 +79,10 @@ function LeaveManagement() {
               <tr>
                           
   
-                <td>{row.nom} {row.prenom}</td>
-                <td>{row.fromDate}</td>
-                <td>{row.toDate}</td>
+                  <td>{parseDate(row.fromDate)}</td>
+                <td>{parseDate(row.toDate)}</td>
                 <td>{row.reasonForLeave}</td>
+                <td>{row.status}</td>
                 <td className="ops">
                 <i className="fa fa-check accept" onClick={() => updateRequest(row._id)}></i>
                 <i className="fa fa-trash trashbin" onClick={() => deleteRequest(row._id)}></i>
