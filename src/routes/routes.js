@@ -15,6 +15,7 @@ import ApplySuppHours from "../components/admin/supphours/ApplySuppHours";
 import ApplyLeave from "../components/admin/leave-management/ApplyLeave";
 import Mission from "../components/admin/mission/Mission";
 import Mutation from "../components/admin/mutation/Mutation";
+import LeaveManagement from "../components/employee/leave/LeaveManagement";
 
 export const publicRoutes = [
     {   
@@ -68,6 +69,10 @@ export const privateRoutes = [
     {   exact:true,
         component:Profile,
         path:'/Profile'
+    },
+    {   exact:true,
+        component:LeaveManagement,
+        path:'/LeaveManagement'
     },
     
 ]
