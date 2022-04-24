@@ -84,7 +84,7 @@ function LeaveManagement() {
                 <td>{row.reasonForLeave}</td>
                 <td>{row.status}</td>
                 <td className="ops">
-                <i className="fa fa-check accept" onClick={() => updateRequest(row._id)}></i>
+                <i className="fa fa-edit edit" onClick={() => updateRequest(row._id)}></i>
                 <i className="fa fa-trash trashbin" onClick={() => deleteRequest(row._id)}></i>
                 </td>
               </tr>
