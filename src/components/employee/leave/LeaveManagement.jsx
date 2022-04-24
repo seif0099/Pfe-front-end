@@ -95,10 +95,9 @@ function LeaveManagement() {
                 <td>{row.reasonForLeave}</td>
                 <td>{row.status}</td>
                 {row.status === "pending" ? <td className="ops">
-                <Modal>
+                  
 
-                <i className="fa fa-edit edit" onClick={() => updateRequest(row._id)}></i>
-                </Modal>
+                <i className="fa fa-edit edit" onClick={open}></i>
                 <i className="fa fa-trash trashbin" onClick={() => deleteRequest(row._id)}></i>
                 </td> : <td></td>}
                 
@@ -113,8 +112,13 @@ function LeaveManagement() {
           </form>
         </div>
       </div>
-  
+      <Modal>
+      <div>
+        aaaa
+      </div>
+    </Modal>
     </div>
+    
     );
   
 }
