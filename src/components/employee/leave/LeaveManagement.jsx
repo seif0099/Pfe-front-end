@@ -1,3 +1,4 @@
+import { Row } from "antd";
 import React,{ useState, useEffect } from "react";
 import "./leaveManagement.css"
 import ReqLeave from './ReqLeave';
@@ -83,10 +84,11 @@ function LeaveManagement() {
                 <td>{parseDate(row.toDate)}</td>
                 <td>{row.reasonForLeave}</td>
                 <td>{row.status}</td>
-                <td className="ops">
+                {row.status === "pending" ? <td className="ops">
                 <i className="fa fa-edit edit" onClick={() => updateRequest(row._id)}></i>
                 <i className="fa fa-trash trashbin" onClick={() => deleteRequest(row._id)}></i>
-                </td>
+                </td> : <td></td>}
+                
               </tr>
             )
             }
