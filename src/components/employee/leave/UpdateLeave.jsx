@@ -9,19 +9,22 @@ function UpdateLeave(props) {
     document.querySelector('#fromDate').valueAsDate = new Date(props.request.fromDate)
     document.querySelector('#toDate').valueAsDate = new Date(props.request.toDate)
   }, []);
-  async function updateRequest(id){
-    let URL = "http://localhost:9000/leaveupdated?id="+id
+  async function updateRequest(values){
+    let URL = "http://localhost:9000/leaveupdated?id="+props.request._id
+    
     let result = await fetch(URL, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+
+
       },
-      
+      body:JSON.stringify(values)
+
     },
-    open()
     );
-    window.location.reload();
+    //window.location.reload();
   }
   function validate(values) {
 		const errors = {};
@@ -50,7 +53,8 @@ function UpdateLeave(props) {
 		},
 		validate,
 		onSubmit: (values) => {
-			console.log(values)
+      updateRequest(values)
+			console.log("aaaa",values)
 		},
 	  });
    
