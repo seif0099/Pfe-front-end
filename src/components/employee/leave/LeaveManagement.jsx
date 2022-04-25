@@ -10,7 +10,7 @@ function LeaveManagement() {
 
   const [Modal, open, close, isOpen] = useModal('root', {
     preventScroll: true,
-    closeOnOverlayClick: false
+    closeOnOverlayClick: true
   });
   function setData(pointer){
     console.log("p", pointer)
