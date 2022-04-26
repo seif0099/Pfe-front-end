@@ -40,4 +40,11 @@
   }
   .errors{
     margin-bottom: 1px !important;
-    }
+}
+.myDate {
+    font-size: 15px;
+    padding-top: 10px;
+    text-align: left;
+    padding-left: 15px;
+    margin-right: 0 !important;
+}

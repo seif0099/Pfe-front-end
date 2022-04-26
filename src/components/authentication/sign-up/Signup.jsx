@@ -66,7 +66,7 @@ function Signup() {
 			errors.matricule = "* Le champ matricule est obligatoire";
 		}
     if(!values.dateEmb){
-			errors.matricule = "* Le champ date d'embauche est obligatoire";
+			errors.dateEmb = "* Le champ date d'embauche est obligatoire";
 		}
     setError("")
 		return errors;
@@ -172,12 +172,16 @@ signUp(values)
                 : null}
 
 
-<div className="field1">
-              <input type="date" name="dateEmb" onChange={handleChange} placeholder="Date d'embauche"/>
+          <div className="field1">
+          <div className="divider">
+            <label className="lDivider myDate">Date d'embauche</label>
+              <input type="date" name="dateEmb" className="rDivider" onChange={handleChange} />
             </div>
             {touched.dateEmb && errors.dateEmb
                 ? <p className="errors">{errors.dateEmb}</p>
                 : null}
+            </div>
+            
             <div className="field1">
               <input type="email" name="email" onChange={handleChange} placeholder="email"/>
             </div>

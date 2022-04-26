@@ -79,3 +79,6 @@ h5 {
     margin-right: 40px;
     margin-left: 50px;
 }
+.limiter {
+    margin: 0 !important;
+}
