@@ -60,7 +60,7 @@ console.log(e.target.value);
 
   return (
     <div className="wrapper">
-			<div className="inner">
+			<div className="inner inner1">
 				<form onSubmit={insertion}>
 					<h3>Pointage des employees</h3>
 					<div className="form-row">

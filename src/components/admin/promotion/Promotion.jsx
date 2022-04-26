@@ -53,7 +53,7 @@ function Promotion() {
 
   return (
     <div className="wrapper">
-			<div className="inner">
+			<div className="inner inner1">
 				<form>
 					<h3>Promotion</h3>
 					<div className="form-row">

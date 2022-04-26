@@ -1,9 +1,11 @@
 import React,{ useState, useEffect } from "react";
 import { useFormik } from 'formik';
+import { useModal } from 'react-hooks-use-modal';
 
 function UpdateLeave(props) {
   const [errorResponse, setError] = useState("");
 	const [successResponse, setSuccess] = useState("");
+ 
   useEffect(() => {
     document.querySelector('#reasonForLeave option[value="'+props.request.reasonForLeave+'"]').selected = true;
     document.querySelector('#fromDate').valueAsDate = new Date(props.request.fromDate)
@@ -121,6 +123,8 @@ function UpdateLeave(props) {
 					{errorResponse
         						? <p className="errors">{errorResponse}</p>
         						: null}
+
+
         </form>
       </div>
   )

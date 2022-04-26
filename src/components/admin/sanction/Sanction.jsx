@@ -52,7 +52,7 @@ function Sanction() {
   return (
     <div>
         <div className="wrapper">
-			<div className="inner">
+			<div className="inner inner1">
 				<form action="submit">
 					<h3>Sanction</h3>
 					<div className="form-row">

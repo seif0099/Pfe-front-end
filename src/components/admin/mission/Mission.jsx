@@ -60,7 +60,7 @@ console.log(e.target.value);
 
   return (
     <div className="wrapper">
-			<div className="inner">
+			<div className="inner inner1">
 				<form >
 					<h3>Ordre de mission</h3>
 					<div className="form-row">

@@ -1,88 +1,98 @@
-import "antd/dist/antd.css";
 import "./admin-signin.css";
-import { Form, Input, Button, Checkbox } from "antd";
-import Icon from "@ant-design/icons";
 import React, { useState, useEffect } from "react";
-import History from "../sign-up/History";
-import { Redirect } from "react-router-dom";
+import { useFormik } from "formik";
 
 function AdminSignin() {
-  const [email, setEmail] = useState("");
-  const [isLoginSuccess, setIsLoginSuccess] = useState(false);
-  const [password, setPassword] = useState("");
 
-  async function login() {
-    try {
-      let item = { email, password };
+  const [errorResponse, setError] = useState("");
+
+  async function login(data) {
       let result = await fetch("http://localhost:9000/admin-signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(item),
+        body: JSON.stringify(data),
       });
       let results = await result.json();
       if (results?.success) {
         localStorage.setItem("admin-info", JSON.stringify(results));
-        setIsLoginSuccess(true);
-      } else {
-        alert("Login error" + results?.message);
+        window.location.href = "/admin"
+
+
+      }else{
+        setError(results.message)
       }
-    } catch (error) {
-      throw alert(error);
-    }
+    
+
   }
 
-  if (isLoginSuccess) {
-    return <Redirect to="admin" />;
-  }
+  function validate(values) {
+		const errors = {};
+
+		if (!values.email) {
+		  errors.email = "* Le champ email est obligatoire";
+		}
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+ 
+      errors.email = "le format de l'email est invalide"
+ 
+    }
+		if(!values.password){
+			errors.password = "* Le champ mot de passe est obligatoire";
+		}
+    
+    setError("")
+		return errors;
+	  }
+	
+	  const {
+		handleSubmit,
+		handleChange,
+		touched,
+		errors,
+	  } = useFormik({
+		initialValues: {
+			email: "",
+			password: "",
+		},
+		validate,
+		onSubmit: (values) => {
+			login(values)
+		},
+	  });
   return (
-    <div className="wrapper">
-      <div className="login-center">
-        <Form onSubmit={() => {}} className="login-form">
-          <h6>LMS admin</h6>
-          <h5 className="title">L E A V E M A N A G E M E N T S Y S T E M</h5>
-          <br></br>
-          <Form.Item>
-            <Input
-              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
-              placeholder="email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Item>
-          <Form.Item>
-            <Input
-              prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Item>
-          <Form.Item>
-            <Checkbox>Remember me</Checkbox>
-            <a className="login-form-forgot" href="/forgotpass">
-              Forgot password
-            </a>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-              onClick={login}
-            >
-              Log in
-            </Button>
-            <div className="text-right p-t-225">
-              <span className="txt1">Don’t have an account? </span>
-              <a className="txt2" href="Signup">
-                Sign Up
-              </a>
+    <div className="login">
+    <form>
+          <span className="mySpan">Se connecter</span>
+            <div className="field">
+              <label for="email">Email</label>
+              <input type="email" name="email" onChange={handleChange}/>
             </div>
-          </Form.Item>
-        </Form>
-      </div>
-    </div>
-  );
+            {touched.email && errors.email
+                ? <p className="errors">{errors.email}</p>
+                : null}
+            <div className="field">
+              <div>
+                <label for="password">Mot de passe</label>
+                
+              </div>
+              <input type="password" name="password" onChange={handleChange}/>
+            </div>
+            {touched.password && errors.password
+                ? <p className="errors">{errors.password}</p>
+                : null}
+            <div className="field">
+              <input type="button" name="submit" value="Continue" onClick={handleSubmit}/>
+            </div>
+            {errorResponse
+                ? <p className="errors">{errorResponse}</p>
+                : null}
+            </form>
+  </div>
+);
+
 }
 
-export default AdminSignin;
+export default AdminSignin

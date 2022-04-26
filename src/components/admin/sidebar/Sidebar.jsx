@@ -17,7 +17,7 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
 				Accept: "application/json",
 			},
 		});
-		let results = await result.json();
+		let results = await result.json(); 
     let x = Object.getOwnPropertyNames(results)
     setNB(x.length-1)
 		numberOfRequests = x.length-1
