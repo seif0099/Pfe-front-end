@@ -3,6 +3,8 @@ import "./promotion.css"
 
 function Promotion() {
   var [res,setRes]=useState([{}]);
+  const [errorResponse, setError] = useState("");
+  const [successResponse, setSuccess] = useState("");
   const [userid,setUserid]=useState("");
   const[oldPoste,setOldPoste]=useState("");
   const[newPoste,setNewPoste]=useState("");
@@ -42,11 +44,13 @@ function Promotion() {
 		body: JSON.stringify(item),
 	  });
 	  let results = await result.json();
-
+	  if(result.status == 200){
+		setSuccess(results.message)
+	  }
 	}
     function handleUserid(e){
 		setUserid(e.target.value)
-		setOldPoste(res.find(x => x._id === e.target.value).postEmp)
+		setOldPoste(res.find(x => x._id === e.target.value).poste)
     }
 
 
@@ -88,11 +92,14 @@ function Promotion() {
 				
 				
      
-					<button data-text="Confirmer la présence" type="button" onClick={insertion} className='form-control'>
-						<span>Confirmer la présence</span>
+					<button data-text="Confirmer la présence" type="button" onClick={insertion} className='form-control button1'>
+						Confirmer la présence
 					</button>
-                 
+					{successResponse
+        						? <h1 className="serverSuccess">{successResponse}</h1>
+        						: null}
 				</form>
+				
 			</div>
 		</div>
 

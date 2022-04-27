@@ -45,8 +45,8 @@ function ApplySuppHours() {
 	}, []);
   return (
     <div>
-      <div className="wrapper">
-			<div className="inner inner2">
+      <div className="wrapper wrapper3">
+			<div className="inner inner3">
 				<form action="submit">
 					<h3>Confirmation d'heures supplémentaires</h3>
 			

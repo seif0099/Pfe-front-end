@@ -87,8 +87,8 @@ function Sanction() {
           
 				</div>
         
-					<button data-text="Confirmer" type="button" onClick={insertion}>
-						<span>confirmer</span>
+					<button data-text="Confirmer" className="form-control button1" type="button" onClick={insertion}>
+						Confirmer
 					</button>
 				</form>
 			</div>

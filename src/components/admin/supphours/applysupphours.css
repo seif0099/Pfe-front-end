@@ -1,0 +1,12 @@
+.inner3 {
+    width: 1000px !important;
+    margin: 0 auto !important;
+    min-height: 500px;
+}
+.wrapper3 {
+    position: absolute;
+    top: 60%;
+    transform: translate(0, -50%);
+    left: 35%;
+    right: 35%;
+}

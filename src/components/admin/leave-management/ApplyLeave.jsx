@@ -1,7 +1,6 @@
 import React from "react";
 import "./applyleave.css";
 import { useEffect,useState } from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function ApplyLeave() {
 	var [requests, setRequests] = useState([])
@@ -46,8 +45,8 @@ function ApplyLeave() {
 	}, []);
   return (
     <div>
-      <div className="wrapper">
-			<div className="inner inner2">
+      <div className="wrapper wrapper3">
+			<div className="inner inner3">
 				<form action="submit">
 					<h3>Confirmation de congé</h3>
 			
