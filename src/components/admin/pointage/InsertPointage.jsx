@@ -87,8 +87,8 @@ console.log(e.target.value);
 				</div>
 				
      
-					<button data-text="Confirmer la présence" type="submit" className='form-control'>
-						<span>Confirmer la présence</span>
+					<button data-text="Confirmer la présence" type="submit" className='form-control button1'>
+						Confirmer la présence
 					</button>
                  
 				</form>

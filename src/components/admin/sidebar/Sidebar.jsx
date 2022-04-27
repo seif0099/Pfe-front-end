@@ -67,10 +67,13 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
         </div>
         </Link>
         </BrowserRouter>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/admin/GestionEmp">
         <div className="sidebar__link">
           <i className="fa fa-wrench"></i>
           <a href="#">employee</a>
         </div>
+        </Link></BrowserRouter>
         <BrowserRouter forceRefresh={true}>
         <Link to="/admin/sanction">
         <div className="sidebar__link">

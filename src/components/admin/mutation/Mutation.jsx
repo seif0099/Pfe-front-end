@@ -55,9 +55,9 @@ console.log(e.target.value);
 
   return (
     <div className="wrapper">
-			<div className="inner">
+			<div className="inner inner1">
 				<form >
-					<h3>Ordre de mission</h3>
+					<h3>Ordre de mutation</h3>
 					<div className="form-row">
 						<div className="form-wrapper">
 							
@@ -101,8 +101,8 @@ console.log(e.target.value);
 					</div>
                 
      
-					<button data-text="Confirmer la présence" type="button" onClick={insertion} className='form-control'>
-						<span>Confirmer </span>
+					<button data-text="Confirmer la présence" type="button" onClick={insertion} className='form-control button1'>
+						Confirmer 
 					</button>
                  
 				</form>

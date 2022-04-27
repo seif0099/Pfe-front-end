@@ -16,6 +16,7 @@ import ApplyLeave from "../components/admin/leave-management/ApplyLeave";
 import Mission from "../components/admin/mission/Mission";
 import Mutation from "../components/admin/mutation/Mutation";
 import LeaveManagement from "../components/employee/leave/LeaveManagement";
+import Emp from './../components/admin/emp/Emp';
 
 export const publicRoutes = [
     {   
@@ -104,5 +105,9 @@ export const adminRoutes = [
     {   exact:true,
         component:Mutation,
         path:'/admin/mutation'
+    },
+    {   exact:true,
+        component:Emp,
+        path:'/admin/GestionEmp'
     },
 ]

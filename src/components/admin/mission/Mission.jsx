@@ -2,9 +2,7 @@ import React,{useState,useEffect} from 'react'
 import "./mission.css"
 
 function Mission() {
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
-  const [userInfo, setUserInfo] = useState({});
+ 
   var [res,setRes]=useState([{}]);
   const [userid,setUserid]=useState("");
   const[destination,setDest]=useState("");
@@ -112,8 +110,8 @@ console.log(e.target.value);
 						</div>
 				</div>
      
-					<button data-text="Confirmer la présence" type="button" onClick={insertion} className='form-control'>
-						<span>Confirmer la présence</span>
+					<button data-text="Confirmer la présence" type="button" onClick={insertion} className='form-control button1'>
+						Confirmer 
 					</button>
                  
 				</form>
