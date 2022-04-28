@@ -16,6 +16,7 @@ function Login() {
         body: JSON.stringify(data),
       });
       let results = await result.json();
+      console.log(results)
       if (results?.success) {
         localStorage.setItem("user-info", JSON.stringify(results));
         window.location.href = "/pointage"

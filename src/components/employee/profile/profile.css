@@ -53,3 +53,26 @@
     height: 50px;
     padding: 5px;
   }
+  .divImg{
+    display:grid;
+  }
+  .userImg {
+    float: right;
+    width: 150px;
+    margin-top: -50px;
+    grid-column: 4;
+    margin: 0 auto;
+
+  }
+  .uploadButton {
+    float: right;
+    width: 100px;
+    grid-column: 4;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  .header1 {
+    text-align: center;
+    margin-top: 70px;
+    font-size: 30px !important;
+  }

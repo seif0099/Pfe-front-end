@@ -1,0 +1,38 @@
+employée
+    - pointage
+        - congé
+        - control saisie
+    - rapport
+        - control saisie
+    - supphours
+        - date -> time (type)
+    - demande mutation
+        - not done yet
+    - congé
+        - update congé : response message
+    - mission
+        - not done yet
+    - profile
+        - design (done)
+        - get user info using request
+        - image (done!!!!!!!!!!!)
+
+admin
+    - promotion
+    - employée
+    - supphours
+    - sanction
+    - congé
+    - mission
+        - controle saisie
+        - send notif
+    - mutation
+        - not done yet
+    - profile
+        - not done yet
+
+autres
+    - home design
+    - responsive design
+    - .env (links + token)
+    - update response data (eg : cookies)

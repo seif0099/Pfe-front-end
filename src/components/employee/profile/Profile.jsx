@@ -1,178 +1,204 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, useRef} from 'react'
 import "./profile.css"
-import History from "../../authentication/sign-up/History";
+import { useFormik } from "formik";
+import avatar from "../../../assets/avatar.png";
+
 
 function Profile() {
+    const axios = require("axios");
+
     const [userInfo, setUserInfo] = useState({});
+    const [errorResponse, setError] = useState("");
+    const [successResponse, setSuccess] = useState("");
+    const inputFile = useRef(null) 
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [image, setImage] = useState(avatar);
 
-    const [nom, setNom] = useState('');
-    const [prenom, setPrenom] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-   const[matricule,setMatricule]=useState('')
-   const[classe,setClasse]=useState('')
-   const[username,setUsername]=useState('')
-    // States for checking the errors
-    const [submitted, setSubmitted] = useState(false);
-    const [error, setError] = useState(false);
-   
-    // Handling the name change
-  
-    // Handling the form submission
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      if (nom === '' || email === '' || password === '') {
-        setError(true);
-      } else {
-        setSubmitted(true);
-        setError(false);
-      }
+    
+    async function uploadImg(){
+    
+      let image =  URL.createObjectURL(selectedImage)
+      setImage(image)
+      let formData = new FormData()
+      console.log(selectedImage)
+      formData.append("myImage", selectedImage)
+      console.log(formData)
+      const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
     };
+    axios.post("http://localhost:9000/updateImage?id="+userInfo?._id,formData,config)
+        .then((response) => {
+            alert("The file is successfully uploaded");
+        }).catch((error) => {
+    });
+    /*
+      let result = await fetch("http://localhost:9000/updateImage?id="+userInfo?._id, {
+          method: "POST",
+          headers: {
+            'content-type': 'multipart/form-data',
+            Accept: "application/json",
+          },
+          body: formData,
+        });
+        if(result.status == 200){
+          setSuccess("Image modifié avec succés")
+        setError(null)
+        }
+        else{
+        setSuccess(null)
+        setError(result)
+        }
+        */
+    }
 
-   
-    // Showing success message
-    const successMessage = () => {
-      return (
-        <div
-          className="success"
-          style={{
-            display: submitted ? '' : 'none',
-          }}>
-          <h1>User {userInfo?.nom} successfully updated!!</h1>
-        </div>
-      );
-    };
-   
-    // Showing error message if error is true
-    const errorMessage = () => {
-      return (
-        <div
-          className="error"
-          style={{
-            display: error ? '' : 'none',
-          }}>
-          <h1>Please enter all the fields</h1>
-        </div>
-      );
-    };
+
+
+
+
+
+
+
+
     useEffect(() => {
         if(JSON.parse(localStorage.getItem("user-info"))){
           const { user } = JSON.parse(localStorage.getItem("user-info"));
           setUserInfo(user);
         }
-  
     }, []);
-    async function updateProfile(e) {
-        e.preventDefault();
-    
-        let item = {
-          nom,
-          prenom,
-          classe,
-          matricule,
-          username,
-          email,
-          password,
-          userid: userInfo?._id,
-        };
+    async function updateProfile(data) {    
+        data.userid = userInfo?._id
         let result = await fetch("http://localhost:9000/userupdated", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
-          body: JSON.stringify(item),
+          body: JSON.stringify(data),
         });
-        let results = await result.json();
+        if(result.status == 200){
+          setSuccess("Données modifiées avec succés")
+        setError(null)
+        }
+        else{
+        setSuccess(null)
+        setError(result)
+        }
+      }
+      function validate(values) {
+        const errors = {};
+        
+        setError("")
+        return errors;
+        }
+      
+        const {
+        handleSubmit,
+        handleChange,
+        touched,
+        errors,
+        } = useFormik({
+        initialValues: {
+          email: "",
+          password: "",
+          nom:"",
+          prenom:"",
+          tel:"",
+          adresse:"",
+          sitFam:"",
+        },
+        validate,
+        onSubmit: (values) => {
+          updateProfile(values)
+          },
+        });
+      function openBrowseFile(){
+        inputFile.current.click();
+
       }
   return (
-<div className="wrapper">
-      <div className="inner">
-        <form>
-          <h3>Update Profile</h3>
-          <div className="form-row">
-            <div className="form-wrapper">
-              <label htmlFor="">Nom *</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder={userInfo?.nom}
-                
-                onChange={(e) => setNom(e.target.value)}              />
-            </div>
-            <div className="form-wrapper">
-              <label htmlFor="">Prénom *</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder={userInfo?.prenom}
-              
-                onChange={(e) => setPrenom(e.target.value)}              />
-
-              
-            </div>
-            <br/>
+  <div className="wrapper">
+      <div className="inner inner1">
+      <form>
+          <div className="divider">
+          <span className="mySpan header1 lDivider">Modifier le Profile</span>
+          <div className='rDivider divImg'>
+              <input type='file' id='file' ref={inputFile} style={{display: 'none'}}  onChange={(event) => {
+          setSelectedImage(event.target.files[0]);
+        }}/>
+            <img className="userImg" src={avatar} alt="avatar" onClick={openBrowseFile} />
+            <input type="button" className='uploadButton' value="Upload" onClick={uploadImg} />
           </div>
-
-          <div className="form-row last">
-            <div className="form-wrapper">
-              <label htmlFor="">Username</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder={userInfo?.username}
-                onChange={(e) => setUsername(e.target.value)}   
-              />
-              <i className="zmdi zmdi-chevron-down"></i>
+          </div>
+          <div className="divider">
+            
+          <div className="field1 lDivider">
+              <input type="text" name="nom" onChange={handleChange} placeholder={userInfo.nom}/>
             </div>
-            <div className="form-wrapper">
-              <label htmlFor="">Classe *</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder={userInfo?.classe}
-                onChange={(e) => setClasse(e.target.value)}   
-             />
-
-              <i className="zmdi zmdi-chevron-down"></i>
+          
+          <div className="field1 rDivider">
+              <input type="text" name="prenom" onChange={handleChange} placeholder={userInfo.prenom}/>
             </div>
+          
+          </div>
+          <div className="divider">
+          
+          { touched.nom && errors.nom
+                ? <p className="errors lDivider">{errors.nom}</p>
+                : null}
+          {touched.prenom && errors.prenom
+                ? <p className="errors rDivider" >{errors.prenom}</p>
+                : null}
+                </div>
+          
          
-          <div className="form-wrapper">
-            <label for="">Matricule *</label>
-            <input 
-              name=""
-              id=""
-              className="form-control"
-              placeholder={userInfo?.matricule}
-              onChange={(e) => setMatricule(e.target.value)}   
-           
-            />
+          <div className="field1">
+              <input type="text" name="tel" onChange={handleChange} placeholder={userInfo.tel}/>
             </div>
-               <div className="form-wrapper">
-            <label for="">Email *</label>
-            <input 
-              type="email"
-              
-              className="form-control"
-              placeholder={userInfo?.email}
-              onChange={(e) => setEmail(e.target.value)}   
-            />
+            {touched.tel && errors.tel
+                ? <p className="errors">{errors.tel}</p>
+                : null}
+          <div className="field1">
+              <input type="text" name="adresse" onChange={handleChange} placeholder={userInfo.adresse}/>
             </div>
-                <div className="form-wrapper">
-            <label for="">password *</label>
-            <input 
-              type="password"
-              
-              className="form-control"
-              placeholder={userInfo?.password}
-              onChange={(e) => setPassword(e.target.value)}   
-            />
+            {touched.adresse && errors.adresse
+                ? <p className="errors">{errors.adresse}</p>
+                : null}
+          <div className="field1">
+              <input type="text" name="sitFam" onChange={handleChange} placeholder={userInfo.sitFam}/>
             </div>
-          </div>
-          <button data-text="Confirmer" onClick={updateProfile}>
-            <span>confirmer</span>
-          </button>
-        </form>
+            {touched.sitFam && errors.sitFam
+                ? <p className="errors">{errors.sitFam}</p>
+                : null}
+
+
+         
+            
+            <div className="field1">
+              <input type="email" name="email" onChange={handleChange} placeholder={userInfo.email}/>
+            </div>
+            {touched.email && errors.email
+                ? <p className="errors">{errors.email}</p>
+                : null}
+
+            <div className="field1">
+              <input type="password" name="password" onChange={handleChange} placeholder="password"/>
+            </div>
+            {touched.password && errors.password
+                ? <p className="errors">{errors.password}</p>
+                : null}
+            <div className="field1">
+
+              <input type="button" name="submit" value="Confirmer" onClick={handleSubmit}/>
+            </div>
+            {successResponse
+        						? <h1 className="serverSuccess">{successResponse}</h1>
+        						: null}
+					{errorResponse
+        						? <p className="errors">{errorResponse}</p>
+        						: null}
+            </form>          
       </div>
     </div>
   )
