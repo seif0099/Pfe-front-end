@@ -127,7 +127,7 @@ function Profile() {
               <input type='file' id='file' ref={inputFile} style={{display: 'none'}}  onChange={(event) => {
           setSelectedImage(event.target.files[0]);
         }}/>
-            <img className="userImg" src={avatar} alt="avatar" onClick={openBrowseFile} />
+            <img className="userImg" src={image} alt="avatar" onClick={openBrowseFile} />
             <input type="button" className='uploadButton' value="Upload" onClick={uploadImg} />
           </div>
           </div>
