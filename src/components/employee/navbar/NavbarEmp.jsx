@@ -8,15 +8,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Redirect } from "react-router-dom";
 const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
   const [userInfo, setUserInfo] = useState({});
-  const [nom, setNom] = useState('');
-  const [prenom, setPrenom] = useState('');
+  const [myUser, setMyUser] = useState({});
+  const [image, setImage] = useState(avatar);
 
+  async function getUserInfo(){
+    let result = await fetch("http://localhost:9000/getuserbyid?id="+JSON.parse(localStorage.getItem("user-info")).user._id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }).then(function(result){
+        result.json().then(function(res){
+          setMyUser(res)
+          setImage("http://localhost:9000/public/uploads/"+res.imageProfile)
+        })
+      }
+      );
+  }
   useEffect(() => {
 	  if(JSON.parse(localStorage.getItem("user-info"))){
 		const { user } = JSON.parse(localStorage.getItem("user-info"));
 		setUserInfo(user);
 	  }
-
+    getUserInfo();
   }, []);
   function logout(){
     localStorage.removeItem("user-info")
@@ -43,7 +58,7 @@ const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
         </a>
         <BrowserRouter forceRefresh={true}>
         <Link to="/Profile">
-          <img width={30} src={avatar} alt="avatar" />
+          <img className="navbarImage" width={30} src={image} alt="avatar" />
         </Link>
         </BrowserRouter>
         <a onClick={logout}>

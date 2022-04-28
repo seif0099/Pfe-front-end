@@ -62,6 +62,7 @@
     margin-top: -50px;
     grid-column: 4;
     margin: 0 auto;
+    border-radius: 80px;
 
   }
   .uploadButton {
@@ -70,6 +71,8 @@
     grid-column: 4;
     margin: 0 auto;
     margin-bottom: 50px;
+    border: 0;
+    border-radius: 10px;
   }
   .header1 {
     text-align: center;

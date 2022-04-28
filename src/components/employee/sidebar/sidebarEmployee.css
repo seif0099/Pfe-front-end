@@ -108,3 +108,6 @@
     display: inline;
   }
 }
+.sidebarImage {
+  border-radius: 80px;
+}

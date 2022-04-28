@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import "./sidebarEmployee.css";
 import avatar from "../../../assets/avatar.png";
 import { Link } from "react-router-dom";
@@ -10,18 +10,35 @@ import ReqLeave from './../leave/ReqLeave';
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
   let user = JSON.parse(localStorage.getItem('user-info'));
- const history = useHistory('');
+  const [myUser, setMyUser] = useState({});
+  const [image, setImage] = useState(avatar);
+
+  const history = useHistory('');
   const [activeComp,setActiveComp] = useState(""); 
-  function logOut(){
-localStorage.clear();
-history.push('/home');
+  async function getUserInfo(){
+    let result = await fetch("http://localhost:9000/getuserbyid?id="+JSON.parse(localStorage.getItem("user-info")).user._id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }).then(function(result){
+        result.json().then(function(res){
+          setMyUser(res)
+          setImage("http://localhost:9000/public/uploads/"+res.imageProfile)
+        })
+      }
+      );
   }
+  useEffect(() =>  {
+    getUserInfo();
+}, []);
   return (
     
     <div className={sideBarOpen ? "sidebar-responsive" : ""} id="sidebar">
       <div className="sidebar__title">
         <div className="sidebar__img">
-          <img src={avatar} alt="avatar" />
+          <img src={image} className="sidebarImage" alt="avatar" />
         </div>
         <i
           className="fa fa-times"

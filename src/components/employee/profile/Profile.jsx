@@ -13,6 +13,7 @@ function Profile() {
     const inputFile = useRef(null) 
     const [selectedImage, setSelectedImage] = useState(null);
     const [image, setImage] = useState(avatar);
+    const [myUser, setMyUser] = useState({});
 
     
     async function uploadImg(){
@@ -33,24 +34,7 @@ function Profile() {
             alert("The file is successfully uploaded");
         }).catch((error) => {
     });
-    /*
-      let result = await fetch("http://localhost:9000/updateImage?id="+userInfo?._id, {
-          method: "POST",
-          headers: {
-            'content-type': 'multipart/form-data',
-            Accept: "application/json",
-          },
-          body: formData,
-        });
-        if(result.status == 200){
-          setSuccess("Image modifié avec succés")
-        setError(null)
-        }
-        else{
-        setSuccess(null)
-        setError(result)
-        }
-        */
+    
     }
 
 
@@ -59,13 +43,29 @@ function Profile() {
 
 
 
+    async function getUserInfo(){
+      let result = await fetch("http://localhost:9000/getuserbyid?id="+JSON.parse(localStorage.getItem("user-info")).user._id, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }).then(function(result){
+          result.json().then(function(res){
+            setMyUser(res)
+            setImage("http://localhost:9000/public/uploads/"+res.imageProfile)
+          })
+        }
+        );
+      
+    }
 
-
-    useEffect(() => {
+    useEffect(() =>  {
         if(JSON.parse(localStorage.getItem("user-info"))){
           const { user } = JSON.parse(localStorage.getItem("user-info"));
           setUserInfo(user);
         }
+        getUserInfo();
     }, []);
     async function updateProfile(data) {    
         data.userid = userInfo?._id
@@ -79,7 +79,8 @@ function Profile() {
         });
         if(result.status == 200){
           setSuccess("Données modifiées avec succés")
-        setError(null)
+          setError(null)
+          window.location.reload();
         }
         else{
         setSuccess(null)
@@ -134,11 +135,11 @@ function Profile() {
           <div className="divider">
             
           <div className="field1 lDivider">
-              <input type="text" name="nom" onChange={handleChange} placeholder={userInfo.nom}/>
+              <input type="text" name="nom" onChange={handleChange} placeholder={myUser.nom}/>
             </div>
           
           <div className="field1 rDivider">
-              <input type="text" name="prenom" onChange={handleChange} placeholder={userInfo.prenom}/>
+              <input type="text" name="prenom" onChange={handleChange} placeholder={myUser.prenom}/>
             </div>
           
           </div>
@@ -154,19 +155,19 @@ function Profile() {
           
          
           <div className="field1">
-              <input type="text" name="tel" onChange={handleChange} placeholder={userInfo.tel}/>
+              <input type="text" name="tel" onChange={handleChange} placeholder={myUser.tel}/>
             </div>
             {touched.tel && errors.tel
                 ? <p className="errors">{errors.tel}</p>
                 : null}
           <div className="field1">
-              <input type="text" name="adresse" onChange={handleChange} placeholder={userInfo.adresse}/>
+              <input type="text" name="adresse" onChange={handleChange} placeholder={myUser.adresse}/>
             </div>
             {touched.adresse && errors.adresse
                 ? <p className="errors">{errors.adresse}</p>
                 : null}
           <div className="field1">
-              <input type="text" name="sitFam" onChange={handleChange} placeholder={userInfo.sitFam}/>
+              <input type="text" name="sitFam" onChange={handleChange} placeholder={myUser.sitFam}/>
             </div>
             {touched.sitFam && errors.sitFam
                 ? <p className="errors">{errors.sitFam}</p>
@@ -176,7 +177,7 @@ function Profile() {
          
             
             <div className="field1">
-              <input type="email" name="email" onChange={handleChange} placeholder={userInfo.email}/>
+              <input type="email" name="email" onChange={handleChange} placeholder={myUser.email}/>
             </div>
             {touched.email && errors.email
                 ? <p className="errors">{errors.email}</p>
