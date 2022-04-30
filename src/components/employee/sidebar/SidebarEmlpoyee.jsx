@@ -17,6 +17,8 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
   const [leaveNotifications, setleavenotifs] = useState(0)
   const [suppNotifications, setsuppnotifs] = useState(0)
   const [missionNotifications, setmissionnotifs] = useState(0)
+  const [mutationNotifications, setmutationnotifs] = useState(0)
+
   const history = useHistory('');
   const [activeComp,setActiveComp] = useState(""); 
   async function getUserInfo(){
@@ -56,6 +58,10 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
             row.type == "mission"
           )
           setmissionnotifs(re2.length)
+          let re3 = res.notifs.filter(row => 
+            row.type == "mutation"
+          )
+          setmutationnotifs(re3.length)
         })
       }
       );
@@ -155,7 +161,7 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
         <div className="sidebar__link"  onClick={()=>setActiveComp("Mutation")}>
           <i className="fa fa-book"></i>
           <a href="#">Consulter les demandes</a>
-          <i className="bell">{leaveNotifications}</i>
+          <i className="bell">{mutationNotifications}</i>
         </div>
         {activeComp==="ReqLeave" && <MutationManagement/>}
        </Link>

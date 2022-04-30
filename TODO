@@ -1,13 +1,12 @@
 employée
     - pointage
-        - congé
         - control saisie
     - rapport
         - control saisie
     - supphours
         - date -> time (type)
     - demande mutation
-        - not done yet
+        - edit
     - congé
         - update congé : response message
     - mission

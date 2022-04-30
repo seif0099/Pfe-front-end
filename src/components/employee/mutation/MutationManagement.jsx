@@ -40,9 +40,9 @@ function MutationManagement() {
     window.location.reload();
   }
   async function deleteRequest(id){
-    let URL = "http://localhost:9000/deleteleave?id="+id
+    let URL = "http://localhost:9000/deletesMutation?id="+id
     let result = await fetch(URL, {
-      method: "DELETE",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -103,7 +103,7 @@ function MutationManagement() {
               <tr>
                           
   
-                <td>{userInfo?.service}</td>
+                <td>{row.from}</td>
                 <td>{(row.to)}</td>
                 <td>{row.reasonForMutation}</td>
                 <td>{row.status}</td>
