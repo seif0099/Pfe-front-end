@@ -14,9 +14,11 @@ import Sanction from "../components/admin/sanction/Sanction";
 import ApplySuppHours from "../components/admin/supphours/ApplySuppHours";
 import ApplyLeave from "../components/admin/leave-management/ApplyLeave";
 import Mission from "../components/admin/mission/Mission";
-import Mutation from "../components/admin/mutation/Mutation";
 import LeaveManagement from "../components/employee/leave/LeaveManagement";
 import Emp from './../components/admin/emp/Emp';
+import MutationManagement from "../components/employee/mutation/MutationManagement";
+import Mutation from './../components/employee/mutation/Mutation';
+import AdminMutation from "../components/admin/mutation/AdminMutation";
 
 export const publicRoutes = [
     {   
@@ -75,7 +77,14 @@ export const privateRoutes = [
         component:LeaveManagement,
         path:'/LeaveManagement'
     },
-    
+    {   exact:true,
+        component:MutationManagement,
+        path:'/MutationManagement'
+    },
+    {   exact:true,
+        component:Mutation,
+        path:'/Mutation'
+    },
 ]
 export const adminRoutes = [
     {   exact:true,
@@ -103,7 +112,7 @@ export const adminRoutes = [
         path:'/admin/mission'
     },
     {   exact:true,
-        component:Mutation,
+        component:AdminMutation,
         path:'/admin/mutation'
     },
     {   exact:true,

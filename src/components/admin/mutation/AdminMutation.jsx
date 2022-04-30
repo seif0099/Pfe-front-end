@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 
-function Mutation() {
+function AdminMutation() {
   
   var [res,setRes]=useState([{}]);
   const [userid,setUserid]=useState("");
@@ -112,4 +112,4 @@ console.log(e.target.value);
   )
 }
 
-export default Mutation
+export default AdminMutation
