@@ -12,7 +12,9 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
   let user = JSON.parse(localStorage.getItem('user-info'));
   const [myUser, setMyUser] = useState({});
   const [image, setImage] = useState(avatar);
-
+  const [leaveNotifications, setleavenotifs] = useState(0)
+  const [suppNotifications, setsuppnotifs] = useState(0)
+  const [missionNotifications, setmissionnotifs] = useState(0)
   const history = useHistory('');
   const [activeComp,setActiveComp] = useState(""); 
   async function getUserInfo(){
@@ -30,8 +32,36 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
       }
       );
   }
+  async function getNotifications(){
+    let result = await fetch("http://localhost:9000/getNotifications?id="+JSON.parse(localStorage.getItem("user-info")).user._id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }).then(function(result){
+        result.json().then(function(res){
+          let leaves = []
+          let re = res.notifs.filter(row => 
+            row.type == "leave"
+          )
+          setleavenotifs(re.length)
+          let re1 = res.notifs.filter(row => 
+            row.type == "supphours"
+          )
+          setsuppnotifs(re1.length)
+          let re2 = res.notifs.filter(row => 
+            row.type == "mission"
+          )
+          setmissionnotifs(re2.length)
+        })
+      }
+      );
+  }
   useEffect(() =>  {
     getUserInfo();
+    getNotifications();
+
 }, []);
   return (
     
@@ -102,6 +132,7 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
         <div className="sidebar__link"  onClick={()=>setActiveComp("ReqLeave")}>
           <i className="fa fa-book"></i>
           <a href="#">Consulter les demandes</a>
+          <i className="bell">{leaveNotifications}</i>
         </div>
         {activeComp==="ReqLeave" && <ReqLeave/>}
        </Link>

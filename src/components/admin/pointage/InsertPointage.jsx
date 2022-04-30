@@ -19,7 +19,6 @@ function InsertPointage() {
 		setUserInfo(user);
 	  }
     let URL = "http://localhost:9000/users"
-    console.log(URL)
     let result = await fetch(URL, {
       method: "GET",
       headers: {
@@ -61,7 +60,7 @@ console.log(e.target.value);
   return (
     <div className="wrapper">
 			<div className="inner inner1">
-				<form onSubmit={insertion}>
+				<form>
 					<h3>Pointage des employees</h3>
 					<div className="form-row">
 						<div className="form-wrapper">
@@ -87,7 +86,7 @@ console.log(e.target.value);
 				</div>
 				
      
-					<button data-text="Confirmer la présence" type="submit" className='form-control button1'>
+					<button data-text="Confirmer la présence" type="button"  onClick={insertion} className='form-control button1'>
 						Confirmer la présence
 					</button>
                  

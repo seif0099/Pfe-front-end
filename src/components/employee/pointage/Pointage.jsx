@@ -42,13 +42,55 @@ function Pointage() {
       },
     });
     let results = await result.json();
-    let days = results.map(function(a) { return a.day});
+    let days = results.pointage.map(function(a) { return a.day});
     let numberOfDays = new Date(dates.getFullYear(), dates.getMonth()+1, 0).getDate()
-    setNumberOfDays(numberOfDays)
     let p = Array(numberOfDays).fill("absent")
     for(var i=0;i < days.length;i++){
       p[days[i]-1] = "présent"
+    }    
+    
+
+    let daysoff = results.leave.map(function(a) {
+       return {
+         dayF: a.dayF,
+         dayT:a.dayT,
+         monthF: a.monthF,
+         monthT: a.monthT,
+         yearF: a.yearF,
+         yearT: a.yearT,
+        }
+    });    
+    let doffs = []
+    for(let j=0;j < daysoff.length; j++){
+      if(daysoff[j].monthF == daysoff[j].monthT){
+        for(let i=daysoff[j].dayF;i <=daysoff[j].dayT;i++){
+          doffs.push(i)
+        }
+      }
+      else{
+        if(daysoff[j].monthF == dates.getMonth()+1){
+          for(let i=daysoff[j].dayF;i <=numberOfDays;i++){
+            doffs.push(i)
+          }
+        }
+        else {
+          for(let i=1;i <=daysoff[j].dayT;i++){
+            doffs.push(i)
+          }
+        }
+
+      }
     }
+    console.log("doffs", doffs)
+    for(var i=0;i < doffs.length;i++){
+      p[doffs[i]-1] = "congé"
+    }    
+    console.log(p)
+    //console.log(daysoff)
+
+
+    setNumberOfDays(numberOfDays)
+
     numcols = 7;
     setNumrows(Math.ceil(numberOfDays / 7))
     numrows = Math.ceil(numberOfDays / 7)
@@ -57,6 +99,13 @@ function Pointage() {
       ps.push(p.slice(7*i, 7*i+7))
     }
     setPointages(ps)
+
+
+
+
+
+
+
     pointages = ps
 
     setMonth(d.getMonth()+1)
@@ -98,7 +147,15 @@ function Pointage() {
               <tbody>
                 <tr>
                 <td>semaine {index+1}</td>
-                {row.map((col, index) => <td>{col === "présent" ? <h5><br></br></h5> : <h6></h6> }</td>)}
+                {row.map((col, index) => <td>
+                  {
+                col === "présent" ? <h5><br></br></h5> : <h6></h6> 
+                }
+                {
+                col === "congé" ? <h5 className='conge'><br></br></h5> : <h6></h6> 
+                }
+                </td>)
+                }
                 </tr>
               
               </tbody>
@@ -150,6 +207,8 @@ function Pointage() {
             <div>présent</div>
             <div className='color2'></div>
             <div>absent</div>
+            <div className='color3'></div>
+            <div>congé</div>
           </div>
           </div>
           
