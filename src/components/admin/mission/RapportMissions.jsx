@@ -1,12 +1,12 @@
 import React,{useState,useEffect} from 'react'
 import "./mission.css"
-
-
+import generatePDF from "./reportgen";
 function RapportMissionsAdmin() {
   
     var [missions, setMissions] = useState([])
-    function openPDF(){
-       
+    function openPDF(mission){
+      console.log(mission)
+      generatePDF(mission)
     }
     async function getMissions(){
         let URL = "http://localhost:9000/getallmissions"
@@ -67,7 +67,7 @@ function RapportMissionsAdmin() {
             {row.status === "terminée" ? <td className="ops">
               
 
-            <i className="fa fa-eye eye" onClick={() => openPDF()}></i>
+            <i className="fa fa-eye eye" onClick={() => openPDF(row)}></i>
             </td> : <td></td>}
             
           </tr>
@@ -79,6 +79,7 @@ function RapportMissionsAdmin() {
           </div>
         </div>
       </form>
+      
     </div>
   </div>
   
