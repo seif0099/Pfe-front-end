@@ -1,6 +1,5 @@
 import React,{ useState, useEffect } from "react";
 import { useFormik } from 'formik';
-import { useModal } from 'react-hooks-use-modal';
 
 function UpdateLeave(props) {
   const [errorResponse, setError] = useState("");
@@ -26,7 +25,14 @@ function UpdateLeave(props) {
 
     },
     );
-    //window.location.reload();
+    if(result.status === 200){
+      setSuccess("Demande modifié")
+      setError("")
+  }
+  else {
+      setSuccess("")
+      setError("Echec de modification")
+  }
   }
   function validate(values) {
 		const errors = {};

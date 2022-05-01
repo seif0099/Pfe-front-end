@@ -29,14 +29,13 @@ const[objectif,setObjectif]=useState("");
  async function insertion (){
 	  let item = {
 		
-		objetctMission:objectif,
+		objectifMission:objectif,
 		dateRetour:dateRetour,
 		dateDepart:dateDepart,
 		destination:destination,
-		userid: userid,
 	  };
 	  console.log(item)
-	  const URL = "http://localhost:9000/createmission"
+	  const URL = "http://localhost:9000/createmission?id="+userid
 	  let result = await fetch(URL, {
 		method: "POST",
 		headers: {

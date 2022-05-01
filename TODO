@@ -7,14 +7,13 @@ employée
         - date -> time (type)
     - demande mutation
         - edit
+        - seen
     - congé
         - update congé : response message
     - mission
         - not done yet
     - profile
-        - design (done)
         - get user info using request
-        - image (done!!!!!!!!!!!)
 
 admin
     - promotion

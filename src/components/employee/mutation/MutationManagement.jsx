@@ -1,11 +1,12 @@
 import React,{ useState, useEffect } from "react";
 import "./mutation.css"
 import { useModal } from 'react-hooks-use-modal';
+import UpdateMutation from "./updatemutation";
 
 function MutationManagement() {
   const [userInfo, setUserInfo] = useState({});
   var [requests, setRequests] = useState([])
-  var [requestInfo, setrequestInfo] = useState([])
+  var [mutationInfo, setMutationInfo] = useState([])
 
   const [Modal, open, close, isOpen] = useModal('root', {
     preventScroll: true,
@@ -23,7 +24,8 @@ function MutationManagement() {
       newRequests.reasonForMutation= row.reasonForMutation
       result.push(newRequests)
     })
-    setrequestInfo(result.filter(row => row._id === pointer)[0])
+    setMutationInfo(result.filter(row => row._id === pointer)[0])
+    console.log(mutationInfo)
   }
   async function updateRequest(id){
     let URL = "http://localhost:9000/leaveupdated?id="+id
@@ -125,7 +127,9 @@ function MutationManagement() {
           </form>
         </div>
       </div>
-      
+      <Modal>
+            <UpdateMutation mutation={mutationInfo}></UpdateMutation>
+        </Modal>
     </div>
     );
   

@@ -10,6 +10,7 @@ import ReqLeave from './../leave/ReqLeave';
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Mutation from '../../admin/mutation/AdminMutation';
 import MutationManagement from './../mutation/MutationManagement';
+import Missions from "../mission/Mission";
 const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
   let user = JSON.parse(localStorage.getItem('user-info'));
   const [myUser, setMyUser] = useState({});
@@ -163,7 +164,7 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
           <a href="#">Consulter les demandes</a>
           <i className="bell">{mutationNotifications}</i>
         </div>
-        {activeComp==="ReqLeave" && <MutationManagement/>}
+        {activeComp==="Mutation" && <MutationManagement/>}
        </Link>
       </BrowserRouter>
 
@@ -172,14 +173,17 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
 
         <h2>Missions</h2>
         <BrowserRouter forceRefresh={true}>
-        <Link to="/">
-        <div className="sidebar__link">
-          <i className="fa fa-money"></i>
-          <a href="#">Rapport de mission</a>
+        <Link to="/Missions">
+        <div className="sidebar__link"  onClick={()=>setActiveComp("Mission")}>
+          <i className="fa fa-book"></i>
+          <a>Missions</a>
+          <i className="bell">{mutationNotifications}</i>
         </div>
-        {activeComp==="ReqLeave" && <ReqLeave/>}
-</Link>
-</BrowserRouter>
+        {activeComp==="Missions" && <Missions/>}
+       </Link>
+      </BrowserRouter>
+      
+       
         
       </div>
     </div>

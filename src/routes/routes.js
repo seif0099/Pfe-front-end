@@ -19,6 +19,8 @@ import Emp from './../components/admin/emp/Emp';
 import MutationManagement from "../components/employee/mutation/MutationManagement";
 import Mutation from './../components/employee/mutation/Mutation';
 import AdminMutation from "../components/admin/mutation/AdminMutation";
+import Missions from "../components/employee/mission/Mission";
+import RapportMissionsAdmin from "../components/admin/mission/RapportMissions";
 
 export const publicRoutes = [
     {   
@@ -85,6 +87,11 @@ export const privateRoutes = [
         component:Mutation,
         path:'/Mutation'
     },
+    {   exact:true,
+        component:Missions,
+        path:'/Missions'
+    },
+    
 ]
 export const adminRoutes = [
     {   exact:true,
@@ -118,5 +125,9 @@ export const adminRoutes = [
     {   exact:true,
         component:Emp,
         path:'/admin/GestionEmp'
+    },
+    {   exact:true,
+        component:RapportMissionsAdmin,
+        path:'/admin/rapportmissions'
     },
 ]
