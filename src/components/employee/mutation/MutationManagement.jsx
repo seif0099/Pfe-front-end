@@ -27,20 +27,7 @@ function MutationManagement() {
     setMutationInfo(result.filter(row => row._id === pointer)[0])
     console.log(mutationInfo)
   }
-  async function updateRequest(id){
-    let URL = "http://localhost:9000/leaveupdated?id="+id
-    let result = await fetch(URL, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      
-    },
-    open()
-    );
-    window.location.reload();
-  }
+  
   async function deleteRequest(id){
     let URL = "http://localhost:9000/deletesMutation?id="+id
     let result = await fetch(URL, {

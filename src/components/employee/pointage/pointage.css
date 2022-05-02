@@ -14,7 +14,8 @@
 }
 .inner1 {
     width: 1000px !important;
-    height: 850px !important;
+    height: 800px !important;
+    max-height: 800px !important;
     margin: 0 auto;
     
 }

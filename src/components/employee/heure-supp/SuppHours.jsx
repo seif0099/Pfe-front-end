@@ -39,10 +39,13 @@ function SuppHours() {
 		  errors.typeOfWork = "* Le champ travail est obligatoire";
 		}
 		if(!values.fromDate){
-			errors.fromDate = "* Le champ date début est obligatoire";
+			errors.fromDate = "* Le champ heure début est obligatoire";
 		}
 		if(!values.toDate){
-			errors.toDate = "* Le champ date fin est obligatoire";
+			errors.toDate = "* Le champ heure fin est obligatoire";
+		}
+		if(!values.date){
+			errors.date = "* Le champ date  est obligatoire";
 		}
 		return errors;
 	  }
@@ -56,7 +59,8 @@ function SuppHours() {
 		initialValues: {
 			typeOfWork: "",
 			fromDate: "",
-			toDate: ""
+			toDate: "",
+			date: ""
 		},
 		validate,
 		onSubmit: (values) => {
@@ -67,7 +71,7 @@ function SuppHours() {
     <div>
         
         <div className="wrapper">
-			<div className="inner inner2">
+			<div className="inner inner1">
 				<form>
 					<h3>Demande des heures supplémentaires</h3>
 					<div className="form-row">
@@ -94,7 +98,7 @@ function SuppHours() {
 					<div className="form-row last">
 						<div className="form-wrapper">
 							<label htmlFor="">À partir de  *</label>
-				   	<input type="date" className="form-control" name="fromDate"
+				   	<input type="time" className="form-control" name="fromDate"
 					                   onChange={handleChange}
 									   />
 							<i className="zmdi zmdi-chevron-down"></i>
@@ -104,7 +108,7 @@ function SuppHours() {
 						</div>
 						<div className="form-wrapper">
 							<label htmlFor="">À *</label>
-              <input type="date" className="form-control"
+              <input type="time" className="form-control"
 			                  name="toDate"
 							  onChange={handleChange}
 							  />
@@ -117,6 +121,15 @@ function SuppHours() {
           
 				</div>
         <div className="form-wrapper">
+							<label for="">Date de travail</label>
+                            <input name="date" type="date" className="form-control" placeholder=""
+							   onChange={handleChange}/>
+							   {touched.date && errors.date
+        						? <p className="errors">{errors.date}</p>
+        						: null}
+
+					</div>
+					<div className="form-wrapper">
 							<label for="">Travail À faire *</label>
                             <input name="typeOfWork" type="text" className="form-control" placeholder=""
 							   onChange={handleChange}/>

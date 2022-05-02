@@ -54,11 +54,8 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
           <i className="fa fa-home"></i>
           <a href="#">Dashboard</a>
         </div>
-        <h2>MNG</h2>
-        <div className="sidebar__link">
-          <i className="fa fa-user"></i>
-          <a href="#">Admin Management</a>
-        </div>
+        <h2>Admin Management</h2>
+     
         <BrowserRouter forceRefresh={true}>
         <Link to="/admin/promotion">
         <div className="sidebar__link">

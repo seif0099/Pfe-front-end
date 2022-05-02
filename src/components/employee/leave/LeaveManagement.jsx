@@ -51,6 +51,7 @@ function LeaveManagement() {
     });
     window.location.reload();
   }
+ 
   async function getRequests(){
     let id = JSON.parse(localStorage.getItem("user-info")).user._id
     let URL = "http://localhost:9000/getrequest?id="+id
@@ -113,6 +114,7 @@ function LeaveManagement() {
 
                 <i className="fa fa-edit edit" onClick={() => {setData(row._id);open()}}></i>
                 <i className="fa fa-trash trashbin" onClick={() => deleteRequest(row._id)}></i>
+                
                 </td> : <td></td>}
                 
               </tr>

@@ -1,35 +1,29 @@
 import React from 'react'
 import "./pointage.css"
 import { useEffect,useState } from 'react';
+import { useFormik } from "formik";
+
 function Pointage() {
   const [userInfo, setUserInfo] = useState({});
   var [pointages, setPointages] = useState([]);
   var [numrows, setNumrows] = useState(0);
   var [numberOfDays, setNumberOfDays] = useState(0);
-  var [month, setMonth] = useState(0);
-  var [year, setYear] = useState(0);
   var dateObj = new Date()
   var [dates, setDates] = useState(dateObj);
   var [numcols, setNumcols] = useState(6);
   var [tableData, setTableData] = useState("")
-  function setYear1(e){
-    setYear(e.target.value)
-  }
-  function setMonth1(e){
-    setMonth(e.target.value)
-    
-  }
-  async function fetcha() {
+
+  async function fetcha(values) {
 	  if(JSON.parse(localStorage.getItem("user-info"))){
 		const { user } = JSON.parse(localStorage.getItem("user-info"));
 		setUserInfo(user);
 	  }
     let d = new Date()
-    if(month!=0){
-      d.setMonth(month-1)
+    if(values.month!=0){
+      d.setMonth(values.month-1)
     }
-    if(year!=0){
-      d.setYear(year)
+    if(values.year!=0){
+      d.setYear(values.year)
     }
     setDates(d)
     dates = d;
@@ -108,14 +102,39 @@ function Pointage() {
 
     pointages = ps
 
-    setMonth(d.getMonth()+1)
-    setYear(d.getFullYear())
     }
   useEffect(() => {
     
-    fetcha()
+    fetcha({month: 0, year: 0})
   }, []);
-  
+  function validate(values) {
+		const errors = {};
+		if (!values.month) {
+		  errors.month = "* Le champ mois est obligatoire";
+		}
+		if(!values.year){
+			errors.year = "* Le champ année est obligatoire";
+		}
+		console.log(errors)
+		return errors;
+	  }
+	
+	  const {
+		handleSubmit,
+		handleChange,
+		touched,
+		errors,
+    values
+	  } = useFormik({
+		initialValues: {
+			month: "",
+			year: "",
+		},
+		validate,
+		onSubmit: (values) => {
+			fetcha(values)
+		},
+	  }); 
   return (
     <div className="limiter">
     <div className="wrapper">
@@ -133,7 +152,7 @@ function Pointage() {
               <thead>
                 <tr>
                   <th>
-                    {year} / {month}
+                    {values.month} / {values.year}
                   </th>
                   {7*(index)+1 <= numberOfDays ? <th>{7*(index)+1}</th> : <span></span>}
                   {7*(index)+2 <= numberOfDays ? <th>{7*(index)+2}</th> : <span></span>}
@@ -164,7 +183,7 @@ function Pointage() {
           </div>
           <div className='buttons'>
               <div className='monthPicker'>
-              <select id='month' name='month' className='form-control' onChange={setMonth1}>
+              <select id='month' name='month' className='form-control' onChange={handleChange}>
                 <option selected value=''>--Choisir Mois--</option>
                 <option value='1'>Janaury</option>
                 <option value='2'>February</option>
@@ -179,9 +198,12 @@ function Pointage() {
                 <option value='11'>November</option>
                 <option value='12'>December</option>
                 </select> 
+                {touched.month && errors.month
+        						? <p className="errors">{errors.month}</p>
+        						: null}
               </div>
               <div className='yearPicker'>
-              <select id="year" name="year" className='form-control' onChange={setYear1}>
+              <select id="year" name="year" className='form-control' onChange={handleChange}>
                   <option selected>--Choisir Année--</option>
                   <option value="2011">2011</option>
                   <option value="2012">2012</option>
@@ -196,9 +218,12 @@ function Pointage() {
                   <option value="2021">2021</option>
                   <option value="2022">2022</option>
               </select>
+              {touched.year && errors.year
+        						? <p className="errors">{errors.year}</p>
+        						: null}
               </div>
               <div className='myButton'>
-              <input type="button" className="form-control aa"  onClick={fetcha} value="Confirmer" />
+              <input type="button" className="form-control aa"  onClick={handleSubmit} value="Confirmer" />
               </div>
           </div>
           <hr></hr>
@@ -213,7 +238,8 @@ function Pointage() {
           </div>
           
        </div>
-
+       
+       
      </form>
      </div>
    </div>

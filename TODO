@@ -1,26 +1,13 @@
 employée
-    - pointage
-        - control saisie
-    - rapport
-        - control saisie
-    - supphours
-        - date -> time (type)
-    - demande mutation
-        - edit
-        - seen
-    - congé
-        - update congé : response message
-    - mission
+    - demande administ
         - not done yet
-    - profile
-        - get user info using request
-
-admin
-    - promotion
-    - employée
     - supphours
-    - sanction
-    - congé
+        - consulte
+   - accueil
+        - promotion
+        - sanction
+admin
+    - control de saisie
     - mission
         - controle saisie
         - send notif
@@ -28,7 +15,8 @@ admin
         - not done yet
     - profile
         - not done yet
-
+    - demande administ
+        - not done yet
 autres
     - home design
     - responsive design

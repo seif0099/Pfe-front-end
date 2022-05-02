@@ -19,25 +19,11 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
   const [suppNotifications, setsuppnotifs] = useState(0)
   const [missionNotifications, setmissionnotifs] = useState(0)
   const [mutationNotifications, setmutationnotifs] = useState(0)
-
-  const history = useHistory('');
+  const [userInfo, setUserInfo] = useState({});
   const [activeComp,setActiveComp] = useState(""); 
-  async function getUserInfo(){
-    let result = await fetch("http://localhost:9000/getuserbyid?id="+JSON.parse(localStorage.getItem("user-info")).user._id, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }).then(function(result){
-        result.json().then(function(res){
-          setMyUser(res)
-          setImage("http://localhost:9000/public/uploads/"+res.imageProfile)
-        })
-      }
-      );
-  }
+    
   async function getNotifications(){
+    console.log("f jbal",JSON.parse(localStorage.getItem("user-info")).user)
     let result = await fetch("http://localhost:9000/getNotifications?id="+JSON.parse(localStorage.getItem("user-info")).user._id, {
         method: "GET",
         headers: {
@@ -68,7 +54,11 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
       );
   }
   useEffect(() =>  {
-    getUserInfo();
+    if(JSON.parse(localStorage.getItem("user-info"))){
+      console.log("dd")
+      const { user } = JSON.parse(localStorage.getItem("user-info"));
+      setUserInfo(user)
+    }
     getNotifications();
 
 }, []);
@@ -77,7 +67,7 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
     <div className={sideBarOpen ? "sidebar-responsive" : ""} id="sidebar">
       <div className="sidebar__title">
         <div className="sidebar__img">
-          <img src={image} className="sidebarImage" alt="avatar" />
+          <img src={"http://localhost:9000/public/uploads/"+userInfo.imageProfile} className="sidebarImage" alt="avatar" />
         </div>
         <i
           className="fa fa-times"
@@ -123,7 +113,7 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
 </BrowserRouter>
         <div className="sidebar__link">
           <i className="fa fa-handshake-o"></i>
-          <a href="#">Contracts</a>
+          <a href="#">Demande administrative</a>
         </div>
 
         <h2> Congé</h2>
@@ -177,7 +167,7 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
         <div className="sidebar__link"  onClick={()=>setActiveComp("Mission")}>
           <i className="fa fa-book"></i>
           <a>Missions</a>
-          <i className="bell">{mutationNotifications}</i>
+          <i className="bell">{missionNotifications}</i>
         </div>
         {activeComp==="Missions" && <Missions/>}
        </Link>

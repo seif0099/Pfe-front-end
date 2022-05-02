@@ -98,7 +98,6 @@ function Mutation() {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Prénom"
                 value={userInfo?.service}
 				disabled
               />
