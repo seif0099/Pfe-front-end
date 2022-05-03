@@ -6,36 +6,42 @@ import { Link } from "react-router-dom";
 import { useEffect } from 'react';
 
 const Sidebar = ({ sideBarOpen, closeSideBar }) => {
-  var [numberOfRequests, setNB] = useState(0)
-  var [numberOfHRequests, setHNB] = useState(0)
-  async function getRequests(){
-		let URL = "http://localhost:9000/adminRequests"
-    	let result = await fetch(URL, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				Accept: "application/json",
-			},
-		});
-		let results = await result.json(); 
-    let x = Object.getOwnPropertyNames(results)
-    setNB(x.length-1)
-		numberOfRequests = x.length-1
-    let URL2 = "http://localhost:9000/adminSuppHours"
-    	let result2 = await fetch(URL2, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				Accept: "application/json",
-			},
-		});
-		let results2 = await result2.json();
-    let x2 = Object.getOwnPropertyNames(results2)
-    setHNB(x2.length-1)
-		numberOfHRequests = x2.length-1
-	}
+  const [leaveNotifications, setleavenotifs] = useState(0)
+  const [suppNotifications, setsuppnotifs] = useState(0)
+  const [missionNotifications, setmissionnotifs] = useState(0)
+  const [mutationNotifications, setmutationnotifs] = useState(0)
+  async function getNotifications(){
+    let result = await fetch("http://localhost:9000/getAdminNotifications", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }).then(function(result){
+        result.json().then(function(res){
+          let leaves = []
+          let re = res.notifs.filter(row => 
+            row.type == "leave"
+          )
+          setleavenotifs(re.length)
+          let re1 = res.notifs.filter(row => 
+            row.type == "supphours"
+          )
+          setsuppnotifs(re1.length)
+          let re2 = res.notifs.filter(row => 
+            row.type == "mission"
+          )
+          setmissionnotifs(re2.length)
+          let re3 = res.notifs.filter(row => 
+            row.type == "mutation"
+          )
+          setmutationnotifs(re3.length)
+        })
+      }
+      );
+  }
 	useEffect(() => {
-		getRequests();
+    getNotifications();
 	}, []);
   return (
     <div className={sideBarOpen ? "sidebar-responsive" : ""} id="sidebar">
@@ -84,7 +90,7 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
         <div className="sidebar__link">
           <i className="fa fa-handshake-o"></i>
           <a href="#">Heures supplémentaires</a>
-          <i className="bell">{numberOfHRequests}</i>
+          <i className="bell">{suppNotifications}</i>
         </div>
         </Link>
         </BrowserRouter>
@@ -94,7 +100,7 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
         <div className="sidebar__link">
           <i className="fa fa-question"></i>
           <a href="#">requests</a>
-          <i className="bell">{numberOfRequests}</i>
+          <i className="bell">{leaveNotifications}</i>
 
         </div>
         </Link>
@@ -114,6 +120,7 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
         <div className="sidebar__link">
           <i className="fa fa-money"></i>
           <a>Missions</a>
+          <i className="bell">{missionNotifications}</i>
        </div>
        </Link>
        </BrowserRouter>
@@ -123,7 +130,8 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
         <Link to="/admin/mutation">
         <div className="sidebar__link">
           <i className="fa fa-money"></i>
-          <a href="#">Assigner des mutations</a>
+          <a href="#">Mutations</a>
+          <i className="bell">{mutationNotifications}</i>
        </div>
        </Link>
        </BrowserRouter>
