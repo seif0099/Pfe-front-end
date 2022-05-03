@@ -23,6 +23,8 @@ import Missions from "../components/employee/mission/Mission";
 import RapportMissionsAdmin from "../components/admin/mission/RapportMissions";
 import Demande from "../components/employee/demAdministrative/Demande";
 import SuppHourMng from "../components/employee/heure-supp/suppHoursMng";
+import DemandesAdministrative from "../components/admin/demande/demande";
+import AdminProfile from "../components/admin/profile/profile";
 
 export const publicRoutes = [
     {   
@@ -139,5 +141,13 @@ export const adminRoutes = [
     {   exact:true,
         component:RapportMissionsAdmin,
         path:'/admin/rapportmissions'
+    },
+    {   exact:true,
+        component:DemandesAdministrative,
+        path:'/admin/demandesadmin'
+    },
+    {   exact:true,
+        component:AdminProfile,
+        path:'/admin/profile'
     },
 ]

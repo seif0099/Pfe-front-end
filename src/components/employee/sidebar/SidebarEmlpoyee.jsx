@@ -32,6 +32,7 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
         },
       }).then(function(result){
         result.json().then(function(res){
+          console.log(res)
           let leaves = []
           let re = res.notifs.filter(row => 
             row.type == "leave"
@@ -40,6 +41,7 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
           let re1 = res.notifs.filter(row => 
             row.type == "supphours"
           )
+          console.log(re1)
           setsuppnotifs(re1.length)
           let re2 = res.notifs.filter(row => 
             row.type == "mission"
@@ -125,7 +127,7 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
         <div className="sidebar__link"  onClick={()=>setActiveComp("suppMng")}>
           <i className="fa fa-book"></i>
           <a href="#">Consulter les demandes</a>
-          <i className="bell">{leaveNotifications}</i>
+          <i className="bell">{suppNotifications}</i>
         </div>
        </Link>
       </BrowserRouter>

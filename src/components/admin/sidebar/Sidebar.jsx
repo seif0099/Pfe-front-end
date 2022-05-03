@@ -4,12 +4,15 @@ import avatar from "../../../assets/avatar.png";
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
 import { useEffect } from 'react';
+import DemandesAdministrative from "../demande/demande";
 
 const Sidebar = ({ sideBarOpen, closeSideBar }) => {
+  const [userInfo, setUserInfo] = useState({});
   const [leaveNotifications, setleavenotifs] = useState(0)
   const [suppNotifications, setsuppnotifs] = useState(0)
   const [missionNotifications, setmissionnotifs] = useState(0)
-  const [mutationNotifications, setmutationnotifs] = useState(0)
+  const [mutationNotifications, setmutationnotifs] = useState(0) 
+  const [demandesNotifications, setdemandesNotifications] = useState(0)
   async function getNotifications(){
     let result = await fetch("http://localhost:9000/getAdminNotifications", {
         method: "GET",
@@ -41,13 +44,17 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
       );
   }
 	useEffect(() => {
+    if(JSON.parse(localStorage.getItem("admin-info"))){
+      const { user } = JSON.parse(localStorage.getItem("admin-info"));
+      setUserInfo(user)
+    }
     getNotifications();
 	}, []);
   return (
     <div className={sideBarOpen ? "sidebar-responsive" : ""} id="sidebar">
       <div className="sidebar__title">
         <div className="sidebar__img">
-          <img src={avatar} alt="avatar" />
+          <img src={"http://localhost:9000/public/uploads/"+userInfo.imageProfile} className="sidebarImage" alt="avatar" />
         </div>
         <i
           className="fa fa-times"
@@ -91,6 +98,15 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
           <i className="fa fa-handshake-o"></i>
           <a href="#">Heures supplémentaires</a>
           <i className="bell">{suppNotifications}</i>
+        </div>
+        </Link>
+        </BrowserRouter>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/admin/demandesadmin">
+        <div className="sidebar__link">
+          <i className="fa fa-handshake-o"></i>
+          <a href="#">Demandes administratives</a>
+          <i className="bell">{demandesNotifications}</i>
         </div>
         </Link>
         </BrowserRouter>

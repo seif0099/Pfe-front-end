@@ -1,19 +1,9 @@
 employée
-    - demande administ
-        - not done yet
-    - supphours
-        - consulte
    - accueil
         - promotion
         - sanction
-    - mission
-        - send notif emp -> admin
-
 admin
-       - profile
-        - not done yet
-    - demande administ
-        - not done yet
+    - rapport acc
 autres
     - home design
     - responsive design
