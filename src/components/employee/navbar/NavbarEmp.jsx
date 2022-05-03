@@ -4,7 +4,6 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
 import { useEffect,useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'  
 import { Redirect } from "react-router-dom";
 const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
   const [userInfo, setUserInfo] = useState({});

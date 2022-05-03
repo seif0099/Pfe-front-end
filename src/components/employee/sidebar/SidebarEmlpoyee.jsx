@@ -92,6 +92,15 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
 
         </Link>
         </BrowserRouter>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/Demande">
+        <div className="sidebar__link">
+          <i className="fa fa-handshake-o"></i>
+          <a href="#">Demande administrative</a>
+        </div>
+        </Link>
+        </BrowserRouter>
+
        <BrowserRouter forceRefresh={true}>
        <Link to="/Rapport">
         <div className="sidebar__link"  onClick={()=>setActiveComp("rapport")}>
@@ -100,21 +109,28 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
         </div>
         </Link>
         </BrowserRouter>
+        <h2>Heure supplimentaire</h2>
         <BrowserRouter forceRefresh={true}>
         <Link to="/SuppHours">
         <div className="sidebar__link" onClick={()=>setActiveComp("suppHours")}>
           <i className="fa fa-wrench"></i>
-          <a href="#">Heure supplimentaire</a>
+          <a href="#">Demande</a>
 
         </div>
         {activeComp==="suppHours" && <SuppHours/>}
-
-        </Link>
-</BrowserRouter>
-        <div className="sidebar__link">
-          <i className="fa fa-handshake-o"></i>
-          <a href="#">Demande administrative</a>
+         </Link>
+          </BrowserRouter>
+          <BrowserRouter forceRefresh={true}>
+        <Link to="/suppManagement">
+        <div className="sidebar__link"  onClick={()=>setActiveComp("suppMng")}>
+          <i className="fa fa-book"></i>
+          <a href="#">Consulter les demandes</a>
+          <i className="bell">{leaveNotifications}</i>
         </div>
+       </Link>
+      </BrowserRouter>
+
+
 
         <h2> Congé</h2>
         <BrowserRouter forceRefresh={true}>
