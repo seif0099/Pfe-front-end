@@ -1,8 +1,19 @@
 import "./Navbar.css";
 import avatar from "../../../assets/avatar.png";
 import React from "react";
+import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect,useState } from 'react';
+import { Link } from "react-router-dom";
 
 const Navbar = ({ sideBarOpen, openSideBar }) => {
+  const [userInfo, setUserInfo] = useState({});
+
+  useEffect(() => {
+	  if(JSON.parse(localStorage.getItem("admin-info"))){
+      const { user } = JSON.parse(localStorage.getItem("admin-info"));
+      setUserInfo(user)
+    }
+  }, []);
   function logout(){
     localStorage.removeItem("admin-info")
     window.location.href = "/admin-signin"
@@ -25,9 +36,11 @@ const Navbar = ({ sideBarOpen, openSideBar }) => {
         <a href="#">
           <i className="fa fa-clock-o"></i>
         </a>
-        <a href="#">
-          <img width={30} src={avatar} alt="avatar" />
-        </a>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/admin/profile">
+          <img className="navbarImage" width={30} src={"http://localhost:9000/public/uploads/"+userInfo.imageProfile} alt="avatar" />
+        </Link>
+        </BrowserRouter>
         <a onClick={logout}>
         <i className="fa fa-power-off logout"></i>
         </a>
@@ -35,5 +48,4 @@ const Navbar = ({ sideBarOpen, openSideBar }) => {
     </nav>
   );
 };
-
 export default Navbar;
