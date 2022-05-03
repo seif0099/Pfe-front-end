@@ -25,7 +25,7 @@ function SuppHourMng() {
   
   
   async function deleteRequest(id){
-    let URL = "http://localhost:9000/deletesupphour?id="+id
+    let URL = "http://localhost:9000/deletereqhours?id="+id
     let result = await fetch(URL, {
       method: "DELETE",
       headers: {
@@ -38,7 +38,7 @@ function SuppHourMng() {
  
   async function getRequests(){
     let id = JSON.parse(localStorage.getItem("user-info")).user._id
-    let URL = "http://localhost:9000/getrequestedhours?id="+id
+    let URL = "http://localhost:9000/getreqhours?id="+id
       let result = await fetch(URL, {
       method: "GET",
       headers: {
@@ -63,7 +63,7 @@ function SuppHourMng() {
         <div className="wrapper">
         <div className="inner inner1">
           <form action="submit">
-            <h3>Demande de congé</h3>
+            <h3>Demande des heures supplémentaires</h3>
         
           
         
@@ -84,11 +84,10 @@ function SuppHourMng() {
                         {requests.map(row => 
                         
                             <tr>
-                                        
-                
-                                <td>{parseDate(row.fromDate)}</td>
-                                <td>{parseDate(row.toDate)}</td>
-                                <td>{row.reasonForLeave}</td>
+                                 <td>{parseDate(row.date)}</td>
+                                <td>{row.fromDate}</td>
+                                <td>{row.toDate}</td>
+                                <td>{row.typeOfWork}</td>
                                 <td>{row.status}</td>
                                 {row.status === "pending" ? <td className="ops">
                                 
