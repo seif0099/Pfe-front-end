@@ -6,10 +6,11 @@ employée
    - accueil
         - promotion
         - sanction
-admin
     - mission
         - send notif emp -> admin
-    - profile
+
+admin
+       - profile
         - not done yet
     - demande administ
         - not done yet

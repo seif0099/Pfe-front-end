@@ -17,7 +17,7 @@ function Demande() {
   async function reqDemande(data) {
 
     data.userid = userInfo?._id
-    let result = await fetch("http://localhost:9000/demande", {
+    let result = await fetch("http://localhost:9000/demandeAdministrative", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ function Demande() {
 		},
 		validate,
 		onSubmit: (values) => {
-            console.log("aa",values)
+      reqDemande(values)
 		},
 	  }); 
   return (
