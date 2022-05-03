@@ -11,6 +11,8 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Mutation from '../../admin/mutation/AdminMutation';
 import MutationManagement from './../mutation/MutationManagement';
 import Missions from "../mission/Mission";
+import Popup from 'react-animated-popup'
+
 const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
   let user = JSON.parse(localStorage.getItem('user-info'));
   const [myUser, setMyUser] = useState({});
@@ -19,8 +21,14 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
   const [suppNotifications, setsuppnotifs] = useState(0)
   const [missionNotifications, setmissionnotifs] = useState(0)
   const [mutationNotifications, setmutationnotifs] = useState(0)
+  const [prom, setpromnotifs] = useState(0)
+
   const [userInfo, setUserInfo] = useState({});
   const [activeComp,setActiveComp] = useState(""); 
+  const [visible, setVisible] = useState(false)
+  const [checked, setChecked] = useState(false);
+
+const[news,setNews]=useState([]);
     
   async function getNotifications(){
     console.log("f jbal",JSON.parse(localStorage.getItem("user-info")).user)
@@ -48,20 +56,38 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
           let re3 = res.notifs.filter(row => 
             row.type == "mutation"
           )
-          setmutationnotifs(re3.length)
-        })
+          setpromnotifs(re3.length)
+        
+          let re4 = res.notifs.filter(row => 
+            row.type == "promotion" || row.type =="sanction" 
+            
+            )
+            setNews(re4)
+         })
       }
       );
   }
+  const handleChange = () => {
+    setChecked(!checked);
+  };
   useEffect(() =>  {
     if(JSON.parse(localStorage.getItem("user-info"))){
       console.log("dd")
       const { user } = JSON.parse(localStorage.getItem("user-info"));
       setUserInfo(user)
+      
     }
     getNotifications();
+    setVisible(true)
 
 }, []);
+const containerStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minHeight: '10vh'
+}
+
   return (
     
     <div className={sideBarOpen ? "sidebar-responsive" : ""} id="sidebar">
@@ -80,6 +106,19 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
           <i className="fa fa-home"></i>
           <a href="#">Dashboard</a>
         </div>
+        <div className='App' >
+      <Popup visible={visible} onClose={() => setVisible(false)}>
+        You Have been promoted from {userInfo.service} to {news}
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={handleChange}
+        />             
+
+      </Popup>
+    </div>
+
+
         <h2>Management</h2>
       <BrowserRouter forceRefresh={true}>
        <Link to="/Pointage">
