@@ -43,7 +43,6 @@ function DemandesAdministrative() {
                 </tr>
               </thead>
               <tbody>
-			  {console.log(requests)}
 			  {requests.map(row => 
 			  
 					  <tr>

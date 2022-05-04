@@ -12,7 +12,6 @@ const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
 
   useEffect(() => {
 	  if(JSON.parse(localStorage.getItem("user-info"))){
-      console.log("xx")
       const { user } = JSON.parse(localStorage.getItem("user-info"));
       setUserInfo(user)
     }

@@ -75,13 +75,10 @@ function Pointage() {
 
       }
     }
-    console.log("doffs", doffs)
     for(var i=0;i < doffs.length;i++){
       p[doffs[i]-1] = "congé"
     }    
-    console.log(p)
-    //console.log(daysoff)
-
+  
 
     setNumberOfDays(numberOfDays)
 
@@ -115,7 +112,6 @@ function Pointage() {
 		if(!values.year){
 			errors.year = "* Le champ année est obligatoire";
 		}
-		console.log(errors)
 		return errors;
 	  }
 	

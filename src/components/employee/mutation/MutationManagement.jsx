@@ -14,7 +14,6 @@ function MutationManagement() {
     closeOnOverlayClick: true
   });
   function setData(pointer){
-    console.log("p", pointer)
     var result = []
     requests.map((row, index) => {
       let newRequests = {}
@@ -26,7 +25,6 @@ function MutationManagement() {
       result.push(newRequests)
     })
     setMutationInfo(result.filter(row => row._id === pointer)[0])
-    console.log(mutationInfo)
   }
   
   async function deleteRequest(id){

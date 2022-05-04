@@ -6,7 +6,6 @@ import { Icon } from "@iconify/react";
 function ApplySuppHours() {
 	var [requests, setRequests] = useState([])
 	async function acceptRequest(id){
-		console.log(id)
 		let URL = "http://localhost:9000/adminSuppHoursAccept?id="+id
 		let result = await fetch(URL, {
 			method: "PUT",
@@ -66,7 +65,6 @@ function ApplySuppHours() {
                 </tr>
               </thead>
               <tbody>
-			  {console.log(requests)}
 			  {requests.map(row => 
 			  
 					  <tr>

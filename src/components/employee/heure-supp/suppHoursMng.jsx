@@ -9,7 +9,6 @@ function SuppHourMng() {
 
   
   function setData(pointer){
-    console.log("p", pointer)
     var result = []
     requests.map((row, index) => {
       let newRequests = {}

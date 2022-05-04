@@ -12,7 +12,6 @@ function Promotion() {
   useEffect(() => {
     const fetcha = async () => {
     let URL = "http://localhost:9000/users"
-    console.log(URL)
     let result = await fetch(URL, {
       method: "GET",
       headers: {
@@ -33,7 +32,6 @@ function Promotion() {
 		newPoste:newPoste,
 		userid: userid,
 	  };
-	  console.log(item)
 	  const URL = "http://localhost:9000/createprom"
 	  let result = await fetch(URL, {
 		method: "POST",

@@ -6,7 +6,6 @@ import { Icon } from "@iconify/react";
 function ApplyLeave() {
 	var [requests, setRequests] = useState([])
 	async function acceptRequest(id){
-		console.log(id)
 		let URL = "http://localhost:9000/adminRequestsAccept?id="+id
 		let result = await fetch(URL, {
 			method: "PUT",
@@ -66,7 +65,6 @@ function ApplyLeave() {
                 </tr>
               </thead>
               <tbody>
-			  {console.log(requests)}
 			  {requests.map(row => 
 			  
 					  <tr>

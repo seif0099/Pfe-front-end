@@ -14,7 +14,6 @@ function LeaveManagement() {
     closeOnOverlayClick: true
   });
   function setData(pointer){
-    console.log("p", pointer)
     var result = []
     requests.map((row, index) => {
       let newRequests = {}

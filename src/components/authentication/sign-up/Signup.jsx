@@ -15,11 +15,9 @@ function Signup() {
       body: JSON.stringify(data)
     });
     let results = await result.json();
-    console.log(results)
     if (results.success) {
       window.location.href = "/login"
     }else{
-      console.log(results)
       setError(results.error)
     }
   }

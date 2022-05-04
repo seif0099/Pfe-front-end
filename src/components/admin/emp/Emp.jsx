@@ -17,7 +17,6 @@ function Emp() {
 	}
 	async function getUsers(){
         let URL = "http://localhost:9000/users"
-        console.log(URL)
         let result = await fetch(URL, {
           method: "GET",
           headers: {
@@ -56,7 +55,6 @@ function Emp() {
                 </tr>
               </thead>
               <tbody>
-			  {console.log(emp)}
 			  {emp.map(row => 
 			  
 					  <tr>

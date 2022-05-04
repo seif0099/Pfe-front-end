@@ -37,7 +37,6 @@ function InsertPointage() {
 		pDate:pDate,
 		userid: userid,
 	  };
-	  console.log(item)
 	  const URL = "http://localhost:9000/adminPointage"
 	  let result = await fetch(URL, {
 		method: "POST",
@@ -52,7 +51,6 @@ function InsertPointage() {
 	}
     function handleUserid(e){
 setUserid(e.target.value)
-console.log(e.target.value);
     }
 
 

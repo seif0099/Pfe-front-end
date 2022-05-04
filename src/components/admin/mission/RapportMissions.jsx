@@ -6,7 +6,6 @@ function RapportMissionsAdmin() {
   
     var [missions, setMissions] = useState([])
     function openPDF(mission){
-      console.log(mission)
       generatePDF(mission)
     }
     async function getMissions(){

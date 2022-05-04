@@ -25,7 +25,6 @@ function Mutation() {
       },
       body: JSON.stringify(data),
     });
-    console.log(data)
 
     if(result.status == 200){
 	  	setSuccess("Demande envoyé avec succés")
