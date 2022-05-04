@@ -1,5 +1,5 @@
 nav { 
-  background-color: #3572aa;
+  background-color: #252636;
   font-family: 'Updock', cursive;
 
 
@@ -11,21 +11,21 @@ nav {
   display: inline-block;
   background-color: inherit;
   border: none;
+  margin-top: 10px;
 }
 .menu-content {
   display: none;
   position: absolute;
-  background-color: #3572aa;
+  background-color: #252636;
   min-width: 160px;
   z-index: 1;
 
 }
 .menu-btn {
-  background-color: #3572aa;
   color: white;
   font-size: 20px;
   border: none;
-  font-family: 'Updock', cursive;
+  font-family: 'Inter', sans-serif;
 
 }
 .links,.links-hidden{
@@ -34,7 +34,7 @@ nav {
   padding: 16px 26px;
   text-decoration: none;
   font-size: 20px;
-  font-family: 'Updock', cursive;
+  font-family: 'Inter', sans-serif;
 
 }
 .links-hidden{
@@ -70,9 +70,19 @@ nav {
   margin-top: 5%;
   margin-left: 15%;
 }
-.leftPanel button {
-  margin-top: 100px;
+
+.buttna{
+  background-color: #252636 !important;
+  height: 40px;
   width: 250px;
-  margin-right: 300px;
-  background-color: #3572aa;
+  color:#D1D5DB;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+
+}
+.buttna:hover{
+  background-color: #353969 !important;
+
 }

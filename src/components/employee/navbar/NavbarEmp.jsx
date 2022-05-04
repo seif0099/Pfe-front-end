@@ -28,18 +28,10 @@ const NavbarEmp = ({ sideBarOpen, openSideBar }) => {
         <i className="fa fa-bars"></i>
       </div>
       <div className="navbar_left">
-        
-        <a className="active_link" href="#">
-          Bienvenu {userInfo?.nom} {userInfo?.prenom}
-        </a>
+       
       </div>
       <div className="navbar_right">
-        <a href="#">
-          <i className="fa fa-search"></i>
-        </a>
-        <a href="#">
-          <i className="fa fa-clock-o"></i>
-        </a>
+      
         <BrowserRouter forceRefresh={true}>
         <Link to="/Profile">
           <img className="navbarImage" width={30} src={"http://localhost:9000/public/uploads/"+userInfo.imageProfile} alt="avatar" />

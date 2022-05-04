@@ -18,7 +18,7 @@ function AdminSignin() {
       let results = await result.json();
       if (results?.success) {
         localStorage.setItem("admin-info", JSON.stringify(results));
-        window.location.href = "/admin"
+        window.location.href = "/admin/pointage"
 
 
       }else{
@@ -63,6 +63,7 @@ function AdminSignin() {
 		},
 	  });
   return (
+    <div className="cont">
     <div className="login">
     <form>
           <span className="mySpan">Se connecter</span>
@@ -84,12 +85,13 @@ function AdminSignin() {
                 ? <p className="errors">{errors.password}</p>
                 : null}
             <div className="field">
-              <input type="button" name="submit" value="Continue" onClick={handleSubmit}/>
+              <input type="button" className="loginButton" name="submit" value="Continue" onClick={handleSubmit}/>
             </div>
             {errorResponse
                 ? <p className="errors">{errorResponse}</p>
                 : null}
             </form>
+  </div>
   </div>
 );
 

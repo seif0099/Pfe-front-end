@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react';
 import React,{useState,useEffect} from 'react'
 import "./mission.css"
 import generatePDF from "./reportgen";
@@ -30,7 +31,7 @@ function RapportMissionsAdmin() {
   }
 
   return (
-    <div>
+    <div className='cont'>
     <div className="wrapper">
     <div className="inner inner1">
       <form action="submit">
@@ -67,7 +68,7 @@ function RapportMissionsAdmin() {
             {row.status === "terminée" ? <td className="ops">
               
 
-            <i className="fa fa-eye eye" onClick={() => openPDF(row)}></i>
+            <Icon icon="icomoon-free:file-pdf" width="25" height="25" hFlip={true} className="edit" onClick={() => openPDF(row)}/>
             </td> : <td></td>}
             
           </tr>

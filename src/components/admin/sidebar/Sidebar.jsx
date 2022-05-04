@@ -4,7 +4,7 @@ import avatar from "../../../assets/avatar.png";
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
 import { useEffect } from 'react';
-import DemandesAdministrative from "../demande/demande";
+import { Icon } from "@iconify/react";
 
 const Sidebar = ({ sideBarOpen, closeSideBar }) => {
   const [userInfo, setUserInfo] = useState({});
@@ -13,6 +13,8 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
   const [missionNotifications, setmissionnotifs] = useState(0)
   const [mutationNotifications, setmutationnotifs] = useState(0) 
   const [demandesNotifications, setdemandesNotifications] = useState(0)
+  const [rapportNotifications, setRapportNotifications] = useState(0)
+
   async function getNotifications(){
     let result = await fetch("http://localhost:9000/getAdminNotifications", {
         method: "GET",
@@ -39,6 +41,14 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
             row.type == "mutation"
           )
           setmutationnotifs(re3.length)
+          let re4 = res.notifs.filter(row => 
+            row.type == "demande"
+          )
+          setdemandesNotifications(re4.length)
+          let re5 = res.notifs.filter(row => 
+            row.type == "accident"
+          )
+          setRapportNotifications(re5.length)
         })
       }
       );
@@ -63,31 +73,35 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
         ></i>
       </div>
       <div className="sidebar__menu">
-        <div className="sidebar__link active_menu_link">
-          <i className="fa fa-home"></i>
-          <a href="#">Dashboard</a>
-        </div>
+        
         <h2>Admin Management</h2>
-     
-        <BrowserRouter forceRefresh={true}>
-        <Link to="/admin/promotion">
-        <div className="sidebar__link">
-          <i className="fa fa-building-o"></i>
-          <a href="#">Promotion</a>
-        </div>
-        </Link>
-        </BrowserRouter>
         <BrowserRouter forceRefresh={true}>
         <Link to="/admin/GestionEmp">
         <div className="sidebar__link">
-          <i className="fa fa-wrench"></i>
-          <a href="#">employee</a>
+        <Icon icon="bx:user" width="25" height="25" hFlip={true} />
+          <a href="#">Employée</a>
         </div>
         </Link></BrowserRouter>
         <BrowserRouter forceRefresh={true}>
+        <Link to="/admin/pointage">
+        <div className="sidebar__link">
+        <Icon icon="bx:user" width="25" height="25" hFlip={true} />
+          <a href="#">Pointage</a>
+        </div>
+        </Link></BrowserRouter>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/admin/promotion">
+        <div className="sidebar__link">
+        <Icon icon="ep:promotion" width="25" height="25" />
+        <a href="#">Promotion</a>
+        </div>
+        </Link>
+        </BrowserRouter>
+        
+        <BrowserRouter forceRefresh={true}>
         <Link to="/admin/sanction">
         <div className="sidebar__link">
-          <i className="fa fa-archive"></i>
+        <Icon icon="ci:warning-outline" width="25" height="25" />
           <a href="#">Sanction</a>
         </div>
         </Link>
@@ -95,7 +109,7 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
         <BrowserRouter forceRefresh={true}>
         <Link to="/admin/supphours">
         <div className="sidebar__link">
-          <i className="fa fa-handshake-o"></i>
+        <Icon icon="clarity:hourglass-outline-alerted" width="25" height="25" />
           <a href="#">Heures supplémentaires</a>
           <i className="bell">{suppNotifications}</i>
         </div>
@@ -104,18 +118,27 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
         <BrowserRouter forceRefresh={true}>
         <Link to="/admin/demandesadmin">
         <div className="sidebar__link">
-          <i className="fa fa-handshake-o"></i>
+        <Icon icon="wpf:ask-question" width="25" height="25" />
           <a href="#">Demandes administratives</a>
           <i className="bell">{demandesNotifications}</i>
         </div>
         </Link>
         </BrowserRouter>
-        <h2> Leave</h2>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/admin/rapport">
+        <div className="sidebar__link">
+        <Icon icon="fa6-solid:truck-medical" width="25" height="25" />
+          <a href="#">Rapports des accidents</a>
+          <i className="bell">{rapportNotifications}</i>
+       </div>
+       </Link>
+       </BrowserRouter>
+        <h2> Congé</h2>
         <BrowserRouter forceRefresh={true}>
         <Link to="/admin/requests">
         <div className="sidebar__link">
-          <i className="fa fa-question"></i>
-          <a href="#">requests</a>
+        <Icon icon="pepicons:leave" width="25" height="25" />
+          <a href="#">Demandes congé</a>
           <i className="bell">{leaveNotifications}</i>
 
         </div>
@@ -126,7 +149,7 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
         <BrowserRouter forceRefresh={true}>
         <Link to="/admin/mission">
         <div className="sidebar__link">
-          <i className="fa fa-money"></i>
+        <Icon icon="akar-icons:arrow-back" width="25" height="25" hFlip={true} />
           <a href="#">Assigner des missions</a>
        </div>
        </Link>
@@ -134,7 +157,7 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
        <BrowserRouter forceRefresh={true}>
         <Link to="/admin/rapportmissions">
         <div className="sidebar__link">
-          <i className="fa fa-money"></i>
+        <Icon icon="akar-icons:eye" width="25" height="25" hFlip={true} />
           <a>Missions</a>
           <i className="bell">{missionNotifications}</i>
        </div>
@@ -145,12 +168,13 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
         <BrowserRouter forceRefresh={true}>
         <Link to="/admin/mutation">
         <div className="sidebar__link">
-          <i className="fa fa-money"></i>
+        <Icon icon="material-symbols:change-circle-outline-rounded" width="25" height="25" hFlip={true} />
           <a href="#">Mutations</a>
           <i className="bell">{mutationNotifications}</i>
        </div>
        </Link>
        </BrowserRouter>
+
       </div>
     </div>
   );

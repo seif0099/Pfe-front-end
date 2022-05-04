@@ -136,7 +136,7 @@ function Pointage() {
 		},
 	  }); 
   return (
-    <div className="limiter">
+    <div className="cont">
     <div className="wrapper">
    <div className="inner inner1">
      <form>
@@ -148,7 +148,7 @@ function Pointage() {
               
               pointages.map((row,index) => 
               
-              <table className="table table-striped table-bordered" id="example" >
+              <table className="table  table-bordered border" id="example" >
               <thead>
                 <tr>
                   <th>
@@ -223,8 +223,9 @@ function Pointage() {
         						: null}
               </div>
               <div className='myButton'>
-              <input type="button" className="form-control aa"  onClick={handleSubmit} value="Confirmer" />
+              <input type="button" className="form-control myB"  onClick={handleSubmit} value="Confirmer" />
               </div>
+              
           </div>
           <hr></hr>
           <div className='legende'>

@@ -65,6 +65,7 @@ function ReqLeave() {
 		},
 	  }); 
   return (
+    <div className="cont">
     <div className="wrapper w11">
       <div className="inner inner2">
         <form>
@@ -148,6 +149,7 @@ function ReqLeave() {
         						: null}
         </form>
       </div>
+    </div>
     </div>
   );
 }

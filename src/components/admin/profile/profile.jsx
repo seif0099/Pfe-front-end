@@ -95,6 +95,7 @@ function AdminProfile() {
 
       }
   return (
+    <div className='cont'>
   <div className="wrapper">
       <div className="inner inner1">
       <form>
@@ -105,7 +106,7 @@ function AdminProfile() {
           setSelectedImage(event.target.files[0]);
         }}/>
             <img className="userImg" src={"http://localhost:9000/public/uploads/"+userInfo.imageProfile} alt="avatar" onClick={openBrowseFile} />
-            <input type="button" className='uploadButton' value="Upload" onClick={uploadImg} />
+            <input type="button" className='loginButton uploadButton' value="Upload" onClick={uploadImg} />
           </div>
           </div>
           <div className="divider">
@@ -150,7 +151,7 @@ function AdminProfile() {
                 : null}
             <div className="field1">
 
-              <input type="button" name="submit" value="Confirmer" onClick={handleSubmit}/>
+              <input type="button" name="submit" className='loginButton' value="Confirmer" onClick={handleSubmit}/>
             </div>
             {successResponse
         						? <h1 className="serverSuccess">{successResponse}</h1>
@@ -160,6 +161,7 @@ function AdminProfile() {
         						: null}
             </form>          
       </div>
+    </div>
     </div>
   )
 }

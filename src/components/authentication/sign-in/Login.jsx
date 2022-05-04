@@ -61,6 +61,7 @@ function Login() {
 		},
 	  });
   return (
+    <div className="cont">
       <div className="login">
         <form>
               <span className="mySpan">Se connecter</span>
@@ -82,12 +83,13 @@ function Login() {
         						? <p className="errors">{errors.password}</p>
         						: null}
                 <div className="field">
-                  <input type="button" name="submit" value="Continue" onClick={handleSubmit}/>
+                  <input type="button" className="loginButton" name="submit" value="Continue" onClick={handleSubmit}/>
                 </div>
                 {errorResponse
         						? <p className="errors">{errorResponse}</p>
         						: null}
                 </form>
+      </div>
       </div>
   );
 }

@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react';
 import React,{useState,useEffect} from 'react'
 
 function AdminMutation() {
@@ -36,7 +37,7 @@ useEffect(() => {
 	
 
   return (
-	<div>
+	<div className='cont'>
 	<div className="wrapper wrapper3">
 		  <div className="inner inner3">
 			  <form action="submit">
@@ -68,8 +69,8 @@ useEffect(() => {
 						<td>{row.to}</td>
 						<td>{row.reasonForMutation}</td>
 						<td className="ops">
-						<i className="fa fa-check accept" onClick={() => updateMutation(row._id, "accepted")}></i>
-						<i className="fa fa-trash trashbin" onClick={() => updateMutation(row._id, "refused")}></i>
+						<Icon icon="akar-icons:check-box" width="25" height="25" hFlip={true} className="edit"   onClick={() => updateMutation(row._id, "accepted")}/>
+						<Icon icon="bi:trash" width="25" height="25" hFlip={true} className="edit"   onClick={() => updateMutation(row._id, "refused")}/>
 						</td>
 					</tr>
 				)

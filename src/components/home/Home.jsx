@@ -6,12 +6,13 @@ import "./home.css"
 
 function Home() {
   return (
+    <div>
     <div className='hcontainer'>
       <nav>
         <a className="links" href="#">Accueil</a>
         <a className="links" href="#">A propos</a>
         <div className="dropdown-menu">
-        <a className="menu-btn">Se connecter </a>
+        <a className="menu-btn ">Se connecter </a>
         <div className="menu-content">
         <BrowserRouter forceRefresh={true}>
         <Link to="/login" className="btn-get-started">
@@ -45,9 +46,9 @@ function Home() {
                     grands groupes: La préparation du terrain, extraction,
                     production et la commercialisation des phosphates.
                   </h2>
-                  <BrowserRouter>
-                  <Link to="/about" className="btn-get-started">
-                    <button >Commencer</button>
+                  <BrowserRouter forceRefresh={true}>
+                  <Link to="/login" className="btn-get-started">
+                    <button className='buttna' >Commencer</button>
                   </Link>
                   </BrowserRouter>
           </div>
@@ -63,7 +64,7 @@ function Home() {
           </div>
       </div>
                 
-      </div>
+      </div></div>
   )
 }
 

@@ -100,6 +100,8 @@ function Profile() {
 
       }
   return (
+    <div className="cont">
+
   <div className="wrapper">
       <div className="inner inner1">
       <form>
@@ -182,6 +184,7 @@ function Profile() {
         						: null}
             </form>          
       </div>
+    </div>
     </div>
   )
 }

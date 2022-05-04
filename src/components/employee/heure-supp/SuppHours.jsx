@@ -68,7 +68,7 @@ function SuppHours() {
 		},
 	  });
   return (
-    <div>
+    <div className="cont">
         
         <div className="wrapper">
 			<div className="inner inner1">

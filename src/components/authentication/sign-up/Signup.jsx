@@ -98,7 +98,7 @@ signUp(values)
 },
 	  });
   return (
-    
+    <div className="cont">
     <div className="signup">
     <form>
           <span className="mySpan">S'inscrire</span>
@@ -197,13 +197,14 @@ signUp(values)
                 : null}
             <div className="field1">
 
-              <input type="button" name="submit" value="Continue" onClick={handleSubmit}/>
+              <input type="button" className="loginButton" name="submit" value="Continue" onClick={handleSubmit}/>
             </div>
             {errorResponse
                 ? <p className="errors">{errorResponse}</p>
                 : null}
             </form>
   </div>  
+  </div>
   )
 }
 

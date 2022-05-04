@@ -59,6 +59,7 @@ function Demande() {
 		},
 	  }); 
   return (
+    <div className="cont">
     <div className="wrapper w11">
       <div className="inner inner2">
         <form>
@@ -112,6 +113,7 @@ function Demande() {
         						: null}
         </form>
       </div>
+    </div>
     </div>
   );
 }

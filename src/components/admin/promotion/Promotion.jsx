@@ -56,8 +56,10 @@ function Promotion() {
 
 
   return (
-    <div className="wrapper">
-			<div className="inner inner1">
+	<div className='cont'>
+
+    <div className="wrapper wrapper4">
+			<div className="inner inner4">
 				<form>
 					<h3>Promotion</h3>
 					<div className="form-row">
@@ -93,7 +95,7 @@ function Promotion() {
 				
      
 					<button data-text="Confirmer la présence" type="button" onClick={insertion} className='form-control button1'>
-						Confirmer la présence
+						Confirmer la promotion
 					</button>
 					{successResponse
         						? <h1 className="serverSuccess">{successResponse}</h1>
@@ -102,7 +104,7 @@ function Promotion() {
 				
 			</div>
 		</div>
-
+</div>
   )
 }
 

@@ -17,7 +17,7 @@ import Home from './home/Home';
 import About from "./home/About";
 import { BrowserRouter } from "react-router-dom";
 import AdminRoutes from "../routes/adminRoutes";
-
+import "./main.css";
 function MainContainer() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
 
@@ -29,9 +29,7 @@ function MainContainer() {
   };
 
   return (
-    <>
- 
-      
+
       <Router>
         <Switch>
           {privateRoutes.map((Route) => (
@@ -47,22 +45,24 @@ function MainContainer() {
           ))}
           {publicRoutes.map((Route) => (
             <PublicRoutes path={Route.path} exact={Route.exact} >
+             
               <Route.component />
             </PublicRoutes>
           ))}
+
           {adminRoutes.map((Route) => (
             <AdminRoutes path={Route.path} exact={Route.exact} >
               <Navbar></Navbar>
+              <Route.component />
               <Sidebar></Sidebar>
-            <Route.component />
+            
           </AdminRoutes>
           ))}
         </Switch>
       </Router>
       
-          
+ 
          
-    </>
   );
 }
 

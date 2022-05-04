@@ -25,6 +25,7 @@ import Demande from "../components/employee/demAdministrative/Demande";
 import SuppHourMng from "../components/employee/heure-supp/suppHoursMng";
 import DemandesAdministrative from "../components/admin/demande/demande";
 import AdminProfile from "../components/admin/profile/profile";
+import RappAccidentAdmin from "../components/admin/rappAccident/RappAccidentAdmin";
 
 export const publicRoutes = [
     {   
@@ -108,7 +109,7 @@ export const privateRoutes = [
 export const adminRoutes = [
     {   exact:true,
         component:InsertPointage,
-        path:'/admin'
+        path:'/admin/pointage'
     },
     {   exact:true,
         component:Promotion,
@@ -149,5 +150,9 @@ export const adminRoutes = [
     {   exact:true,
         component:AdminProfile,
         path:'/admin/profile'
+    },
+    {   exact:true,
+        component:RappAccidentAdmin,
+        path:'/admin/rapport'
     },
 ]

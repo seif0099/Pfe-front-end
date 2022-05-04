@@ -1,6 +1,7 @@
 import React from "react";
 import "./applyleave.css";
 import { useEffect,useState } from 'react';
+import { Icon } from "@iconify/react";
 
 function ApplyLeave() {
 	var [requests, setRequests] = useState([])
@@ -44,7 +45,7 @@ function ApplyLeave() {
 		getRequests();
 	}, []);
   return (
-    <div>
+    <div className="cont">
       <div className="wrapper wrapper3">
 			<div className="inner inner3">
 				<form action="submit">
@@ -76,8 +77,8 @@ function ApplyLeave() {
 						  <td>{row.toDate}</td>
 						  <td>{row.reasonForLeave}</td>
 						  <td className="ops">
-						  <i className="fa fa-check accept" onClick={() => acceptRequest(row._id)}></i>
-						  <i className="fa fa-trash trashbin" onClick={() => refuseRequest(row._id)}></i>
+						  <Icon icon="akar-icons:check-box" width="25" height="25" hFlip={true} className="edit"  onClick={() => acceptRequest(row._id)}/>
+						  <Icon icon="bi:trash" width="25" height="25" hFlip={true} className="edit"   onClick={() => refuseRequest(row._id)}/>
 						  </td>
 					  </tr>
 				  )

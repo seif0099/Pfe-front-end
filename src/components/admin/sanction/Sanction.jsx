@@ -80,9 +80,9 @@ function Sanction() {
 		},
 	  });
   return (
-    <div>
-        <div className="wrapper">
-			<div className="inner inner1">
+    <div className='cont'>
+        <div className="wrapper wrapper4">
+			<div className="inner inner4">
 				<form action="submit">
 					<h3>Sanction</h3>
 					<div className="form-row">
@@ -130,7 +130,7 @@ function Sanction() {
 				</div>
         
 					<button data-text="Confirmer" className="form-control button1" type="button" onClick={handleSubmit}>
-						Confirmer
+						Confirmer la sanction
 					</button>
 					{successResponse
         						? <h1 className="serverSuccess">{successResponse}</h1>

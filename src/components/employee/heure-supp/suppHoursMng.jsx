@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from "react";
 
+import { Icon } from '@iconify/react';
 
 function SuppHourMng() {
   const [userInfo, setUserInfo] = useState({});
@@ -59,7 +60,8 @@ function SuppHourMng() {
     return dateObj.toLocaleDateString()
   }
   
-  return ( 
+  return (
+    <div className="cont" >
         <div className="wrapper">
         <div className="inner inner1">
           <form action="submit">
@@ -92,7 +94,7 @@ function SuppHourMng() {
                                 {row.status === "pending" ? <td className="ops">
                                 
 
-                                <i className="fa fa-trash trashbin" onClick={() => deleteRequest(row._id)}></i>
+                                <Icon icon="bi:trash" width="25" height="25" hFlip={true} className="edit" onClick={() => deleteRequest(row._id)}/>
                                 
                                 </td> : <td></td>}
                                 
@@ -107,7 +109,7 @@ function SuppHourMng() {
           </form>
         </div>
       </div>
-        
+      </div>
     );
   
 }

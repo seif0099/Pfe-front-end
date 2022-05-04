@@ -94,6 +94,7 @@ function Mission() {
 	  });
 
   return (
+	  <div className='cont'>
     <div className="wrapper">
 			<div className="inner inner1">
 				<form >
@@ -174,7 +175,7 @@ function Mission() {
 				</form>
 			</div>
 		</div>
-
+</div>
   )
 }
 

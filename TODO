@@ -1,12 +1,7 @@
-employée
-   - accueil
-        - promotion
-        - sanction
-admin
-    - rapport acc
+
+
 autres
     - home design
     - responsive design
     - .env (links + token)
-    - update response data (eg : cookies)
     - sidebar dropdowns

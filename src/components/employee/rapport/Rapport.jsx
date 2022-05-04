@@ -6,9 +6,9 @@ import { useFormik } from "formik";
 
 function Rapport() {
 	const [userInfo, setUserInfo] = useState({});
-  const [dateAcc, setDateAcc] = useState("");
-  const [place, setPlace] = useState("");
-  const [condition, setCondition] = useState("");
+	const [errorResponse, setError] = useState("");
+	const [successResponse, setSuccess] = useState("");
+
   useEffect(() => {
 	  if(JSON.parse(localStorage.getItem("user-info"))){
 		const { user } = JSON.parse(localStorage.getItem("user-info"));
@@ -26,6 +26,14 @@ function Rapport() {
       body: JSON.stringify(values),
     });
     let results = await result.json();
+	if(result.status == 200){
+		setSuccess("Demande envoyé avec succés")
+	  setError(null)
+	}
+	else{
+	  setSuccess(null)
+	  setError(result)
+	}
   }
   function validate(values) {
 	const errors = {};
@@ -59,7 +67,8 @@ values
 	},
   }); 
   return (
-   
+	<div className="cont">
+
           <div className="wrapper">
 			<div className="inner inner2">
 				<form action="submit">
@@ -111,10 +120,16 @@ values
 					<button data-text="Confirmer" type="submit" className='form-control button1' onClick={handleSubmit}>
 						confirmer
 					</button>
+					{successResponse
+        						? <h1 className="serverSuccess">{successResponse}</h1>
+        						: null}
+					{errorResponse
+        						? <p className="errors">{errorResponse}</p>
+        						: null}
 				</form>
 			</div>
 		</div>
-
+</div>
 
   )
 }

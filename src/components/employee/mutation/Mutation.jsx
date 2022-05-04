@@ -65,6 +65,7 @@ function Mutation() {
 		},
 	  }); 
   return (
+    <div className="cont">
     <div className="wrapper w11">
       <div className="inner inner2">
         <form>
@@ -143,6 +144,7 @@ function Mutation() {
         						: null}
         </form>
       </div>
+    </div>
     </div>
   );
 }

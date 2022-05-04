@@ -1,12 +1,12 @@
 .navbar {
-  background: #ffffff;
+  background: #252636;
   grid-area: nav;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px 0 30px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: none;
 }
 .nav_icon {
   display: none;
@@ -41,7 +41,6 @@
   font-size: 16px;
   border-radius: 50px;
   background: #ffffff;
-  box-shadow: 2px 2px 5px #d9d9d9, -2px -2px 5px #ffffff;
   padding: 7px;
 }
 .logout {

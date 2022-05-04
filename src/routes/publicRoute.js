@@ -12,7 +12,7 @@ const userLoggedIn = localStorage.getItem("user-info") ? true : false;
           userLoggedIn ? (
             <Redirect
               to={{
-                pathname: "/ReqLeave",
+                pathname: "/pointage",
                 state: { from: location },
               }}
             />

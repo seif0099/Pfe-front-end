@@ -1,2 +1,11 @@
-button {
+.inner4 {
+    width: 1000px;
+    height: 550px;
+}
+.wrapper4 {
+    position: absolute;
+    transform: translate(0, -50%);
+    left: 35%;
+    right: 35%;
+    top: 40%;
 }

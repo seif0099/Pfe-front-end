@@ -1,15 +1,15 @@
 import { Icon } from "@iconify/react";
 import React from "react";
 import { useEffect,useState } from 'react';
-import generateDemandePDF from "./demandegen";
+import generateDemandePDF from "./rappgen";
 
-function DemandesAdministrative() {
+function RappAccidentAdmin() {
 	var [requests, setRequests] = useState([])
 	function openPDF(demande){
         generateDemandePDF(demande)
       }
 	async function getRequests(){
-		let URL = "http://localhost:9000/getDemandesAdministrative"
+		let URL = "http://localhost:9000/getrapportaccident"
     	let result = await fetch(URL, {
 			method: "GET",
 			headers: {
@@ -18,7 +18,7 @@ function DemandesAdministrative() {
 			},
 		});
 		let results = await result.json();
-		setRequests(results.demandes)
+		setRequests(results.rapport)
 		requests = results
 	}
 	useEffect(() => {
@@ -29,7 +29,7 @@ function DemandesAdministrative() {
       <div className="wrapper wrapper3">
 			<div className="inner inner3">
 				<form action="submit">
-					<h3>Demandes Administratives</h3>
+					<h3>Rapport des Accidents</h3>
 			
 				
 			
@@ -39,7 +39,7 @@ function DemandesAdministrative() {
               <thead>
                 <tr>
                   <th>Employée</th>
-				  <th>Sujet</th>
+				  <th>Details d'accident</th>
                 </tr>
               </thead>
               <tbody>
@@ -68,4 +68,4 @@ function DemandesAdministrative() {
   </div>
   );
 }
-export default DemandesAdministrative;
+export default RappAccidentAdmin;

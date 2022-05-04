@@ -9,8 +9,17 @@
   input, textarea, select {
     font-family: "Muli-Regular";
     font-size: 13px;
-    color: #666; }
-  
+    color: white !important; 
+    background-color: #2a2b3d !important;
+    border: none !important;
+    border-radius: 10px !important;
+  }
+  input,select,textarea:hover{
+    border: 2px solid #D1D5DB !important;
+  }
+  input,select,textarea:after{
+    border: 2px solid #D1D5DB !important;
+  }
   p, h1, h2, h3, h4, h5, h6, ul {
     margin: 0; }
   
@@ -45,14 +54,16 @@
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-   
+    background-color: #313348 !important;
+
     padding: 7px; }
   
   form {
     width: 100%;
     padding: 57px 46px 55px;
-    background: #fff; }
-  
+    background-color: #313348 !important;
+
+  }  
   select {
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -62,7 +73,7 @@
     text-transform: uppercase;
     font-size: 35px;
     font-family: "Poppins-Medium";
-    color: #3e91f7;
+    color: #D1D5DB !important;
     letter-spacing: 3px;
     margin-bottom: 22px;
     font-weight: 500; }
@@ -83,7 +94,7 @@
       display: block;
       font-family: "Muli-SemiBold";
       font-size: 17px;
-      color: #4c4c4c;
+      color: #9DA0AF;
       margin-bottom: 8px; }
     .form-wrapper i.zmdi-chevron-down {
       position: absolute;
@@ -143,16 +154,20 @@
   .button1 {
     width: 300px;
     margin: 0 auto;
-    background: #3e91f7;
-    color: #fff;
+    background: #2a68c5;
+    color: #D1D5DB;
     text-transform: uppercase;
     font-family: "Muli-SemiBold";
     font-size: 15px;
     margin-top: 50px;
+    border-radius: 10px;
+    border: 1px solid #D1D5DB;
   }
 
     .button1:hover {
-      background: #0072fd; }
+      background: #1c1e42; 
+      color: #D1D5DB;
+    }
 
   
   @media (max-width: 1199px) {
@@ -194,15 +209,7 @@
     height: 600px !important;
     margin: 0 auto;
   }
-  .edit {
-    background-color:transparent !important;
-    color:rgb(131, 125, 125) !important;
-    font-size: 16px !important;
-    margin-right: 10px;
-  }
-  .edit:hover {
-    color:blue !important;
-  }
+
   .editModal {
     background-color: #fff;
     border-radius: 4px;

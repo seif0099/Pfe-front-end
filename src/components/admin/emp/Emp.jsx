@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react';
 import React,{useEffect,useState} from 'react'
 
 function Emp() {
@@ -35,7 +36,7 @@ function Emp() {
 	}, 
     []);
   return (
-    <div>
+    <div className="cont">
       <div className="wrapper wrapper3">
 			<div className="inner inner3">
 				<form action="submit">
@@ -65,7 +66,7 @@ function Emp() {
 						  <td>{row.prenom}</td>
 						  <td>{row.poste}</td>
 						  <td className="ops">
-						  <i className="fa fa-trash trashbin" onClick={() => deleteUser(row._id)}></i>
+						  <Icon icon="bi:trash" width="25" height="25" hFlip={true} className="edit"   onClick={() => deleteUser(row._id)}/>
 						  </td>
 					  </tr>
 				  )

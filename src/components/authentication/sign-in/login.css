@@ -49,13 +49,24 @@ input[type="button"] {
     display: block;
     font-size: 24px;
     line-height: 28px;
-    color: #5469d4;
+    color: #D1D5DB !important;
     text-transform: uppercase;
     font-weight: bolder;
 }
 label {
     margin-bottom: 10px;
-    color: black;
+    color: #D1D5DB !important;
     font-size: 18px;
     float: left;
 }
+.loginButton {
+    margin: 0 auto;
+    background: #2a68c5 !important;
+    color: #D1D5DB !important;
+    border-radius: 10px !important;
+    border: 1px solid #D1D5DB !important;
+}
+.loginButton:hover {
+    background: #1c1e42 !important; 
+    color: #D1D5DB !important;
+  }

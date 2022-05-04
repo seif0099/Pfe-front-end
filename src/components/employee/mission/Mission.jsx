@@ -48,7 +48,7 @@ function Missions() {
 
   
   return (
-    <div>
+    <div className="cont">
         <div className="wrapper">
         <div className="inner inner1">
           <form action="submit">

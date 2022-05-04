@@ -1,23 +1,41 @@
 #sidebar {
-  background: #FAFAFA;
-  grid-area: sidebar;
+  background: #252636;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  width: 300px;
+  width:300px;
+  vertical-align: top;
+	height: 100% ;
+	overflow: auto;
+  display: inline-block;
+  position: fixed;
+  padding: 0px !important;
 }
 
 .sidebar__title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #f3f4f6;
+  color: #EEE;
   margin-bottom: 20px;
   font-size: 20px;
+}
+.sidebar__link:hover{
+  background-color: #313348 !important;
+  color:white !important;
 }
 .sidebar__img {
   display: flex;
   align-items: center;
   margin: 0 auto;
+}
+.sideBarContent {
+  display: inline-block;
+	vertical-align: top;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+  
+
 }
 .sidebar__title > div > img {
   width: 120px;
@@ -33,49 +51,46 @@
 }
 
 .sidebar__menu > h2 {
-  color: #51788F;
+  color: #EEE;
   font-size: 20px;
   margin-top: 25px;
   margin-bottom: 15px;
   padding: 0 10px;
   font-weight: 700;
-  font-family: 'Updock', cursive;
+  font-family: 'Inter', sans-serif;
 }
 
 .sidebar__link {
-  color: #8C8D93;
-  padding-top: 10px;
-  padding-bottom: 15px;
-  padding-left: 30px;
-  padding-right: 10px;
+  color: #EEE;
   border-radius: 3px;
+  margin-bottom: 10px !important;
 }
-.sidebar__link:hover {
-  background: #d8e5f2;
-  padding-top: 10px;
-  padding-bottom: 15px;
-}
+
 
 .active_menu_link {
   background: #A6BFD7;
   color: #FAFAFA;
   padding-top: 10px;
   padding-bottom: 15px;
+
 }
 
 .active_menu_link a {
   color: #FAFAFA !important;
+  text-decoration: none;
+
+
 }
 .sidebar__link > a {
   text-decoration: none;
   color: #9DA0AF;
   font-weight: 700;
-  font-family: 'Roboto', sans-serif;
-
+  font-family: 'Inter', sans-serif;
+  padding: 15px 15px;
 }
 .sidebar__link > i {
   margin-right: 10px;
-  font-size: 30px;
+  font-size: .825rem;
 }
 .sidebar__logout {
   margin-top: 20px;
@@ -110,4 +125,36 @@
 }
 .sidebarImage {
   border-radius: 80px;
+}
+.sanction {
+  background-color: #ce5353;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    color: #fff;
+    width: 300px;
+    height: 100px;
+    padding: 15px 15px 15px 30px;
+    border-radius: 5px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+.promotion {
+  background-color: #7fb354;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    color: #fff;
+    width: 300px;
+    height: 100px;
+    padding: 15px 15px 15px 30px;
+    border-radius: 5px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+.check {
+  position: fixed;
+  right: 26px;
+  bottom: 20px;
+  margin-top:20px;
 }

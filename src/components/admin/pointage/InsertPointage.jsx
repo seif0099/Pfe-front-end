@@ -58,8 +58,9 @@ console.log(e.target.value);
 
 
   return (
-    <div className="wrapper">
-			<div className="inner inner1">
+	  <div className='cont'>
+    <div className="wrapper wrapper4">
+			<div className="inner inner4">
 				<form>
 					<h3>Pointage des employees</h3>
 					<div className="form-row">
@@ -93,7 +94,7 @@ console.log(e.target.value);
 				</form>
 			</div>
 		</div>
-
+</div>
   )
 }
 
