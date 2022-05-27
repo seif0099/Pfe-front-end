@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import "./leaveManagement.css";
 import { useFormik } from "formik";
+import avatar from "../../../assets/avatar.png";
+
 
 function ReqLeave() {
+  const axios = require("axios");
+
   const [userInfo, setUserInfo] = useState({});
 	const [errorResponse, setError] = useState("");
 	const [successResponse, setSuccess] = useState("");
-
+  const inputFile = useRef(null) 
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [image, setImage] = useState(avatar);
+  const [myUser, setMyUser] = useState({});
   useEffect(() => {
 	  if(JSON.parse(localStorage.getItem("user-info"))){
 		const { user } = JSON.parse(localStorage.getItem("user-info"));
@@ -35,6 +42,7 @@ function ReqLeave() {
 	  }
   }
   function validate(values) {
+    const d= new Date();
 		const errors = {};
 		if (!values.reasonForLeave) {
 		  errors.reasonForLeave = "* Le champ type de congé est obligatoire";
@@ -45,6 +53,13 @@ function ReqLeave() {
 		if(!values.toDate){
 			errors.toDate = "* Le champ date fin est obligatoire";
 		}
+    if(values.fromDate > values.toDate){
+			errors.toDate = "* Le champ   est invalide";
+      errors.fromDate = "* Le champ   est invalide";
+
+		}
+
+   
 		return errors;
 	  }
 	
@@ -64,6 +79,30 @@ function ReqLeave() {
 			createLeave(values)
 		},
 	  }); 
+    async function uploadImg(){
+    
+      let image =  URL.createObjectURL(selectedImage)
+      setImage(image)
+      let formData = new FormData()
+      formData.append("myImage", selectedImage)
+
+      const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    };
+    axios.post("http://localhost:9000/UpdateCertificat?id="+userInfo?._id,formData,config)
+        .then((response) => {
+            localStorage.setItem("user-info", JSON.stringify(response.data));
+        }).catch((error) => {
+    });
+    
+    }
+
+    function openBrowseFile(){
+      inputFile.current.click();
+
+    }
   return (
     <div className="cont">
     <div className="wrapper w11">
@@ -137,6 +176,13 @@ function ReqLeave() {
             {touched.reasonForLeave && errors.reasonForLeave
         						? <p className="errors">{errors.reasonForLeave}</p>
         						: null}
+          </div>
+          <div className='rDivider divImg'>
+              <input type='file' id='file' ref={inputFile} style={{display: 'none'}}  onChange={(event) => {
+          setSelectedImage(event.target.files[0]);
+        }}/>
+            <img className="userImg" src={"http://localhost:9000/public/uploads/"+userInfo.certificat} alt="Telecharger" onClick={openBrowseFile} />
+            <button  className='uploadButton'  onClick={uploadImg} >Certificat</button>
           </div>
           <button data-text="Confirmer" className="form-control button1" type="button" onClick={handleSubmit}>
             confirmer

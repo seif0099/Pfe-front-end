@@ -1,8 +1,7 @@
 import React,{useState,useEffect} from 'react'
-import "./mission.css"
 import { useFormik } from 'formik';
 
-function Mission() {
+function Mutual() {
  
   var [res,setRes]=useState([{}]);
   const [errorResponse, setError] = useState("");
@@ -27,12 +26,12 @@ function Mission() {
   }, []);
  async function insertion (values){
 	  let item = {
-		objectifMission:values.objectifMission,
-		dateRetour:values.dateRetour,
-		dateDepart:values.dateDepart,
-		destination:values.destination,
+		numPaper:values.numPaper,
+		status:values.status,
+		
 	  };
-	  const URL = "http://localhost:9000/createmission?id="+values.userid
+	  console.log("aaaaaaaa")
+	  const URL = "http://localhost:9000/createmutualpaper?id="+values.userid
 	  let result = await fetch(URL, {
 		method: "POST",
 		headers: {
@@ -59,21 +58,8 @@ function Mission() {
 		if (!values.userid) {
 		  errors.userid = "* Le champ employée est obligatoire";
 		}
-		if(!values.objectifMission){
-			errors.objectifMission = "* Le champ objectif mission est obligatoire";
-		}
-		if(!values.dateDepart){
-			errors.dateDepart = "* Le champ date départ est obligatoire";
-		}
-		if(!values.dateRetour){
-			errors.dateRetour = "* Le champ date retour est obligatoire";
-		}
-		if(!values.destination){
-			errors.destination = "* Le champ destination est obligatoire";
-		}
-		if(values.dateDepart > values.dateRetour){
-			errors.dateRetour = "* Le champ date de retour  est invalide";
-		}
+	
+		
 
 		return errors;
 	  }
@@ -86,10 +72,9 @@ function Mission() {
 	  } = useFormik({
 		initialValues: {
 			userid: "",
-			dateRetour: "",
-			dateDepart: "",
-			objectifMission: "",
-			destination: ""
+			numPaper: "",
+			status: "",
+			
 		},
 		validate,
 		onSubmit: (values) => {
@@ -102,7 +87,7 @@ function Mission() {
     <div className="wrapper">
 			<div className="inner inner1">
 				<form >
-					<h3>Ordre de mission</h3>
+					<h3>Feuille Mutuelle</h3>
 					<div className="form-row">
 						<div className="form-wrapper">
 							
@@ -118,55 +103,39 @@ function Mission() {
 					{touched.userid && errors.userid
         						? <p className="errors">{errors.userid}</p>
         						: null}
-					<div className="form-row last">
-						<div className="form-wrapper" >
-							<label htmlFor="">Date de départ</label>
-				   	<input type="date" className="form-control"  name="dateDepart" onChange={handleChange} />
-							<i className="zmdi zmdi-chevron-down"></i>
-						</div>
-					
-					
-          
-				</div>
 				
-				{touched.dateDepart && errors.dateDepart
-        						? <p className="errors">{errors.dateDepart}</p>
-        						: null}
                 <div className="form-row last">
 						<div className="form-wrapper" >
-							<label htmlFor="">Date de retour</label>
-				   	<input type="date" className="form-control"  name="dateRetour" onChange={handleChange} />
-							<i className="zmdi zmdi-chevron-down"></i>
-						</div>
-					
-						
-          
-				</div>
-				{touched.dateRetour && errors.dateRetour
-        						? <p className="errors">{errors.dateRetour}</p>
-        						: null}
-                <div className="form-row last">
-						<div className="form-wrapper" >
-							<label htmlFor="">Destination</label>
-				   	<input type="text" className="form-control"  name="destination" onChange={handleChange} />
+							<label htmlFor="">Numéro de feuille</label>
+				   	<input type="text" className="form-control"  name="numPaper" onChange={handleChange} />
 							<i className="zmdi zmdi-chevron-down"></i>
 						</div>
 					
 					</div>
-					{touched.destination && errors.destination
-        						? <p className="errors">{errors.destination}</p>
+					{touched.numPaper && errors.numPaper
+        						? <p className="errors">{errors.numPaper}</p>
         						: null}
+					
                         <div className="form-row last">
 						<div className="form-wrapper" >
-							<label htmlFor="">Objectif</label>
-				   	<input type="text" className="form-control"  name="objectifMission" onChange={handleChange} />
+                            <select className='form-control' name="status" onChange={handleChange}>
+                              <option selected value="0">Etat</option>
+                              <option value ='Traité'>Traité</option>
+                              <option value ='Non Traité'>Non Traité</option>
+                              <option value ='En Attente'>En Attente</option>
+
+
+                            </select>
+                           
 							<i className="zmdi zmdi-chevron-down"></i>
+							{touched.status && errors.status
+        						? <p className="errors">{errors.status}</p>
+        						: null}
+				
 						</div>
 					
 				</div>
-				{touched.objectifMission && errors.objectifMission
-        						? <p className="errors">{errors.objectifMission}</p>
-        						: null}
+			
 					<button data-text="Confirmer la présence" type="button" onClick={handleSubmit} className='form-control button1'>
 						Confirmer 
 					</button>
@@ -183,4 +152,4 @@ function Mission() {
   )
 }
 
-export default Mission
+export default Mutual

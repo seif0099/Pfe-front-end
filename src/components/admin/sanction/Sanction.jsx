@@ -110,22 +110,14 @@ function Sanction() {
         						: null}
 					<div className="form-row last">
 						<div className="form-wrapper">
-							<label htmlFor="">À partir de  *</label>
+							<label htmlFor="">Date de conseil  *</label>
 				   	<input type="date" className="form-control" name="fromDate" onChange={handleChange}/>
 							<i className="zmdi zmdi-chevron-down"></i>
 							{touched.fromDate && errors.fromDate
         						? <p className="errors">{errors.fromDate}</p>
         						: null}
 						</div>
-						<div className="form-wrapper">
-							<label htmlFor="">À *</label>
-              <input type="date" className="form-control" name="toDate" onChange={handleChange}/>
-
-							<i className="zmdi zmdi-chevron-down"></i>
-							{touched.toDate && errors.toDate
-        						? <p className="errors">{errors.toDate}</p>
-        						: null}
-						</div>
+				
           
 				</div>
         

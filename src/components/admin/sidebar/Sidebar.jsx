@@ -175,6 +175,15 @@ const Sidebar = ({ sideBarOpen, closeSideBar }) => {
        </Link>
        </BrowserRouter>
 
+       <BrowserRouter forceRefresh={true}>
+        <Link to="/admin/mutualpaper">
+        <div className="sidebar__link">
+        <Icon icon="material-symbols:change-circle-outline-rounded" width="25" height="25" hFlip={true} />
+          <a href="#">Feuille mutuelle</a>
+       </div>
+       </Link>
+       </BrowserRouter>
+
       </div>
     </div>
   );

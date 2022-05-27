@@ -47,6 +47,9 @@ function SuppHours() {
 		if(!values.date){
 			errors.date = "* Le champ date  est obligatoire";
 		}
+		if(values.fromDate > values.toDate){
+			errors.toDate = "* Le champ   est invalide";
+		}
 		return errors;
 	  }
 	

@@ -26,6 +26,8 @@ import SuppHourMng from "../components/employee/heure-supp/suppHoursMng";
 import DemandesAdministrative from "../components/admin/demande/demande";
 import AdminProfile from "../components/admin/profile/profile";
 import RappAccidentAdmin from "../components/admin/rappAccident/RappAccidentAdmin";
+import Mutual from "../components/admin/mutualpaper/Mutual";
+import MutualPaper from "../components/employee/mutualpaper/MutualPaper";
 
 export const publicRoutes = [
     {   
@@ -104,7 +106,10 @@ export const privateRoutes = [
         component:SuppHourMng,
         path:'/suppManagement'
     },
-    
+    {   exact:true,
+        component:MutualPaper,
+        path:'/mutual'
+    },
 ]
 export const adminRoutes = [
     {   exact:true,
@@ -154,5 +159,9 @@ export const adminRoutes = [
     {   exact:true,
         component:RappAccidentAdmin,
         path:'/admin/rapport'
+    },
+    {   exact:true,
+        component:Mutual,
+        path:'/admin/mutualpaper'
     },
 ]

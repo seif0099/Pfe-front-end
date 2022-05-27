@@ -2,6 +2,7 @@ import React,{useState,useEffect, useRef} from 'react'
 import "./profile.css"
 import { useFormik } from "formik";
 import avatar from "../../../assets/avatar.png";
+import ColumnGroup from 'antd/lib/table/ColumnGroup';
 
 
 function Profile() {
@@ -22,6 +23,8 @@ function Profile() {
       setImage(image)
       let formData = new FormData()
       formData.append("myImage", selectedImage)
+    console.log("aaaaaaaaa")
+
       const config = {
         headers: {
             'content-type': 'multipart/form-data'

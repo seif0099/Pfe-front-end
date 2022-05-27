@@ -11,6 +11,7 @@ import MutationManagement from './../mutation/MutationManagement';
 import Missions from "../mission/Mission";
 import News from "./news";
 import { Icon } from '@iconify/react';
+import MutualPaper from "../mutualpaper/MutualPaper";
 const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
   let user = JSON.parse(localStorage.getItem('user-info'));
   const [myUser, setMyUser] = useState({});
@@ -20,6 +21,8 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
   const [missionNotifications, setmissionnotifs] = useState(0)
   const [mutationNotifications, setmutationnotifs] = useState(0)
   const [prom, setpromnotifs] = useState(0)
+  const [mutualNotifications, setmut] = useState(0)
+
 
   const [userInfo, setUserInfo] = useState({});
   const [activeComp,setActiveComp] = useState(""); 
@@ -45,6 +48,13 @@ const[news,setNews]=useState([]);
             row.type == "leave"
           )
           setleavenotifs(re.length)
+
+          let mut = []
+          let re6 = res.notifs.filter(row => 
+            row.type == "mutual"
+          )
+          setmut(re6.length)
+          
           let re1 = res.notifs.filter(row => 
             row.type == "supphours"
           )
@@ -220,6 +230,20 @@ const containerStyle = {
           <i className="bell">{missionNotifications}</i>
         </div>
         {activeComp==="Missions" && <Missions/>}
+       </Link>
+      </BrowserRouter>
+
+
+
+      <h2>Feuille mutuelle</h2>
+        <BrowserRouter forceRefresh={true}>
+        <Link to="/mutual">
+        <div className="sidebar__link"  onClick={()=>setActiveComp("MutualPaper")}>
+          <a><Icon icon="fa-solid:truck-moving" hFlip={true} /></a>
+          <a>Feuille mutuelle</a>
+          <i className="bell">{mutualNotifications}</i>
+        </div>
+        {activeComp==="MutualPaper" && <MutualPaper/>}
        </Link>
       </BrowserRouter>
       

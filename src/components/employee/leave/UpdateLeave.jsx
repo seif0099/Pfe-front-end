@@ -45,6 +45,9 @@ function UpdateLeave(props) {
 		if(!values.toDate){
 			errors.toDate = "* Le champ date fin est obligatoire";
 		}
+    if(values.fromDate > values.toDate){
+			errors.toDate = "* Le champ est invalide";
+		}
 		return errors;
 	  }
 	

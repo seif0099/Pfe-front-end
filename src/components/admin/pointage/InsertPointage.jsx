@@ -11,6 +11,10 @@ function InsertPointage() {
   var [res,setRes]=useState([{}]);
   const [userid,setUserid]=useState("");
   const[pDate,setpDate]=useState("");
+  const [successResponse, setSuccess] = useState("");
+  const [errorResponse, setError] = useState("");
+
+
 
   useEffect(() => {
     const fetcha = async () => {
@@ -46,8 +50,14 @@ function InsertPointage() {
 		},
 		body: JSON.stringify(item),
 	  });
-	  let results = await result.json();
-
+	  if(result.status == 200){
+		setSuccess("Employé Pointé avec succés")
+	  setError(null)
+	}
+	else{
+	  setSuccess(null)
+	  setError(result)
+	}
 	}
     function handleUserid(e){
 setUserid(e.target.value)
@@ -88,7 +98,9 @@ setUserid(e.target.value)
 					<button data-text="Confirmer la présence" type="button"  onClick={insertion} className='form-control button1'>
 						Confirmer la présence
 					</button>
-                 
+					{successResponse
+        						? <h1 className="serverSuccess">{successResponse}</h1>
+        						: null}
 				</form>
 			</div>
 		</div>
