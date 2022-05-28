@@ -10,10 +10,10 @@ import { adminRoutes, privateRoutes, publicRoutes } from "./../routes/routes";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import PrivateRoutes from "./../routes/privateRoutes";
 import PublicRoutes from "../routes/publicRoute";
-import Login from "../components/authentication/sign-in/Login"
-import Signup from './authentication/sign-up/Signup';
+import Login from "../components/authentication/sign-in/Login";
+import Signup from "./authentication/sign-up/Signup";
 import Pointage from "./employee/pointage/Pointage";
-import Home from './home/Home';
+import Home from "./home/Home";
 import About from "./home/About";
 import { BrowserRouter } from "react-router-dom";
 import AdminRoutes from "../routes/adminRoutes";
@@ -29,40 +29,31 @@ function MainContainer() {
   };
 
   return (
+    <Router>
+      <Switch>
+        {privateRoutes.map((Route, index) => (
+          <PrivateRoutes key={index} path={Route.path} exact={Route.exact}>
+            <NavbarEmp sideBarOpen={sideBarOpen} openSideBar={openSideBar} />
 
-      <Router>
-        <Switch>
-          {privateRoutes.map((Route) => (
+            <Route.component />
+            <SidebarEmployee sideBarOpen={sideBarOpen} closeSideBar={closeSideBar} />
+          </PrivateRoutes>
+        ))}
+        {publicRoutes.map((Route, index) => (
+          <PublicRoutes key={index} path={Route.path} exact={Route.exact}>
+            <Route.component />
+          </PublicRoutes>
+        ))}
 
-            <PrivateRoutes path={Route.path} exact={Route.exact}>
-              <NavbarEmp sideBarOpen={sideBarOpen} openSideBar={openSideBar} />
-
-              <Route.component />
-              <SidebarEmployee sideBarOpen={sideBarOpen} closeSideBar={closeSideBar} />
-
-            </PrivateRoutes>
-
-          ))}
-          {publicRoutes.map((Route) => (
-            <PublicRoutes path={Route.path} exact={Route.exact} >
-             
-              <Route.component />
-            </PublicRoutes>
-          ))}
-
-          {adminRoutes.map((Route) => (
-            <AdminRoutes path={Route.path} exact={Route.exact} >
-              <Navbar></Navbar>
-              <Route.component />
-              <Sidebar></Sidebar>
-            
+        {adminRoutes.map((Route, index) => (
+          <AdminRoutes key={index} path={Route.path} exact={Route.exact}>
+            <Navbar></Navbar>
+            <Route.component />
+            <Sidebar></Sidebar>
           </AdminRoutes>
-          ))}
-        </Switch>
-      </Router>
-      
- 
-         
+        ))}
+      </Switch>
+    </Router>
   );
 }
 

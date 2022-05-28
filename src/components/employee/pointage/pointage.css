@@ -1,118 +1,108 @@
 .limiter {
-    background-color: #0000ff;
-
+  background-color: #0000ff;
 }
 .wrapper {
-    background-color: black;
-    margin: 0 auto;
-    margin-right: 650px !important;
-
+  background-color: black;
+  margin: 0 auto;
+  margin-right: 650px !important;
 }
 .form-wrapper {
-    width: 100% !important;
-
+  width: 100% !important;
 }
 .inner1 {
-    width: 1000px !important;
-    height: 800px !important;
-    max-height: 800px !important;
-    margin: 0 auto;
-    
+  width: 1000px !important;
+  height: 800px !important;
+  max-height: 800px !important;
+  margin: 0 auto;
 }
-.table-responsive    {
-    width: 100%;
-
+.table-responsive {
+  width: 100%;
 }
-td,th {
-    color: #D1D5DB !important;
-    border-bottom: 1px solid #D1D5DB !important;
+td,
+th {
+  color: #d1d5db !important;
+  border-bottom: 1px solid #d1d5db !important;
 }
 form {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 span {
-    display: none;
+  display: none;
 }
 .buttons {
-    display:flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 .yearPicker {
-    width: 250px;
+  width: 250px;
 }
 .monthPicker {
-    width: 250px;
-    margin-right: 10px;
+  width: 250px;
+  margin-right: 10px;
 }
 .myButton {
-    width: 250px;
-    float: right !important;
-    
+  width: 250px;
+  float: right !important;
 }
-.myB{
-    margin-top: 0px !important;
-    margin-left: 80px  !important;
-    background: #2a68c5 !important;
-    border-radius: 10px;
-    border: 1px solid #D1D5DB;
+.myB {
+  margin-top: 0px !important;
+  margin-left: 80px !important;
+  background: #2a68c5 !important;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
 }
-.myB:hover{
-    background: #1c1e42 !important; 
-    color: #D1D5DB !important;
+.myB:hover {
+  background: #1c1e42 !important;
+  color: #d1d5db !important;
 }
 
-
-
-
- 
 .aa:hover {
-    background-color: #3572aa;
+  background-color: #3572aa;
 }
 h5 {
-    background-color: greenyellow;
+  background-color: greenyellow;
 }
 .conge {
-    background-color: rgb(255, 0, 0)  !important;
+  background-color: rgb(255, 0, 0) !important;
 }
 .legende {
-    width: 100%;
-    margin-top: 10px;
-    margin-left: 20px;
-    display: flex;
-    font-size: 15px;
-    color:#D1D5DB  
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 20px;
+  display: flex;
+  font-size: 15px;
+  color: #d1d5db;
 }
 .color1 {
-    background-color: greenyellow;
-    width: 90px;
-    height: 30px;
-    margin-right: 40px;
+  background-color: greenyellow;
+  width: 90px;
+  height: 30px;
+  margin-right: 40px;
 }
 
 .brrr {
-    background-color: #D1D5DB;
+  background-color: #d1d5db;
 
-    border: 5px solid #D1D5DB;
+  border: 5px solid #d1d5db;
 }
 .color2 {
-    background-color: #e9ecef;
-    width: 90px;
-    height: 30px;
-    margin-right: 40px;
-    margin-left: 50px;
+  background-color: #e9ecef;
+  width: 90px;
+  height: 30px;
+  margin-right: 40px;
+  margin-left: 50px;
 }
 .color3 {
-    background-color: rgb(250, 6, 6);
-    width: 90px;
-    height: 30px;
-    margin-right: 40px;
-    margin-left: 50px;
+  background-color: rgb(250, 6, 6);
+  width: 90px;
+  height: 30px;
+  margin-right: 40px;
+  margin-left: 50px;
 }
 .limiter {
-    margin: 0 !important;
+  margin: 0 !important;
 }
-.table tbody{
-
-   border:  1px solid #D1D5DB !important;
+.table tbody {
+  border: 1px solid #d1d5db !important;
 }

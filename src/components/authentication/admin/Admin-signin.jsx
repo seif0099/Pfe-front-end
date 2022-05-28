@@ -1,6 +1,7 @@
 import "./admin-signin.css";
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
+import { BrowserRouter, Link } from "react-router-dom";
 
 function AdminSignin() {
 
@@ -90,6 +91,11 @@ function AdminSignin() {
             {errorResponse
                 ? <p className="errors">{errorResponse}</p>
                 : null}
+                <BrowserRouter forceRefresh={true}>
+                <Link to="/">
+                <input type="button" className="loginButton2" name="submit" value="Retour" />
+                </Link>
+                </BrowserRouter>
             </form>
   </div>
   </div>

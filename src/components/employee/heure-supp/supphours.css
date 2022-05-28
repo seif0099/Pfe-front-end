@@ -1,18 +1,34 @@
-
-    
-  
-  .errors {
-    color:red;
-  }
-  .serverSuccess{
-    color: green !important;
-    padding-top: 10px;
-    font-size: 20px !important;
-  }
-  .cont {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    background: #2a2b3d;
-    position: fixed;
-  }
+.errors {
+  color: red;
+}
+.serverSuccess {
+  color: green !important;
+  padding-top: 10px;
+  font-size: 20px !important;
+}
+.cont {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background: #2a2b3d;
+  position: fixed;
+}
+.no-data-msg {
+  font-size: 18px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.d-flex {
+  display: flex;
+}
+.w-100 {
+  width: 100%;
+}
+.no-data {
+  height: auto !important;
+  width: 1000px !important;
+  max-height: 800px !important;
+  margin: 0 auto;
+}

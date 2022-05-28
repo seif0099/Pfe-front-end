@@ -1,7 +1,7 @@
 import "antd/dist/antd.css";
 import "./login.css";
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { BrowserRouter, Link, Redirect } from "react-router-dom";
 import { useFormik } from "formik";
 
 function Login() {
@@ -87,6 +87,11 @@ function Login() {
                 {errorResponse
         						? <p className="errors">{errorResponse}</p>
         						: null}
+                      <BrowserRouter forceRefresh={true}>
+                <Link to="/">
+                <input type="button" className="loginButton2" name="submit" value="Retour" />
+                </Link>
+                </BrowserRouter>
                 </form>
       </div>
       </div>
