@@ -5,10 +5,36 @@ import generatePDF from "./pdf";
 
 function Emp() {
   var [emp, setEmps] = useState([]);
+  const[pDate,setpDate]=useState("");
+
   var index = [];
-  function openPDF(emps) {
-    console.log("aaaaaaa");
-    generatePDF(emps);
+  async function openPDF() {
+    let URL =
+      "http://localhost:9000/getPointageByDate?date=" + pDate;
+    console.log(URL);
+    let result = await fetch(URL, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    let results = await result.json().then(function (result) {
+      console.log(emp)
+      let newTable = []
+      emp.map((row) => {
+        let newRow = {}
+        newRow.nom = row.nom
+        newRow.prenom = row.prenom
+        newRow.matricule = row.matricule
+        newRow._id = row._id
+        let x = result.pointages.filter((row1) => row1.user === newRow._id)
+        console.log(x.length)
+        newRow.status = x.length > 0 ? "présent" : "absent"
+        newTable.push(newRow)
+      })
+      generatePDF(newTable)
+    });
   }
 
   async function deleteUser(id) {
@@ -43,6 +69,7 @@ function Emp() {
       index[i] = emp[i];
       console.log(index[i], "aa");
     }
+    
   }, []);
   async function mapping() {}
   return (
@@ -64,7 +91,6 @@ function Emp() {
                       <th>Prénom</th>
                       <th>Poste</th>
                       <th>Opérations</th>
-                      <th>pdf</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -87,23 +113,32 @@ function Emp() {
                             }
                           />
                         </td>
-                        <td className="ops">
-                          <Icon
-                            icon="icomoon-free:file-pdf"
-                            width="25"
-                            height="25"
-                            hFlip={true}
-                            className="edit"
-                            onClick={() => openPDF(row)}
-                          />
-                        </td>
+                        
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
+            <div className="pdfop">
+              <input type="date" name="datePointage" onChange={(e) => setpDate(e.target.value)}/>
+              <div className="pdfop1">
+                <p>Générer la liste des employées</p>
+              </div>
+              <div className="pdfop2">
+              <Icon
+                            icon="icomoon-free:file-pdf"
+                            width="25"
+                            height="25"
+                            hFlip={true}
+                            className="edit"
+                            onClick={() => openPDF()}
+                          />
+              </div>
+                          
+              </div>
           </form>
+         
         </div>
       </div>
     </div>

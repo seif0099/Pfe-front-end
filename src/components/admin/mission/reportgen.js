@@ -5,7 +5,6 @@ function parseDate(date){
     return dateObj.toLocaleDateString()
   }
 const generatePDF  = (mission) =>  {
-    console.log(mission)
     const tableColumn = ["Déjuner", "Dîner", "Hébergement", "Transport"];
     const tableRows = [];
     const missionData = [
@@ -18,7 +17,6 @@ const generatePDF  = (mission) =>  {
     for(let i=0;i < 4; i++){
         total += missionData[i]
     }
-    // rgba(10, 132, 255, 1)
     const totalData = [
         null,
         null,

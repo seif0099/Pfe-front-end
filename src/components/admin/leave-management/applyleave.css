@@ -18,3 +18,13 @@
 .trashbin:hover {
   color: rgb(192, 54, 54) !important;
 }
+.pdfop {
+  display: flex;
+}
+.pdfop1 {
+  color:#fff;  
+  margin-right: 20px;
+}
+.pdfop2 {
+  color:#fff;  
+}
