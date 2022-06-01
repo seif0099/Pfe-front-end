@@ -87,7 +87,7 @@ function Rapport() {
       <div className="wrapper">
         <div className="inner inner2">
           <form action="submit">
-            <h3>Rapport Accident</h3>
+            <h3 classname="title2">Rapport Accident</h3>
             <div className="form-row">
               <div className="form-wrapper">
                 <label htmlFor="">Nom *</label>

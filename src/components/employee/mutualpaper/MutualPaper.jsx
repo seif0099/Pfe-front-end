@@ -34,7 +34,7 @@ function MutualPaper() {
           }`}
         >
           <form action="submit">
-            <h3>Feuille mutuelle</h3>
+            <h3 className="title2">Feuille mutuelle</h3>
             {(requests.length && (
               <div class="form-wrapper">
                 <div className="table-responsive">

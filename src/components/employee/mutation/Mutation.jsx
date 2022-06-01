@@ -74,7 +74,7 @@ function Mutation() {
       <div className="wrapper w11">
         <div className="inner inner2">
           <form>
-            <h3>Demande de mutation</h3>
+            <h3 classname="title2">Demande de mutation</h3>
             <div className="form-row">
               <div className="form-wrapper">
                 <label htmlFor="">Nom *</label>
