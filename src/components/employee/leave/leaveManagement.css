@@ -205,48 +205,24 @@ h3 {
   color: #d1d5db;
 }
 
-@media (max-width: 1199px) {
-  .wrapper {
-    background-position: center center;
-  }
+.wrapper {
+  background: none;
+  display: block;
 }
-@media (max-width: 991px) {
-  .inner {
-    width: 60%;
-  }
+
+form {
+  padding: 30px 20px;
 }
-@media (max-width: 767px) {
-  .inner {
-    width: 100%;
-    transform: translateY(0);
-    position: static;
-    padding: 0;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -ms-box-shadow: none;
-    -o-box-shadow: none;
-  }
 
-  .wrapper {
-    background: none;
-    display: block;
-  }
-
-  form {
-    padding: 30px 20px;
-  }
-
-  .form-row {
-    display: block;
-  }
-  .form-row .form-wrapper {
-    width: 100%;
-    margin-bottom: 25px;
-  }
-  .form-row .form-wrapper:first-child {
-    margin-right: 0;
-  }
+.form-row {
+  display: block;
+}
+.form-row .form-wrapper {
+  width: 100%;
+  margin-bottom: 25px;
+}
+.form-row .form-wrapper:first-child {
+  margin-right: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
@@ -335,8 +311,31 @@ h3 {
   left: 35%;
   right: 35%;
 }
+@media (max-width: 1199px) {
+  .wrapper {
+    background-position: center center;
+  }
+}
+@media (max-width: 991px) {
+  .inner {
+    width: 60%;
+  }
+}
+@media (max-width: 767px) {
+  .inner {
+    width: 100%;
+    transform: translateY(0);
+    position: static;
+    padding: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+  }
+}
 
-@media all and (max-width: 700px) {
+@media screen and (max-width: 700px) {
   input,
   select,
   h3,
@@ -345,5 +344,21 @@ h3 {
     width: 40% !important;
     font-size: 20px !important;
     margin-right: 290px !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cont {
+    overflow-x: scroll !important;
+    width: 158% !important;
+  }
+  .form {
+    padding: 30px 200px !important  ;
+  }
+}
+@media screen and (max-width: 700px) {
+  table {
+    width: 100% !important;
+    height: 100% !important;
   }
 }

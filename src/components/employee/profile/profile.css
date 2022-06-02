@@ -75,17 +75,3 @@
   margin-top: 70px;
   font-size: 30px !important;
 }
-
-@media all and (max-width: 700px) {
-  .uploadButton,
-  .userImg,
-  .field1,
-  .header1 {
-    margin: 9px !important;
-    width: 51% !important;
-    font-size: 24px !important;
-    margin-right: 211px !important;
-    float: right;
-    display: block;
-  }
-}

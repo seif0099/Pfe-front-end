@@ -2,10 +2,10 @@
   background: #252636;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  width:300px;
+  width: 300px;
   vertical-align: top;
-	height: 100% ;
-	overflow: auto;
+  height: 100%;
+  overflow: auto;
   display: inline-block;
   position: fixed;
   padding: 0px !important;
@@ -15,13 +15,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #EEE;
+  color: #eee;
   margin-bottom: 20px;
   font-size: 20px;
 }
-.sidebar__link:hover{
+.sidebar__link:hover {
   background-color: #313348 !important;
-  color:white !important;
+  color: white !important;
 }
 .sidebar__img {
   display: flex;
@@ -30,12 +30,10 @@
 }
 .sideBarContent {
   display: inline-block;
-	vertical-align: top;
-	height: 100%;
-	width: 100%;
-	overflow: auto;
-  
-
+  vertical-align: top;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
 }
 .sidebar__title > div > img {
   width: 120px;
@@ -51,46 +49,42 @@
 }
 
 .sidebar__menu > h2 {
-  color: #EEE;
+  color: #eee;
   font-size: 20px;
   margin-top: 25px;
   margin-bottom: 15px;
   padding: 0 10px;
   font-weight: 700;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .sidebar__link {
-  color: #EEE;
+  color: #eee;
   border-radius: 3px;
   margin-bottom: 10px !important;
 }
 
-
 .active_menu_link {
-  background: #A6BFD7;
-  color: #FAFAFA;
+  background: #a6bfd7;
+  color: #fafafa;
   padding-top: 10px;
   padding-bottom: 15px;
-
 }
 
 .active_menu_link a {
-  color: #FAFAFA !important;
+  color: #fafafa !important;
   text-decoration: none;
-
-
 }
 .sidebar__link > a {
   text-decoration: none;
-  color: #9DA0AF;
+  color: #9da0af;
   font-weight: 700;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   padding: 15px 15px;
 }
 .sidebar__link > i {
   margin-right: 10px;
-  font-size: .825rem;
+  font-size: 0.825rem;
 }
 .sidebar__logout {
   margin-top: 20px;
@@ -108,11 +102,12 @@
   font-size: 20px;
 }
 
-.sidebar_responsive {
+.sidebar-responsive {
   display: inline !important;
   z-index: 9999 !important;
   left: 0 !important;
   position: absolute;
+  overflow-y: scroll !important;
 }
 
 @media only screen and (max-width: 978px) {
@@ -128,33 +123,33 @@
 }
 .sanction {
   background-color: #ce5353;
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    color: #fff;
-    width: 300px;
-    height: 100px;
-    padding: 15px 15px 15px 30px;
-    border-radius: 5px;
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight: bolder;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  color: #fff;
+  width: 300px;
+  height: 100px;
+  padding: 15px 15px 15px 30px;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
 }
 .promotion {
   background-color: #7fb354;
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    color: #fff;
-    width: 300px;
-    height: 100px;
-    padding: 15px 15px 15px 30px;
-    border-radius: 5px;
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight: bolder;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  color: #fff;
+  width: 300px;
+  height: 100px;
+  padding: 15px 15px 15px 30px;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
 }
 .check {
   position: fixed;
   right: 26px;
   bottom: 20px;
-  margin-top:20px;
+  margin-top: 20px;
 }

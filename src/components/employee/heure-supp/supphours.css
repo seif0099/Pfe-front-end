@@ -14,10 +14,11 @@
   position: fixed;
 }
 @media all and (max-width: 700px) {
-  .cont {
-    width: 700px;
-    height: 100%;
-    margin-right: 100px;
+  .inner1 {
+    margin-top: 920px;
+    width: 1500px !important;
+    padding-top: 0px;
+    padding-left: 153px;
   }
 }
 .no-data-msg {
