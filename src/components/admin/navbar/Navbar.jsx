@@ -10,7 +10,9 @@ const Navbar = ({ sideBarOpen, openSideBar }) => {
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("admin-info"))) {
-      const { user } = JSON.parse(localStorage.getItem("admin-info"));
+      const { user } = JSON.parse(
+        localStorage.getItem("admin-info")
+      );
       setUserInfo(user);
     }
   }, []);
@@ -20,14 +22,25 @@ const Navbar = ({ sideBarOpen, openSideBar }) => {
   }
   return (
     <nav className="navbar">
-      <div className="nav_icon" onClick={() => openSideBar()}>
-        <i className="fa fa-bars"></i>
+      <div className="nav_icon">
+        <i
+          className="fa fa-bars"
+          onClick={() => openSideBar()}
+        ></i>
       </div>
       <div className="navbar_left"></div>
       <div className="navbar_right">
         <BrowserRouter forceRefresh={true}>
           <Link to="/admin/profile">
-            <img className="navbarImage" width={30} src={"http://localhost:9000/public/uploads/" + userInfo?.imageProfile} alt="avatar" />
+            <img
+              className="navbarImage"
+              width={30}
+              src={
+                "http://localhost:9000/public/uploads/" +
+                userInfo?.imageProfile
+              }
+              alt="avatar"
+            />
           </Link>
         </BrowserRouter>
         <a onClick={logout}>

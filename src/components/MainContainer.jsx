@@ -73,9 +73,15 @@ function MainContainer() {
             path={Route.path}
             exact={Route.exact}
           >
-            <Navbar></Navbar>
+            <Navbar
+              sideBarOpen={sideBarOpen}
+              openSideBar={openSideBar}
+            ></Navbar>
             <Route.component />
-            <Sidebar></Sidebar>
+            <Sidebar
+              sideBarOpen={sideBarOpen}
+              closeSideBar={closeSideBar}
+            ></Sidebar>
           </AdminRoutes>
         ))}
       </Switch>
