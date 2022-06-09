@@ -80,7 +80,8 @@ const SidebarEmployee = ({ sideBarOpen, closeSideBar }) => {
         let re4 = res.notifs.filter(
           (row) =>
             row.type == "promotion" ||
-            row.type == "sanction"
+            row.type == "sanction" ||
+            row.type == "Reponse"
         );
         setNews(re4);
         let newNews = [];

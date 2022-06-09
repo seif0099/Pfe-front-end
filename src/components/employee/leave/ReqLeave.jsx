@@ -173,8 +173,12 @@ function ReqLeave() {
                 </p>
               ) : null}
             </div>
+            <label htmlFor="">
+              Joindre une certificat *
+            </label>
             <div className="rDivider divImg">
               <input
+                className="form-control"
                 type="file"
                 id="file"
                 onChange={handleChangeImage}

@@ -7,11 +7,14 @@ function News(props) {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
 
+  const [reponse, setRep] = useState("");
   const [reasonForSanction, setRes] = useState("");
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("user-info"))) {
-      const { user } = JSON.parse(localStorage.getItem("user-info"));
+      const { user } = JSON.parse(
+        localStorage.getItem("user-info")
+      );
       if (props.news.type === "promotion") {
         let x = props.news.promotion[0];
         setTo(x.newPoste);
@@ -22,6 +25,10 @@ function News(props) {
         setFromDate(x.fromDate);
         setRes(x.reasonForSanction);
       }
+      if (props.news.type === "Reponse") {
+        let x = props.news.reponse[0];
+        setRep(x.reponse);
+      }
     }
   }, []);
   function parseDate(date) {
@@ -31,29 +38,64 @@ function News(props) {
   async function setNotVisible() {
     console.log("x");
     if (props.news.type === "promotion") {
-      document.getElementById(props.news.promotion[0]._id).style.visibility = "hidden";
+      document.getElementById(
+        props.news.promotion[0]._id
+      ).style.visibility = "hidden";
     } else {
-      document.getElementById(props.news.sanction[0]._id).style.visibility = "hidden";
+      document.getElementById(
+        props.news.sanction[0]._id
+      ).style.visibility = "hidden";
     }
-    let result = await fetch("http://localhost:9000/markAsSeen?id=" + props.news._id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+
+    if (props.news.type === "Reponse") {
+      document.getElementById(
+        props.news.reponse[0]._id
+      ).style.visibility = "hidden";
+    }
+    let result = await fetch(
+      "http://localhost:9000/markAsSeen?id=" +
+        props.news._id,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
   }
   return (
     <div>
       {props.news.type === "promotion" ? (
-        <div onClick={(e) => setNotVisible()} className="promotion" id={props.news.promotion[0]._id}>
-          Félécitation!! Vous avez été promu de {from} à {to}
+        <div
+          onClick={(e) => setNotVisible()}
+          className="promotion"
+          id={props.news.promotion[0]._id}
+        >
+          Félécitation!! Vous avez été promu de {from} à{" "}
+          {to}
         </div>
       ) : (
-        <div onClick={(e) => setNotVisible()} className="sanction" id={props.news.sanction[0]._id}>
-          Vous avez recu une sanction dans {parseDate(fromDate)} avec la nature {reasonForSanction}
+        <div
+          onClick={(e) => setNotVisible()}
+          className="sanction"
+          id={props.news.sanction[0]._id}
+        >
+          Vous avez recu une sanction dans{" "}
+          {parseDate(fromDate)} avec la nature{" "}
+          {reasonForSanction}
         </div>
       )}
+
+      {props.news.type === "Reponse" ? (
+        <div
+          onClick={(e) => setNotVisible()}
+          className="Reponse"
+          id={props.news.demande[0]._id}
+        >
+          {reponse}
+        </div>
+      ) : null}
     </div>
   );
 }
