@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./leaveManagement.css";
 import { useFormik } from "formik";
 
 function ReqLeave() {
   const axios = require("axios");
 
-  const [userInfo, setUserInfo] = useState({});
   const [errorResponse, setError] = useState("");
   const [successResponse, setSuccess] = useState("");
   const [selectedImage, setSelectedImage] = useState("");
-  const [myUser, setMyUser] = useState({});
   const { user } = JSON.parse(
     localStorage.getItem("user-info")
   );
@@ -33,23 +31,23 @@ function ReqLeave() {
         config
       )
       .then((response) => {
+        console.log(response);
         localStorage.setItem(
           "user-info",
           JSON.stringify(response.data)
         );
+        if (response.status === 200) {
+          setSuccess("Demande envoyé avec succés");
+          setError(null);
+        } else {
+          setSuccess(null);
+          setError(result);
+        }
       })
-      .catch((error) => {});
 
-    if (result.status == 200) {
-      setSuccess("Demande envoyé avec succés");
-      setError(null);
-    } else {
-      setSuccess(null);
-      setError(result);
-    }
+      .catch((error) => {});
   }
   function validate(values) {
-    const d = new Date();
     const errors = {};
     if (!values.reasonForLeave) {
       errors.reasonForLeave =
